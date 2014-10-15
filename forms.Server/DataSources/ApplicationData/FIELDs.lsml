@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="FIELD">
+    <EntityType.Attributes>
+      <CreatedModifiedPropertiesEnabled />
+    </EntityType.Attributes>
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="FIELD_LABEL"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="FIELD_NAME"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="FIELD_LEVEL"
+        PropertyType=":Decimal">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+          <DecimalConstraint
+            Precision="18"
+            Scale="2" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="FIELD_ENABLED"
+        PropertyType=":Boolean">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="FIELD_IS_TEMPLATE"
+        PropertyType=":Boolean">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="FIELD_HTML"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="VALIDATION"
+        Association="VALIDATION_FIELD"
+        FromEnd="FIELD"
+        ToEnd="VALIDATION" />
+      <NavigationProperty
+        Name="VALUEs"
+        Association="FIELD_VALUE"
+        FromEnd="FIELD"
+        ToEnd="VALUE" />
+      <NavigationProperty
+        Name="SIBLINB_FIELDs"
+        Association="FIELD_FIELD"
+        FromEnd="FIELD1"
+        ToEnd="FIELD2" />
+      <NavigationProperty
+        Name="SIBLING_FIELD"
+        Association="FIELD_FIELD"
+        FromEnd="FIELD2"
+        ToEnd="FIELD1" />
+      <NavigationProperty
+        Name="CHILD_FIELDs"
+        Association="FIELD_FIELD1"
+        FromEnd="FIELD1"
+        ToEnd="FIELD2" />
+      <NavigationProperty
+        Name="PARENT_FIELD"
+        Association="FIELD_FIELD1"
+        FromEnd="FIELD2"
+        ToEnd="FIELD1" />
+      <NavigationProperty
+        Name="PARENT_FORM"
+        Association="FORM_FIELD"
+        FromEnd="FIELD"
+        ToEnd="FORM" />
+      <EntityProperty
+        Name="CreatedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Created"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ModifiedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Modified"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <Hidden />
+          <UseForConcurrency />
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityContainer
+    Name="ApplicationData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="FIELDs"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="FIELD" />
+    <QueryOperation
+      Name="FIELDs_Single"
+      ReturnType="FIELD">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="FIELDs" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="FIELDs_SingleOrDefault"
+      ReturnType="FIELD">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="FIELDs" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="VALIDATION_FIELDs"
+      Association="VALIDATION_FIELD">
+      <AssociationSetEnd
+        Name="VALIDATION"
+        EntitySet="VALIDATIONs" />
+      <AssociationSetEnd
+        Name="FIELD"
+        EntitySet="FIELDs" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FIELD_VALUEs"
+      Association="FIELD_VALUE">
+      <AssociationSetEnd
+        Name="FIELD"
+        EntitySet="FIELDs" />
+      <AssociationSetEnd
+        Name="VALUE"
+        EntitySet="VALUEs" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FIELD_FIELDs"
+      Association="FIELD_FIELD">
+      <AssociationSetEnd
+        Name="FIELD1"
+        EntitySet="FIELDs" />
+      <AssociationSetEnd
+        Name="FIELD2"
+        EntitySet="FIELDs" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FIELD_FIELD1Set"
+      Association="FIELD_FIELD1">
+      <AssociationSetEnd
+        Name="FIELD1"
+        EntitySet="FIELDs" />
+      <AssociationSetEnd
+        Name="FIELD2"
+        EntitySet="FIELDs" />
+    </AssociationSet>
+  </EntityContainer>
+  <DataService
+    Name="ApplicationDataMapping">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <AssociationSetMapping
+      AssociationSet="FIELD_VALUEs">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FIELD_VALUEs" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[FIELD_VALUEs]/Members[FIELD]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[FIELD_VALUEs]/Members[VALUE]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="FIELD_VALUE" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FIELD_FIELDs">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FIELD_FIELDs" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[FIELD_FIELDs]/Members[FIELD1]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[FIELD_FIELDs]/Members[FIELD2]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="FIELD_FIELD" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <EntitySetMapping
+      EntitySet="FIELDs">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="FIELD_FIELD"
+          Nullable="True"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="FIELD_FIELD1"
+          Nullable="True"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="FORM_FIELD"
+          Nullable="True"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="VALIDATION_FIELD"
+          Nullable="True"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FIELD_FIELD1Set">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FIELD_FIELD1Set" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[FIELD_FIELD1Set]/Members[FIELD1]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[FIELD_FIELD1Set]/Members[FIELD2]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="FIELD_FIELD1" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+  <Association
+    Name="FIELD_VALUE">
+    <AssociationEnd
+      Name="FIELD"
+      EntityType="FIELD">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Cascade" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="VALUE"
+      Multiplicity="Many"
+      EntityType="VALUE" />
+  </Association>
+  <Association
+    Name="FIELD_FIELD">
+    <AssociationEnd
+      Name="FIELD1"
+      EntityType="FIELD">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="FIELD2"
+      Multiplicity="Many"
+      EntityType="FIELD" />
+  </Association>
+  <Association
+    Name="FIELD_FIELD1">
+    <AssociationEnd
+      Name="FIELD1"
+      EntityType="FIELD">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="FIELD2"
+      Multiplicity="Many"
+      EntityType="FIELD" />
+  </Association>
+</ServiceApplication>
