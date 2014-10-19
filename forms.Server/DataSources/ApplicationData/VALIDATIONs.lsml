@@ -27,7 +27,7 @@
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
-        Name="VALIDATION_LABEL"
+        Name="LABEL"
         PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
@@ -36,7 +36,7 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="FIELD_TYPE"
+        Name="TYPE"
         PropertyType=":Int32">
         <EntityProperty.Attributes>
           <Required />
@@ -44,7 +44,7 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="FIELD_REQUIRED"
+        Name="REQUIRED"
         PropertyType=":Boolean">
         <EntityProperty.Attributes>
           <Required />
@@ -52,22 +52,14 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="FIELD_DEFAULT_CONTAINS"
-        PropertyType=":String?">
-        <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="FIELD_ALLOW_DEFAULT"
+        Name="DEFAULT_ALLOWED"
         PropertyType=":Boolean?">
         <EntityProperty.Attributes>
           <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="FIELD_SHOULDNT_CONTAIN"
+        Name="DEFAULT_CONTAINS"
         PropertyType=":String?">
         <EntityProperty.Attributes>
           <MaxLength
@@ -75,21 +67,7 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="FIELD_MIN_LENGTH"
-        PropertyType=":Int32?">
-        <EntityProperty.Attributes>
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="FIELD_MAX_LENGTH"
-        PropertyType=":Int32?">
-        <EntityProperty.Attributes>
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="FIELD_VALIDATION_MSG"
+        Name="MUST_NOT_CONTAIN"
         PropertyType=":String?">
         <EntityProperty.Attributes>
           <MaxLength
@@ -97,14 +75,44 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="FIELD_FOCUS_AFTER_VALIDATION"
+        Name="LENGTH_MIN"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="LENGTH_MAX"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="VALIDATION_FAIL_MSG"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="VALIDATION_SUCCESS_MSG"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="FOCUS_AFTER_VALIDATION"
         PropertyType=":Boolean?">
         <EntityProperty.Attributes>
           <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="FIELD_REGEX_MATCH"
+        Name="REGEX_MATCH"
         PropertyType=":String?">
         <EntityProperty.Attributes>
           <MaxLength
@@ -112,18 +120,13 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="FIELD_MASK"
+        Name="MASK"
         PropertyType=":String?">
         <EntityProperty.Attributes>
           <MaxLength
             Value="255" />
         </EntityProperty.Attributes>
       </EntityProperty>
-      <NavigationProperty
-        Name="FIELD"
-        Association="VALIDATION_FIELD"
-        FromEnd="VALIDATION"
-        ToEnd="FIELD" />
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -274,42 +277,13 @@
       <Partial />
     </DataService.Attributes>
     <EntitySetMapping
-      EntitySet="VALIDATIONs" />
-    <AssociationSetMapping
-      AssociationSet="VALIDATION_FIELDs">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="VALIDATION_FIELDs" />
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[VALIDATION_FIELDs]/Members[VALIDATION]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="Id" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[VALIDATION_FIELDs]/Members[FIELD]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="VALIDATION_FIELD" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
+      EntitySet="VALIDATIONs">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="VALIDATION_FIELD"
+          Nullable="True"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
   </DataService>
-  <Association
-    Name="VALIDATION_FIELD">
-    <AssociationEnd
-      Name="VALIDATION"
-      EntityType="VALIDATION">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Restrict" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-    <AssociationEnd
-      Name="FIELD"
-      Multiplicity="Many"
-      EntityType="FIELD" />
-  </Association>
 </ServiceApplication>

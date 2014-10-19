@@ -66,8 +66,14 @@
     <Content Include="Content\Images\user-splash-screen.png" />
     <Content Include="Content\Web.config" />
     <Content Include="packages.config" />
-    <Content Include="Screens\FORMs\ViewFORM.lsml.js">
-      <DependentUpon>ViewFORM.lsml</DependentUpon>
+    <Content Include="Screens\AddEditFORM_FIELD.lsml.js">
+      <DependentUpon>AddEditFORM_FIELD.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\AddEditFORM_FORM.lsml.js">
+      <DependentUpon>AddEditFORM_FORM.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\FORMs\AddEditFORM.lsml.js">
+      <DependentUpon>AddEditFORM.lsml</DependentUpon>
     </Content>
     <Content Include="Scripts\datajs-1.1.1.js" />
     <Content Include="Scripts\datajs-1.1.1.min.js" />
@@ -90,15 +96,16 @@
     </ServiceMetadataReference>
   </ItemGroup>
   <ItemGroup>
-    <LightSwitchModel Include="Properties\ApplicationData\FORMs.lsml" />
     <LightSwitchModel Include="Properties\Client.lsml">
       <ProjectCritical>true</ProjectCritical>
     </LightSwitchModel>
     <LightSwitchModel Include="Properties\Proxies.lsml" />
     <LightSwitchModel Include="Screens\AddEditFIELD.lsml" />
+    <LightSwitchModel Include="Screens\AddEditFORM_FIELD.lsml" />
+    <LightSwitchModel Include="Screens\AddEditFORM_FORM.lsml" />
+    <LightSwitchModel Include="Screens\AddEditVALIDATION.lsml" />
     <LightSwitchModel Include="Screens\FORMs\AddEditFORM.lsml" />
     <LightSwitchModel Include="Screens\FORMs\BrowseFORMs.lsml" />
-    <LightSwitchModel Include="Screens\FORMs\ViewFORM.lsml" />
   </ItemGroup>
   <ItemGroup>
     <_ClientBuildFile Include="GeneratedArtifacts\model.json">
@@ -116,6 +123,9 @@
     <_ClientBuildFile Include="GeneratedArtifacts\resources.js">
       <SubFolder>Scripts\Generated</SubFolder>
     </_ClientBuildFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\ApplicationData\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\MobileClient\Microsoft.LightSwitch.MobileClient.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\Microsoft.LightSwitch.Build.Tasks.targets" />

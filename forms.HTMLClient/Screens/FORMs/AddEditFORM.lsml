@@ -76,19 +76,6 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="FORM_LEVEL"
-                  Kind="Value"
-                  DataType=":Decimal">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="FORM/Properties[FORM_LEVEL]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
                   Name="Group"
                   Kind="Group"
                   View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
@@ -112,7 +99,7 @@
                   <ContentItem
                     Name="FORM_IS_TEMPLATE"
                     Kind="Value"
-                    DataType=":Boolean">
+                    DataType=":Boolean?">
                     <ContentItem.Attributes>
                       <DisplayName
                         Value="TEMPLATE" />
@@ -232,7 +219,7 @@
             <ContentItem
               Name="FORM_FORM_HTML"
               Kind="Value"
-              DataType=":String"
+              DataType=":String?"
               View="Microsoft.LightSwitch.MobileWeb:TextArea">
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
@@ -246,86 +233,86 @@
               </ContentItem.DataSource>
             </ContentItem>
             <ContentItem
-              Name="PARENT_FORM"
-              Kind="Details"
-              DataType="FORM">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression
-                      Member="AddEditFORM/Properties[FORM]" />
-                    <MemberExpression
-                      Member="PARENT_FORM" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-              <ContentItem
-                Name="RowTemplate"
-                Kind="Details"
-                DataType="FORM">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression />
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-            </ContentItem>
-            <ContentItem
-              Name="collections"
+              Name="relationships"
               Kind="Group"
               View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
               <ContentItem
-                Name="FIELDs"
+                Name="FORM_FIELD"
                 Kind="Collection"
-                DataType="CollectionView$FIELD"
+                DataType="CollectionView$FORM_FIELD"
                 View="Microsoft.LightSwitch.MobileWeb:TileList">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="FIELDs" />
+                </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="AddEditFORM/Properties[FIELDs]" />
+                        Member="AddEditFORM/Properties[FORM_FIELD]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  Name="FIELDsTemplate"
+                  Name="FORM_FIELDTemplate"
                   Kind="Details"
-                  DataType="FIELD">
+                  DataType="FORM_FIELD"
+                  View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression />
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    Name="FIELD_LABEL"
-                    Kind="Value"
-                    DataType=":String">
+                    Name="FIELD"
+                    Kind="Details"
+                    DataType="FIELD">
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
                         <ChainExpression>
                           <MemberExpression
-                            Member="FIELD/Properties[FIELD_LABEL]" />
+                            Member="FORM_FIELD/Properties[FIELD]" />
                         </ChainExpression>
                       </ScreenExpressionTree>
                     </ContentItem.DataSource>
+                    <ContentItem
+                      Name="FIELD1"
+                      Kind="Details"
+                      DataType="FIELD">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression />
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
                   </ContentItem>
                 </ContentItem>
                 <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ShowHeader]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="True"
+                          ResultType=":Boolean" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
                   <ControlPropertySource
                     Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ItemTap]">
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <CallExpression
-                          Target="!module/Methods[showAddEditFIELD]">
+                          Target="!module/Methods[showAddEditFORM_FIELD]">
                           <CallExpression.Attributes>
                             <AssociatedCollection
-                              Collection="AddEditFORM/Properties[FIELDs]" />
+                              Collection="AddEditFORM/Properties[FORM_FIELD]" />
                           </CallExpression.Attributes>
                           <ArgumentExpression
-                            Parameter="FIELD">
+                            Parameter="FORM_FIELD">
                             <ChainExpression>
                               <MemberExpression
-                                Member="AddEditFORM/Properties[FIELDs]" />
+                                Member="AddEditFORM/Properties[FORM_FIELD]" />
                               <MemberExpression
                                 Member="selectedItem" />
                             </ChainExpression>
@@ -341,125 +328,117 @@
                         <ConstantExpression
                           Value="msls-edit"
                           ResultType=":String" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ShowHeader]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="True"
-                          ResultType=":Boolean" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ControlPropertySource>
                 </ContentItem.PropertySources>
               </ContentItem>
               <ContentItem
-                Name="CHILD_FORMs"
-                Kind="Collection"
-                DataType="CollectionView$FORM"
-                View="Microsoft.LightSwitch.MobileWeb:TileList">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="AddEditFORM/Properties[CHILD_FORMs]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
+                Name="forms"
+                Kind="Group">
                 <ContentItem
-                  Name="CHILD_FORMsTemplate"
-                  Kind="Details"
-                  DataType="FORM">
+                  Name="CHILD_FORMs"
+                  Kind="Collection"
+                  DataType="CollectionView$FORM_FORM"
+                  View="Microsoft.LightSwitch.MobileWeb:TileList">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
-                      <ChainExpression />
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="AddEditFORM/Properties[CHILD_FORMs]" />
+                      </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    Name="FORM_LABEL1"
-                    Kind="Value"
-                    DataType=":String">
+                    Name="CHILD_FORMsTemplate"
+                    Kind="Details"
+                    DataType="FORM_FORM">
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
-                        <ChainExpression>
-                          <MemberExpression
-                            Member="FORM/Properties[FORM_LABEL]" />
-                        </ChainExpression>
+                        <ChainExpression />
                       </ScreenExpressionTree>
                     </ContentItem.DataSource>
+                    <ContentItem
+                      Name="CHILD_FORM"
+                      Kind="Details"
+                      DataType="FORM">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="FORM_FORM/Properties[CHILD_FORM]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                      <ContentItem
+                        Name="FORM"
+                        Kind="Details"
+                        DataType="FORM">
+                        <ContentItem.DataSource>
+                          <ScreenExpressionTree>
+                            <ChainExpression />
+                          </ScreenExpressionTree>
+                        </ContentItem.DataSource>
+                      </ContentItem>
+                    </ContentItem>
                   </ContentItem>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ShowHeader]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="True"
+                            ResultType=":Boolean" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ItemTap]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <CallExpression
+                            Target="!module/Methods[showAddEditFORM_FORM]">
+                            <CallExpression.Attributes>
+                              <AssociatedCollection
+                                Collection="AddEditFORM/Properties[CHILD_FORMs]" />
+                            </CallExpression.Attributes>
+                            <ArgumentExpression
+                              Parameter="FORM_FORM">
+                              <ChainExpression>
+                                <MemberExpression
+                                  Member="AddEditFORM/Properties[CHILD_FORMs]" />
+                                <MemberExpression
+                                  Member="selectedItem" />
+                              </ChainExpression>
+                            </ArgumentExpression>
+                          </CallExpression>
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="msls-edit"
+                            ResultType=":String" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
                 </ContentItem>
-                <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ShowHeader]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="True"
-                          ResultType=":Boolean" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ItemTap]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <CallExpression
-                          Target="!module/Methods[showAddEditFORM]">
-                          <CallExpression.Attributes>
-                            <AssociatedCollection
-                              Collection="AddEditFORM/Properties[CHILD_FORMs]" />
-                          </CallExpression.Attributes>
-                          <ArgumentExpression
-                            Parameter="FORM">
-                            <ChainExpression>
-                              <MemberExpression
-                                Member="AddEditFORM/Properties[CHILD_FORMs]" />
-                              <MemberExpression
-                                Member="selectedItem" />
-                            </ChainExpression>
-                          </ArgumentExpression>
-                        </CallExpression>
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="msls-edit"
-                          ResultType=":String" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                </ContentItem.PropertySources>
               </ContentItem>
             </ContentItem>
             <ContentItem.CommandItems>
               <ContentItem
                 Name="AddFIELD"
                 Kind="Command">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Add FIELD" />
+                </ContentItem.Attributes>
                 <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <CallExpression
-                          Target="!module/Methods[showAddEditFIELD]">
-                          <CallExpression.Attributes>
-                            <AssociatedCollection
-                              Collection="AddEditFORM/Properties[FIELDs]" />
-                            <CreateNewEntity
-                              TargetParameter="!module/Methods[showAddEditFIELD]/Parameters[FIELD]" />
-                          </CallExpression.Attributes>
-                        </CallExpression>
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
                   <ControlPropertySource
                     Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
                     <ScreenExpressionTree>
@@ -470,10 +449,26 @@
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ControlPropertySource>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <CallExpression
+                          Target="!module/Methods[showAddEditFORM_FIELD]">
+                          <CallExpression.Attributes>
+                            <AssociatedCollection
+                              Collection="AddEditFORM/Properties[FORM_FIELD]" />
+                            <CreateNewEntity
+                              TargetParameter="!module/Methods[showAddEditFORM_FIELD]/Parameters[FORM_FIELD]" />
+                          </CallExpression.Attributes>
+                        </CallExpression>
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
                 </ContentItem.PropertySources>
               </ContentItem>
               <ContentItem
-                Name="AddFORM"
+                Name="AddFORM_FORM"
                 Kind="Command">
                 <ContentItem.Attributes>
                   <DisplayName
@@ -485,12 +480,12 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <CallExpression
-                          Target="!module/Methods[showAddEditFORM]">
+                          Target="!module/Methods[showAddEditFORM_FORM]">
                           <CallExpression.Attributes>
                             <AssociatedCollection
                               Collection="AddEditFORM/Properties[CHILD_FORMs]" />
                             <CreateNewEntity
-                              TargetParameter="!module/Methods[showAddEditFORM]/Parameters[FORM]" />
+                              TargetParameter="!module/Methods[showAddEditFORM_FORM]/Parameters[FORM_FORM]" />
                           </CallExpression.Attributes>
                         </CallExpression>
                       </ChainExpression>
@@ -572,13 +567,13 @@
         </ScreenProperty.Attributes>
       </ScreenProperty>
       <ScreenCollectionProperty
-        Name="FIELDs"
+        Name="FORM_FIELD"
         PageSize="45"
-        PropertyType="CollectionView$FIELD">
+        PropertyType="CollectionView$FORM_FIELD">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
-            Name="FIELDsQuery"
-            ReturnType="FIELD*">
+            Name="FORM_FIELDQuery"
+            ReturnType="FORM_FIELD*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
@@ -588,7 +583,7 @@
                   <MemberExpression
                     Member="AddEditFORM/Properties[FORM]" />
                   <MemberExpression
-                    Member="FIELDs" />
+                    Member="FORM_FIELD" />
                 </ChainExpression>
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
@@ -597,18 +592,18 @@
         <ScreenExpressionTree>
           <ChainExpression>
             <CallExpression
-              Target="AddEditFORM/Properties[FIELDs]/Query" />
+              Target="AddEditFORM/Properties[FORM_FIELD]/Query" />
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
       <ScreenCollectionProperty
         Name="CHILD_FORMs"
         PageSize="45"
-        PropertyType="CollectionView$FORM">
+        PropertyType="CollectionView$FORM_FORM">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
             Name="CHILD_FORMsQuery"
-            ReturnType="FORM*">
+            ReturnType="FORM_FORM*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
@@ -628,6 +623,36 @@
           <ChainExpression>
             <CallExpression
               Target="AddEditFORM/Properties[CHILD_FORMs]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenCollectionProperty
+        Name="PARENT_FORMs"
+        PageSize="45"
+        PropertyType="CollectionView$FORM_FORM">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="PARENT_FORMsQuery"
+            ReturnType="FORM_FORM*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <ChainExpression>
+                  <MemberExpression
+                    Member="AddEditFORM/Properties[FORM]" />
+                  <MemberExpression
+                    Member="PARENT_FORMs" />
+                </ChainExpression>
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="AddEditFORM/Properties[PARENT_FORMs]/Query" />
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>

@@ -5,7 +5,7 @@
     <Partial />
   </ServiceApplication.Attributes>
   <EntityType
-    Name="FORM">
+    Name="FORM_FORM">
     <EntityType.Attributes>
       <CreatedModifiedPropertiesEnabled />
     </EntityType.Attributes>
@@ -27,21 +27,14 @@
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
-        Name="FORM_LABEL"
-        PropertyType=":String">
+        Name="FORM_LEVEL"
+        PropertyType=":Decimal">
         <EntityProperty.Attributes>
           <Required />
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="FORM_NAME"
-        PropertyType=":String">
-        <EntityProperty.Attributes>
-          <Required />
-          <MaxLength
-            Value="255" />
+          <NotSearchable />
+          <DecimalConstraint
+            Precision="18"
+            Scale="2" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
@@ -52,36 +45,16 @@
           <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
-      <EntityProperty
-        Name="FORM_IS_TEMPLATE"
-        PropertyType=":Boolean?">
-        <EntityProperty.Attributes>
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="FORM_HTML"
-        PropertyType=":String?">
-        <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
       <NavigationProperty
-        Name="FORM_FIELD"
-        Association="FORM_FIELD_FORM"
-        FromEnd="FORM"
-        ToEnd="FORM_FIELD" />
-      <NavigationProperty
-        Name="PARENT_FORMs"
+        Name="CHILD_FORM"
         Association="FORM_FORM_FORM"
-        FromEnd="FORM"
-        ToEnd="FORM_FORM" />
+        FromEnd="FORM_FORM"
+        ToEnd="FORM" />
       <NavigationProperty
-        Name="CHILD_FORMs"
+        Name="PARENT_FORM"
         Association="FORM_FORM_FORM1"
-        FromEnd="FORM"
-        ToEnd="FORM_FORM" />
+        FromEnd="FORM_FORM"
+        ToEnd="FORM" />
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -140,14 +113,14 @@
       <Partial />
     </EntityContainer.Attributes>
     <EntitySet
-      Name="FORMs"
+      Name="FORM_FORMs"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="FORM" />
+      EntityType="FORM_FORM" />
     <QueryOperation
-      Name="FORMs_Single"
-      ReturnType="FORM">
+      Name="FORM_FORMs_Single"
+      ReturnType="FORM_FORM">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -173,7 +146,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="FORMs" />
+            Member="FORM_FORMs" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -186,8 +159,8 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="FORMs_SingleOrDefault"
-      ReturnType="FORM">
+      Name="FORM_FORMs_SingleOrDefault"
+      ReturnType="FORM_FORM">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -213,7 +186,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="FORMs" />
+            Member="FORM_FORMs" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -225,36 +198,6 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
-    <AssociationSet
-      Name="FORM_FIELD_FORMs"
-      Association="FORM_FIELD_FORM">
-      <AssociationSetEnd
-        Name="FORM_FIELD"
-        EntitySet="FORM_FIELDs" />
-      <AssociationSetEnd
-        Name="FORM"
-        EntitySet="FORMs" />
-    </AssociationSet>
-    <AssociationSet
-      Name="FORM_FORM_FORMs"
-      Association="FORM_FORM_FORM">
-      <AssociationSetEnd
-        Name="FORM_FORM"
-        EntitySet="FORM_FORMs" />
-      <AssociationSetEnd
-        Name="FORM"
-        EntitySet="FORMs" />
-    </AssociationSet>
-    <AssociationSet
-      Name="FORM_FORM_FORM1Set"
-      Association="FORM_FORM_FORM1">
-      <AssociationSetEnd
-        Name="FORM_FORM"
-        EntitySet="FORM_FORMs" />
-      <AssociationSetEnd
-        Name="FORM"
-        EntitySet="FORMs" />
-    </AssociationSet>
   </EntityContainer>
   <DataService
     Name="ApplicationDataMapping">
@@ -262,124 +205,33 @@
       <Partial />
     </DataService.Attributes>
     <EntitySetMapping
-      EntitySet="FORMs">
+      EntitySet="FORM_FORMs">
       <EntitySetMapping.Attributes>
         <SsdlForeignKeyProperty
-          Name="FORM_FORM1"
-          Nullable="True"
+          Name="FORM_SUBFORM_FORM"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="FORM_SUBFORM_FORM1"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="FORM_TEMPLATE_FORM"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="FORM_TEMPLATE_FORM1"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="FORM_FORM_FORM"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="FORM_FORM_FORM1"
+          Nullable="False"
           Type="int" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
-    <AssociationSetMapping
-      AssociationSet="FORM_FIELD_FORMs">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="FORMFIELD_FORMs" />
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[FORM_FIELD_FORMs]/Members[FORM_FIELD]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="FORMFIELD_FORM" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[FORM_FIELD_FORMs]/Members[FORM]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="Id" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
-    <AssociationSetMapping
-      AssociationSet="FORM_FORM_FORMs">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="FORM_FORM_FORMs" />
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[FORM_FORM_FORMs]/Members[FORM_FORM]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="FORM_FORM_FORM" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[FORM_FORM_FORMs]/Members[FORM]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="Id" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
-    <AssociationSetMapping
-      AssociationSet="FORM_FORM_FORM1Set">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="FORM_FORM_FORM1Set" />
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[FORM_FORM_FORM1Set]/Members[FORM_FORM]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="FORM_FORM_FORM1" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[FORM_FORM_FORM1Set]/Members[FORM]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="Id" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
   </DataService>
-  <Association
-    Name="FORM_FIELD_FORM">
-    <AssociationEnd
-      Name="FORM_FIELD"
-      Multiplicity="Many"
-      EntityType="FORM_FIELD" />
-    <AssociationEnd
-      Name="FORM"
-      Multiplicity="One"
-      EntityType="FORM">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Restrict" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-  </Association>
-  <Association
-    Name="FORM_FORM_FORM">
-    <AssociationEnd
-      Name="FORM_FORM"
-      Multiplicity="Many"
-      EntityType="FORM_FORM" />
-    <AssociationEnd
-      Name="FORM"
-      Multiplicity="One"
-      EntityType="FORM">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Restrict" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-  </Association>
-  <Association
-    Name="FORM_FORM_FORM1">
-    <AssociationEnd
-      Name="FORM_FORM"
-      Multiplicity="Many"
-      EntityType="FORM_FORM" />
-    <AssociationEnd
-      Name="FORM"
-      Multiplicity="One"
-      EntityType="FORM">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Restrict" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-  </Association>
 </ServiceApplication>

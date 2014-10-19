@@ -5,7 +5,7 @@
     <Partial />
   </ServiceApplication.Attributes>
   <EntityType
-    Name="VALUE">
+    Name="FORM_FIELD">
     <EntityType.Attributes>
       <CreatedModifiedPropertiesEnabled />
     </EntityType.Attributes>
@@ -27,20 +27,34 @@
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
-        Name="VALUE_INT"
-        PropertyType=":Int32?">
+        Name="FIELD_LEVEL"
+        PropertyType=":Decimal">
         <EntityProperty.Attributes>
+          <Required />
           <NotSearchable />
+          <DecimalConstraint
+            Precision="18"
+            Scale="2" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="VALUE_STR"
-        PropertyType=":String?">
+        Name="FIELD_ENABLED"
+        PropertyType=":Boolean">
         <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
+          <Required />
+          <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <NavigationProperty
+        Name="FIELD"
+        Association="FORM_FIELD_FIELD"
+        FromEnd="FORM_FIELD"
+        ToEnd="FIELD" />
+      <NavigationProperty
+        Name="FORM"
+        Association="FORM_FIELD_FORM"
+        FromEnd="FORM_FIELD"
+        ToEnd="FORM" />
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -99,14 +113,14 @@
       <Partial />
     </EntityContainer.Attributes>
     <EntitySet
-      Name="VALUEs"
+      Name="FORM_FIELDs"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="VALUE" />
+      EntityType="FORM_FIELD" />
     <QueryOperation
-      Name="VALUEs_Single"
-      ReturnType="VALUE">
+      Name="FORM_FIELDs_Single"
+      ReturnType="FORM_FIELD">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -132,7 +146,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="VALUEs" />
+            Member="FORM_FIELDs" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -145,8 +159,8 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="VALUEs_SingleOrDefault"
-      ReturnType="VALUE">
+      Name="FORM_FIELDs_SingleOrDefault"
+      ReturnType="FORM_FIELD">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -172,7 +186,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="VALUEs" />
+            Member="FORM_FIELDs" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -191,11 +205,15 @@
       <Partial />
     </DataService.Attributes>
     <EntitySetMapping
-      EntitySet="VALUEs">
+      EntitySet="FORM_FIELDs">
       <EntitySetMapping.Attributes>
         <SsdlForeignKeyProperty
-          Name="FIELD_VALUE"
-          Nullable="True"
+          Name="FORMFIELD_FIELD"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="FORMFIELD_FORM"
+          Nullable="False"
           Type="int" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>

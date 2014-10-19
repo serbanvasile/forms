@@ -28,40 +28,46 @@
         Target="ServiceInterface:ApplicationData" />
     </EntityContainer.Attributes>
   </EntityContainer>
-  <Association>
-    <Association.Attributes>
-      <Proxy
-        Target="ServiceInterface:VALIDATION_FIELD" />
-    </Association.Attributes>
-  </Association>
-  <Association>
-    <Association.Attributes>
-      <Proxy
-        Target="ServiceInterface:FIELD_VALUE" />
-    </Association.Attributes>
-  </Association>
-  <Association>
-    <Association.Attributes>
-      <Proxy
-        Target="ServiceInterface:FIELD_FIELD" />
-    </Association.Attributes>
-  </Association>
-  <Association>
-    <Association.Attributes>
-      <Proxy
-        Target="ServiceInterface:FIELD_FIELD1" />
-    </Association.Attributes>
-  </Association>
-  <Association>
-    <Association.Attributes>
+  <EntityType>
+    <EntityType.Attributes>
       <Proxy
         Target="ServiceInterface:FORM_FIELD" />
+    </EntityType.Attributes>
+  </EntityType>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FORM_FIELD_FIELD" />
     </Association.Attributes>
   </Association>
   <Association>
     <Association.Attributes>
       <Proxy
+        Target="ServiceInterface:FORM_FIELD_FORM" />
+    </Association.Attributes>
+  </Association>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:FORM" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
         Target="ServiceInterface:FORM_FORM" />
+    </EntityType.Attributes>
+  </EntityType>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FORM_FORM_FORM" />
+    </Association.Attributes>
+  </Association>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FORM_FORM_FORM1" />
     </Association.Attributes>
   </Association>
 </Application>

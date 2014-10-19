@@ -205,6 +205,8 @@
     <LightSwitchModel Include="DataSources\ApplicationData\VALIDATIONs.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\VALUEs.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\FORMs.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\FORM_FIELDs.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\FORM_FORMs.lsml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

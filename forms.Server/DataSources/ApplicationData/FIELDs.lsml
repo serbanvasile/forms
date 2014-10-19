@@ -45,17 +45,6 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="FIELD_LEVEL"
-        PropertyType=":Decimal">
-        <EntityProperty.Attributes>
-          <Required />
-          <NotSearchable />
-          <DecimalConstraint
-            Precision="18"
-            Scale="2" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
         Name="FIELD_ENABLED"
         PropertyType=":Boolean">
         <EntityProperty.Attributes>
@@ -65,9 +54,8 @@
       </EntityProperty>
       <EntityProperty
         Name="FIELD_IS_TEMPLATE"
-        PropertyType=":Boolean">
+        PropertyType=":Boolean?">
         <EntityProperty.Attributes>
-          <Required />
           <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
@@ -80,40 +68,10 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Name="VALIDATION"
-        Association="VALIDATION_FIELD"
+        Name="FORM_FIELD"
+        Association="FORM_FIELD_FIELD"
         FromEnd="FIELD"
-        ToEnd="VALIDATION" />
-      <NavigationProperty
-        Name="VALUEs"
-        Association="FIELD_VALUE"
-        FromEnd="FIELD"
-        ToEnd="VALUE" />
-      <NavigationProperty
-        Name="SIBLINB_FIELDs"
-        Association="FIELD_FIELD"
-        FromEnd="FIELD1"
-        ToEnd="FIELD2" />
-      <NavigationProperty
-        Name="SIBLING_FIELD"
-        Association="FIELD_FIELD"
-        FromEnd="FIELD2"
-        ToEnd="FIELD1" />
-      <NavigationProperty
-        Name="CHILD_FIELDs"
-        Association="FIELD_FIELD1"
-        FromEnd="FIELD1"
-        ToEnd="FIELD2" />
-      <NavigationProperty
-        Name="PARENT_FIELD"
-        Association="FIELD_FIELD1"
-        FromEnd="FIELD2"
-        ToEnd="FIELD1" />
-      <NavigationProperty
-        Name="PARENT_FORM"
-        Association="FORM_FIELD"
-        FromEnd="FIELD"
-        ToEnd="FORM" />
+        ToEnd="FORM_FIELD" />
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -258,43 +216,13 @@
       </QueryOperationParameter>
     </QueryOperation>
     <AssociationSet
-      Name="VALIDATION_FIELDs"
-      Association="VALIDATION_FIELD">
+      Name="FORM_FIELD_FIELDs"
+      Association="FORM_FIELD_FIELD">
       <AssociationSetEnd
-        Name="VALIDATION"
-        EntitySet="VALIDATIONs" />
-      <AssociationSetEnd
-        Name="FIELD"
-        EntitySet="FIELDs" />
-    </AssociationSet>
-    <AssociationSet
-      Name="FIELD_VALUEs"
-      Association="FIELD_VALUE">
+        Name="FORM_FIELD"
+        EntitySet="FORM_FIELDs" />
       <AssociationSetEnd
         Name="FIELD"
-        EntitySet="FIELDs" />
-      <AssociationSetEnd
-        Name="VALUE"
-        EntitySet="VALUEs" />
-    </AssociationSet>
-    <AssociationSet
-      Name="FIELD_FIELDs"
-      Association="FIELD_FIELD">
-      <AssociationSetEnd
-        Name="FIELD1"
-        EntitySet="FIELDs" />
-      <AssociationSetEnd
-        Name="FIELD2"
-        EntitySet="FIELDs" />
-    </AssociationSet>
-    <AssociationSet
-      Name="FIELD_FIELD1Set"
-      Association="FIELD_FIELD1">
-      <AssociationSetEnd
-        Name="FIELD1"
-        EntitySet="FIELDs" />
-      <AssociationSetEnd
-        Name="FIELD2"
         EntitySet="FIELDs" />
     </AssociationSet>
   </EntityContainer>
@@ -303,48 +231,6 @@
     <DataService.Attributes>
       <Partial />
     </DataService.Attributes>
-    <AssociationSetMapping
-      AssociationSet="FIELD_VALUEs">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="FIELD_VALUEs" />
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[FIELD_VALUEs]/Members[FIELD]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="Id" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[FIELD_VALUEs]/Members[VALUE]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="FIELD_VALUE" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
-    <AssociationSetMapping
-      AssociationSet="FIELD_FIELDs">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="FIELD_FIELDs" />
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[FIELD_FIELDs]/Members[FIELD1]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="Id" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[FIELD_FIELDs]/Members[FIELD2]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="FIELD_FIELD" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
     <EntitySetMapping
       EntitySet="FIELDs">
       <EntitySetMapping.Attributes>
@@ -357,80 +243,47 @@
           Nullable="True"
           Type="int" />
         <SsdlForeignKeyProperty
-          Name="FORM_FIELD"
-          Nullable="True"
-          Type="int" />
-        <SsdlForeignKeyProperty
-          Name="VALIDATION_FIELD"
+          Name="FORM_FIELD1"
           Nullable="True"
           Type="int" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
     <AssociationSetMapping
-      AssociationSet="FIELD_FIELD1Set">
+      AssociationSet="FORM_FIELD_FIELDs">
       <AssociationSetMapping.Attributes>
         <SsdlAssociationSet
-          Name="FIELD_FIELD1Set" />
+          Name="FORMFIELD_FIELDs" />
         <SsdlAssociationSetEnd
-          End="ApplicationData/Members[FIELD_FIELD1Set]/Members[FIELD1]">
+          End="ApplicationData/Members[FORM_FIELD_FIELDs]/Members[FORM_FIELD]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
-              Name="Id" />
+              Name="FORMFIELD_FIELD" />
           </SsdlAssociationSetEnd.Attributes>
         </SsdlAssociationSetEnd>
         <SsdlAssociationSetEnd
-          End="ApplicationData/Members[FIELD_FIELD1Set]/Members[FIELD2]">
+          End="ApplicationData/Members[FORM_FIELD_FIELDs]/Members[FIELD]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
-              Name="FIELD_FIELD1" />
+              Name="Id" />
           </SsdlAssociationSetEnd.Attributes>
         </SsdlAssociationSetEnd>
       </AssociationSetMapping.Attributes>
     </AssociationSetMapping>
   </DataService>
   <Association
-    Name="FIELD_VALUE">
+    Name="FORM_FIELD_FIELD">
+    <AssociationEnd
+      Name="FORM_FIELD"
+      Multiplicity="Many"
+      EntityType="FORM_FIELD" />
     <AssociationEnd
       Name="FIELD"
-      EntityType="FIELD">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Cascade" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-    <AssociationEnd
-      Name="VALUE"
-      Multiplicity="Many"
-      EntityType="VALUE" />
-  </Association>
-  <Association
-    Name="FIELD_FIELD">
-    <AssociationEnd
-      Name="FIELD1"
+      Multiplicity="One"
       EntityType="FIELD">
       <AssociationEnd.Attributes>
         <DeleteRule
           Action="Restrict" />
       </AssociationEnd.Attributes>
     </AssociationEnd>
-    <AssociationEnd
-      Name="FIELD2"
-      Multiplicity="Many"
-      EntityType="FIELD" />
-  </Association>
-  <Association
-    Name="FIELD_FIELD1">
-    <AssociationEnd
-      Name="FIELD1"
-      EntityType="FIELD">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Restrict" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-    <AssociationEnd
-      Name="FIELD2"
-      Multiplicity="Many"
-      EntityType="FIELD" />
   </Association>
 </ServiceApplication>
