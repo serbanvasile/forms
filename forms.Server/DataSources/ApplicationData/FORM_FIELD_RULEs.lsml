@@ -5,7 +5,7 @@
     <Partial />
   </ServiceApplication.Attributes>
   <EntityType
-    Name="FORM_FIELD">
+    Name="FORM_FIELD_RULE">
     <EntityType.Attributes>
       <CreatedModifiedPropertiesEnabled />
     </EntityType.Attributes>
@@ -27,7 +27,7 @@
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
-        Name="FIELD_LEVEL"
+        Name="RULE_LEVEL"
         PropertyType=":Decimal">
         <EntityProperty.Attributes>
           <Required />
@@ -38,7 +38,7 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="FIELD_ENABLED"
+        Name="RULE_ENABLED"
         PropertyType=":Boolean">
         <EntityProperty.Attributes>
           <Required />
@@ -46,20 +46,15 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Name="FIELD"
-        Association="FORM_FIELD_FIELD"
-        FromEnd="FORM_FIELD"
-        ToEnd="FIELD" />
+        Name="RULE"
+        Association="FORM_FIELD_RULE_RULE"
+        FromEnd="FORM_FIELD_RULE"
+        ToEnd="RULE" />
       <NavigationProperty
-        Name="FORM"
-        Association="FORM_FIELD_FORM"
-        FromEnd="FORM_FIELD"
-        ToEnd="FORM" />
-      <NavigationProperty
-        Name="FORM_FIELD_RULEs"
+        Name="FORM_FIELD"
         Association="FORM_FIELD_RULE_FORM_FIELD"
-        FromEnd="FORM_FIELD"
-        ToEnd="FORM_FIELD_RULE" />
+        FromEnd="FORM_FIELD_RULE"
+        ToEnd="FORM_FIELD" />
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -118,14 +113,14 @@
       <Partial />
     </EntityContainer.Attributes>
     <EntitySet
-      Name="FORM_FIELDs"
+      Name="FORM_FIELD_RULEs"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="FORM_FIELD" />
+      EntityType="FORM_FIELD_RULE" />
     <QueryOperation
-      Name="FORM_FIELDs_Single"
-      ReturnType="FORM_FIELD">
+      Name="FORM_FIELD_RULEs_Single"
+      ReturnType="FORM_FIELD_RULE">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -151,7 +146,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="FORM_FIELDs" />
+            Member="FORM_FIELD_RULEs" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -164,8 +159,8 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="FORM_FIELDs_SingleOrDefault"
-      ReturnType="FORM_FIELD">
+      Name="FORM_FIELD_RULEs_SingleOrDefault"
+      ReturnType="FORM_FIELD_RULE">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -191,7 +186,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="FORM_FIELDs" />
+            Member="FORM_FIELD_RULEs" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -203,16 +198,6 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
-    <AssociationSet
-      Name="FORM_FIELD_RULE_FORM_FIELDs"
-      Association="FORM_FIELD_RULE_FORM_FIELD">
-      <AssociationSetEnd
-        Name="FORM_FIELD_RULE"
-        EntitySet="FORM_FIELD_RULEs" />
-      <AssociationSetEnd
-        Name="FORM_FIELD"
-        EntitySet="FORM_FIELDs" />
-    </AssociationSet>
   </EntityContainer>
   <DataService
     Name="ApplicationDataMapping">
@@ -220,54 +205,17 @@
       <Partial />
     </DataService.Attributes>
     <EntitySetMapping
-      EntitySet="FORM_FIELDs">
+      EntitySet="FORM_FIELD_RULEs">
       <EntitySetMapping.Attributes>
         <SsdlForeignKeyProperty
-          Name="FORMFIELD_FIELD"
+          Name="FORM_FIELD_RULE_RULE"
           Nullable="False"
           Type="int" />
         <SsdlForeignKeyProperty
-          Name="FORMFIELD_FORM"
+          Name="FORM_FIELD_RULE_FORM_FIELD"
           Nullable="False"
           Type="int" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
-    <AssociationSetMapping
-      AssociationSet="FORM_FIELD_RULE_FORM_FIELDs">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="FORM_FIELD_RULE_FORM_FIELDs" />
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[FORM_FIELD_RULE_FORM_FIELDs]/Members[FORM_FIELD_RULE]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="FORM_FIELD_RULE_FORM_FIELD" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[FORM_FIELD_RULE_FORM_FIELDs]/Members[FORM_FIELD]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="Id" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
   </DataService>
-  <Association
-    Name="FORM_FIELD_RULE_FORM_FIELD">
-    <AssociationEnd
-      Name="FORM_FIELD_RULE"
-      Multiplicity="Many"
-      EntityType="FORM_FIELD_RULE" />
-    <AssociationEnd
-      Name="FORM_FIELD"
-      Multiplicity="One"
-      EntityType="FORM_FIELD">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Restrict" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-  </Association>
 </ServiceApplication>

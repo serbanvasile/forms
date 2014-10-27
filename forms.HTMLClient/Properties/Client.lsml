@@ -38,5 +38,11 @@
     <ApplicationNavigationMethodLink
       Name="link"
       Method="!module/Methods[showBrowseFORMs]" />
+    <ApplicationNavigationMethodLink
+      Name="link1"
+      Method="!module/Methods[showBrowseFIELDs]" />
+    <ApplicationNavigationMethodLink
+      Name="link2"
+      Method="!module/Methods[showBrowseRULEs]" />
   </Application.NavigationItems>
 </Application>

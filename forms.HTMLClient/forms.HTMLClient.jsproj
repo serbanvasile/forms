@@ -69,6 +69,9 @@
     <Content Include="Screens\AddEditFORM_FIELD.lsml.js">
       <DependentUpon>AddEditFORM_FIELD.lsml</DependentUpon>
     </Content>
+    <Content Include="Screens\AddEditFORM_FIELD_RULE.lsml.js">
+      <DependentUpon>AddEditFORM_FIELD_RULE.lsml</DependentUpon>
+    </Content>
     <Content Include="Screens\AddEditFORM_FORM.lsml.js">
       <DependentUpon>AddEditFORM_FORM.lsml</DependentUpon>
     </Content>
@@ -96,16 +99,20 @@
     </ServiceMetadataReference>
   </ItemGroup>
   <ItemGroup>
+    <LightSwitchModel Include="Properties\ApplicationData\RULEs.lsml" />
     <LightSwitchModel Include="Properties\Client.lsml">
       <ProjectCritical>true</ProjectCritical>
     </LightSwitchModel>
     <LightSwitchModel Include="Properties\Proxies.lsml" />
     <LightSwitchModel Include="Screens\AddEditFIELD.lsml" />
     <LightSwitchModel Include="Screens\AddEditFORM_FIELD.lsml" />
+    <LightSwitchModel Include="Screens\AddEditFORM_FIELD_RULE.lsml" />
     <LightSwitchModel Include="Screens\AddEditFORM_FORM.lsml" />
-    <LightSwitchModel Include="Screens\AddEditVALIDATION.lsml" />
     <LightSwitchModel Include="Screens\FORMs\AddEditFORM.lsml" />
+    <LightSwitchModel Include="Screens\FORMs\AddEditRULE.lsml" />
+    <LightSwitchModel Include="Screens\FORMs\BrowseFIELDs.lsml" />
     <LightSwitchModel Include="Screens\FORMs\BrowseFORMs.lsml" />
+    <LightSwitchModel Include="Screens\FORMs\BrowseRULEs.lsml" />
   </ItemGroup>
   <ItemGroup>
     <_ClientBuildFile Include="GeneratedArtifacts\model.json">
@@ -125,7 +132,7 @@
     </_ClientBuildFile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\ApplicationData\" />
+    <Folder Include="UserCode\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\MobileClient\Microsoft.LightSwitch.MobileClient.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\Microsoft.LightSwitch.Build.Tasks.targets" />

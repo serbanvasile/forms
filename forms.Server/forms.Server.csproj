@@ -191,6 +191,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSources\ApplicationData\_ApplicationDataService.lsml.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,11 +203,12 @@
     <Content Include="Web.config" />
     <LightSwitchModel Include="Properties\DataSources\ApplicationData.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\FIELDs.lsml" />
-    <LightSwitchModel Include="DataSources\ApplicationData\VALIDATIONs.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\RULEs.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\VALUEs.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\FORMs.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\FORM_FIELDs.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\FORM_FORMs.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\FORM_FIELD_RULEs.lsml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

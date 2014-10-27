@@ -9,7 +9,10 @@ myapp.AddEditFORM_FIELD.created = function (screen) {
 };
 myapp.AddEditFORM_FIELD.FIELD_postRender = function (element, contentItem) {
     // Write code here.
-    $(element).on("change, blur", function () {
-        myapp.AddEditFORM_FIELD.created.call();
-    });
+    $(element).change(function (ev) {
+        alert($(ev.target).val());
+    }).blur(function (ev) {
+        alert($(ev.target).val());
+    })
+    ;
 };

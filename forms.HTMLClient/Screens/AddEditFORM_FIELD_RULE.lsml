@@ -5,7 +5,7 @@
     <Partial />
   </Application.Attributes>
   <Screen
-    Name="AddEditFORM_FIELD">
+    Name="AddEditFORM_FIELD_RULE">
     <Screen.Attributes>
       <SaveChangesTo
         EntityContainer="ApplicationData" />
@@ -30,7 +30,7 @@
             <ContentItem
               Name="columns"
               Kind="Details"
-              DataType="FORM_FIELD"
+              DataType="FORM_FIELD_RULE"
               View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
               <ContentItem.Attributes>
                 <DisplayName
@@ -40,7 +40,7 @@
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="AddEditFORM_FIELD/Properties[FORM_FIELD]" />
+                      Member="AddEditFORM_FIELD_RULE/Properties[FORM_FIELD_RULE]" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
@@ -48,25 +48,25 @@
                 Name="left"
                 Kind="Group">
                 <ContentItem
-                  Name="FIELD"
+                  Name="RULE"
                   Kind="Details"
-                  DataType="FIELD">
+                  DataType="RULE">
                   <ContentItem.Attributes>
                     <DisplayName
-                      Value="TEMPLATE FIELD" />
+                      Value="RULE TEMPLATE" />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FORM_FIELD/Properties[FIELD]" />
+                          Member="FORM_FIELD_RULE/Properties[RULE]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
                     Name="RowTemplate"
                     Kind="Details"
-                    DataType="FIELD">
+                    DataType="RULE">
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
                         <ChainExpression />
@@ -75,27 +75,27 @@
                   </ContentItem>
                 </ContentItem>
                 <ContentItem
-                  Name="FIELD_LEVEL"
+                  Name="RULE_LEVEL"
                   Kind="Value"
                   DataType=":Decimal">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FORM_FIELD/Properties[FIELD_LEVEL]" />
+                          Member="FORM_FIELD_RULE/Properties[RULE_LEVEL]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="FIELD_ENABLED"
+                  Name="RULE_ENABLED"
                   Kind="Value"
                   DataType=":Boolean">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FORM_FIELD/Properties[FIELD_ENABLED]" />
+                          Member="FORM_FIELD_RULE/Properties[RULE_ENABLED]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -134,7 +134,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FORM_FIELD/Properties[CreatedBy]" />
+                          Member="FORM_FIELD_RULE/Properties[CreatedBy]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -147,7 +147,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FORM_FIELD/Properties[Created]" />
+                          Member="FORM_FIELD_RULE/Properties[Created]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -160,7 +160,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FORM_FIELD/Properties[ModifiedBy]" />
+                          Member="FORM_FIELD_RULE/Properties[ModifiedBy]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -173,7 +173,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FORM_FIELD/Properties[Modified]" />
+                          Member="FORM_FIELD_RULE/Properties[Modified]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -202,140 +202,6 @@
                 </ContentItem.PropertySources>
               </ContentItem>
             </ContentItem>
-            <ContentItem
-              Name="FORM_FIELD_RULEs"
-              Kind="Collection"
-              DataType="CollectionView$FORM_FIELD_RULE"
-              View="Microsoft.LightSwitch.MobileWeb:TileList">
-              <ContentItem.Attributes>
-                <DisplayName
-                  Value="RULEs" />
-              </ContentItem.Attributes>
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression
-                      Member="AddEditFORM_FIELD/Properties[FORM_FIELD_RULEs]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-              <ContentItem
-                Name="FORM_FIELD_RULEsTemplate"
-                Kind="Details"
-                DataType="FORM_FIELD_RULE">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression />
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-                <ContentItem
-                  Name="RULE"
-                  Kind="Details"
-                  DataType="RULE">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="FORM_FIELD_RULE/Properties[RULE]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem
-                    Name="RULE1"
-                    Kind="Details"
-                    DataType="RULE">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                </ContentItem>
-              </ContentItem>
-              <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ItemTap]">
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <CallExpression
-                        Target="!module/Methods[showAddEditFORM_FIELD_RULE]">
-                        <CallExpression.Attributes>
-                          <AssociatedCollection
-                            Collection="AddEditFORM_FIELD/Properties[FORM_FIELD_RULEs]" />
-                        </CallExpression.Attributes>
-                        <ArgumentExpression
-                          Parameter="FORM_FIELD_RULE">
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="AddEditFORM_FIELD/Properties[FORM_FIELD_RULEs]" />
-                            <MemberExpression
-                              Member="selectedItem" />
-                          </ChainExpression>
-                        </ArgumentExpression>
-                      </CallExpression>
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <ConstantExpression
-                        Value="msls-edit"
-                        ResultType=":String" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ShowHeader]">
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <ConstantExpression
-                        Value="True"
-                        ResultType=":Boolean" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-              </ContentItem.PropertySources>
-            </ContentItem>
-            <ContentItem.CommandItems>
-              <ContentItem
-                Name="AddVALIDATION"
-                Kind="Command">
-                <ContentItem.Attributes>
-                  <DisplayName
-                    Value="Add RULE" />
-                </ContentItem.Attributes>
-                <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="msls-add"
-                          ResultType=":String" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <CallExpression
-                          Target="!module/Methods[showAddEditFORM_FIELD_RULE]">
-                          <CallExpression.Attributes>
-                            <AssociatedCollection
-                              Collection="AddEditFORM_FIELD/Properties[FORM_FIELD_RULEs]" />
-                            <CreateNewEntity
-                              TargetParameter="!module/Methods[showAddEditFORM_FIELD_RULE]/Parameters[FORM_FIELD_RULE]" />
-                          </CallExpression.Attributes>
-                        </CallExpression>
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                </ContentItem.PropertySources>
-              </ContentItem>
-            </ContentItem.CommandItems>
           </ContentItem>
         </ContentItem>
         <ContentItem
@@ -392,54 +258,24 @@
     </Screen.Methods>
     <Screen.Properties>
       <ScreenProperty
-        Name="FORM_FIELD"
-        PropertyType="FORM_FIELD">
+        Name="FORM_FIELD_RULE"
+        PropertyType="FORM_FIELD_RULE">
         <ScreenProperty.Attributes>
           <IsParameter />
         </ScreenProperty.Attributes>
       </ScreenProperty>
-      <ScreenCollectionProperty
-        Name="FORM_FIELD_RULEs"
-        PageSize="45"
-        PropertyType="CollectionView$FORM_FIELD_RULE">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="FORM_FIELD_RULEsQuery"
-            ReturnType="FORM_FIELD_RULE*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <ChainExpression>
-                  <MemberExpression
-                    Member="AddEditFORM_FIELD/Properties[FORM_FIELD]" />
-                  <MemberExpression
-                    Member="FORM_FIELD_RULEs" />
-                </ChainExpression>
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="AddEditFORM_FIELD/Properties[FORM_FIELD_RULEs]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
     </Screen.Properties>
   </Screen>
   <Application.Methods>
     <ApplicationMethod
-      Name="showAddEditFORM_FIELD">
+      Name="showAddEditFORM_FIELD_RULE">
       <ApplicationMethod.Attributes>
         <ShowScreenMethod
-          TargetScreen="AddEditFORM_FIELD" />
+          TargetScreen="AddEditFORM_FIELD_RULE" />
       </ApplicationMethod.Attributes>
       <ApplicationMethodParameter
-        Name="FORM_FIELD"
-        ParameterType="FORM_FIELD" />
+        Name="FORM_FIELD_RULE"
+        ParameterType="FORM_FIELD_RULE" />
     </ApplicationMethod>
   </Application.Methods>
 </Application>

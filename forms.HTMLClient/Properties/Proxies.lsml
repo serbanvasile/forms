@@ -13,12 +13,6 @@
   <EntityType>
     <EntityType.Attributes>
       <Proxy
-        Target="ServiceInterface:VALIDATION" />
-    </EntityType.Attributes>
-  </EntityType>
-  <EntityType>
-    <EntityType.Attributes>
-      <Proxy
         Target="ServiceInterface:VALUE" />
     </EntityType.Attributes>
   </EntityType>
@@ -68,6 +62,24 @@
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FORM_FORM_FORM1" />
+    </Association.Attributes>
+  </Association>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:FORM_FIELD_RULE" />
+    </EntityType.Attributes>
+  </EntityType>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FORM_FIELD_RULE_RULE" />
+    </Association.Attributes>
+  </Association>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FORM_FIELD_RULE_FORM_FIELD" />
     </Association.Attributes>
   </Association>
 </Application>

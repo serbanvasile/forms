@@ -5,12 +5,12 @@
     <Partial />
   </Application.Attributes>
   <Screen
-    Name="BrowseFORMs">
+    Name="BrowseRULEs">
     <Screen.Attributes>
       <SaveChangesTo
         EntityContainer="ApplicationData" />
       <DisplayName
-        Value="FORMS" />
+        Value="RULES" />
     </Screen.Attributes>
     <Screen.RootContentItem>
       <ContentItem
@@ -22,29 +22,29 @@
           Kind="Group"
           View="Microsoft.LightSwitch.MobileWeb:TabPages">
           <ContentItem
-            Name="FORMList"
+            Name="RULEList"
             Kind="Group">
             <ContentItem
-              Name="FORMs"
+              Name="RULEs"
               Kind="Collection"
-              DataType="CollectionView$FORM"
+              DataType="CollectionView$RULE"
               View="Microsoft.LightSwitch.MobileWeb:TileList">
               <ContentItem.Attributes>
                 <DisplayName
-                  Value="FORMS" />
+                  Value="RULEs" />
               </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="BrowseFORMs/Properties[FORMs]" />
+                      Member="BrowseRULEs/Properties[RULEs]" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
               <ContentItem
                 Name="rows"
                 Kind="Details"
-                DataType="FORM"
+                DataType="RULE"
                 View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
                 <ContentItem.Attributes>
                   <DisplayName
@@ -56,14 +56,14 @@
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  Name="FORM_LABEL"
+                  Name="RULE_LABEL"
                   Kind="Value"
                   DataType=":String">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FORM/Properties[FORM_LABEL]" />
+                          Member="RULE/Properties[RULE_LABEL]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -88,7 +88,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FORM/Properties[ModifiedBy]" />
+                          Member="RULE/Properties[ModifiedBy]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -101,7 +101,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FORM/Properties[Modified]" />
+                          Member="RULE/Properties[Modified]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -125,16 +125,16 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <CallExpression
-                        Target="!module/Methods[showAddEditFORM]">
+                        Target="!module/Methods[showAddEditRULE]">
                         <CallExpression.Attributes>
                           <AssociatedCollection
-                            Collection="BrowseFORMs/Properties[FORMs]" />
+                            Collection="BrowseRULEs/Properties[RULEs]" />
                         </CallExpression.Attributes>
                         <ArgumentExpression
-                          Parameter="FORM">
+                          Parameter="RULE">
                           <ChainExpression>
                             <MemberExpression
-                              Member="BrowseFORMs/Properties[FORMs]" />
+                              Member="BrowseRULEs/Properties[RULEs]" />
                             <MemberExpression
                               Member="selectedItem" />
                           </ChainExpression>
@@ -157,113 +157,7 @@
             </ContentItem>
             <ContentItem.CommandItems>
               <ContentItem
-                Name="AddFORM"
-                Kind="Command">
-                <ContentItem.Attributes>
-                  <DisplayName
-                    Value="Add FORM" />
-                </ContentItem.Attributes>
-                <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <CallExpression
-                          Target="!module/Methods[showAddEditFORM]">
-                          <CallExpression.Attributes>
-                            <AssociatedCollection
-                              Collection="BrowseFORMs/Properties[FORMs]" />
-                            <CreateNewEntity
-                              TargetParameter="!module/Methods[showAddEditFORM]/Parameters[FORM]" />
-                          </CallExpression.Attributes>
-                        </CallExpression>
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="msls-add"
-                          ResultType="Microsoft.LightSwitch:String" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                </ContentItem.PropertySources>
-              </ContentItem>
-              <ContentItem
-                Name="ShowAddEditFIELD"
-                Kind="Command">
-                <ContentItem.Attributes>
-                  <DisplayName
-                    Value="Add FIELD" />
-                </ContentItem.Attributes>
-                <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <CallExpression
-                          Target="!module/Methods[showAddEditFIELD]">
-                          <CallExpression.Attributes>
-                            <CreateNewEntity
-                              EntityType="FIELD"
-                              TargetParameter="!module/Methods[showAddEditFIELD]/Parameters[FIELD]" />
-                          </CallExpression.Attributes>
-                        </CallExpression>
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="msls-add"
-                          ResultType=":String" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                </ContentItem.PropertySources>
-              </ContentItem>
-              <ContentItem
-                Name="ShowAddEditRULE"
-                Kind="Command">
-                <ContentItem.Attributes>
-                  <DisplayName
-                    Value="Add RULE" />
-                </ContentItem.Attributes>
-                <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <CallExpression
-                          Target="!module/Methods[showAddEditRULE]">
-                          <CallExpression.Attributes>
-                            <CreateNewEntity
-                              EntityType="RULE"
-                              TargetParameter="!module/Methods[showAddEditRULE]/Parameters[RULE]" />
-                          </CallExpression.Attributes>
-                        </CallExpression>
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="msls-add"
-                          ResultType=":String" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                </ContentItem.PropertySources>
-              </ContentItem>
-              <ContentItem
-                Name="SearchFORMs"
+                Name="SearchRULEs"
                 Kind="Command">
                 <ContentItem.Attributes>
                   <DisplayName
@@ -275,7 +169,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="BrowseFORMs/Properties[FORMs]" />
+                          Member="BrowseRULEs/Properties[RULEs]" />
                         <CallExpression
                           Target="showSearch" />
                       </ChainExpression>
@@ -311,11 +205,7 @@
         <ContentItem
           Name="Popups"
           Kind="Group"
-          View="Microsoft.LightSwitch.MobileWeb:DialogPages">
-          <ContentItem
-            Name="Group"
-            Kind="Group" />
-        </ContentItem>
+          View="Microsoft.LightSwitch.MobileWeb:DialogPages" />
       </ContentItem>
     </Screen.RootContentItem>
     <Screen.Methods>
@@ -344,24 +234,20 @@
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
-        Name="FORMs"
+        Name="RULEs"
         PageSize="45"
-        PropertyType="CollectionView$FORM">
-        <ScreenCollectionProperty.Attributes>
-          <DisplayName
-            Value="FORMS" />
-        </ScreenCollectionProperty.Attributes>
+        PropertyType="CollectionView$RULE">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
-            Name="FORMsQuery"
-            ReturnType="FORM*">
+            Name="RULEsQuery"
+            ReturnType="RULE*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="ApplicationData/Members[FORMs]" />
+                  Member="ApplicationData/Members[RULEs]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -369,7 +255,7 @@
         <ScreenExpressionTree>
           <ChainExpression>
             <CallExpression
-              Target="BrowseFORMs/Properties[FORMs]/Query" />
+              Target="BrowseRULEs/Properties[RULEs]/Query" />
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
@@ -377,10 +263,10 @@
   </Screen>
   <Application.Methods>
     <ApplicationMethod
-      Name="showBrowseFORMs">
+      Name="showBrowseRULEs">
       <ApplicationMethod.Attributes>
         <ShowScreenMethod
-          TargetScreen="BrowseFORMs" />
+          TargetScreen="BrowseRULEs" />
       </ApplicationMethod.Attributes>
     </ApplicationMethod>
   </Application.Methods>

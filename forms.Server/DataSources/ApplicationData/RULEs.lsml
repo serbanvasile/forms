@@ -5,7 +5,7 @@
     <Partial />
   </ServiceApplication.Attributes>
   <EntityType
-    Name="VALIDATION">
+    Name="RULE">
     <EntityType.Attributes>
       <CreatedModifiedPropertiesEnabled />
     </EntityType.Attributes>
@@ -27,7 +27,7 @@
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
-        Name="LABEL"
+        Name="RULE_NAME"
         PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
@@ -36,83 +36,46 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="TYPE"
-        PropertyType=":Int32">
+        Name="RULE_LABEL"
+        PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
-          <NotSearchable />
+          <MaxLength
+            Value="255" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="REQUIRED"
-        PropertyType=":Boolean">
-        <EntityProperty.Attributes>
-          <Required />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="DEFAULT_ALLOWED"
+        Name="RULE_ENABLED"
         PropertyType=":Boolean?">
         <EntityProperty.Attributes>
           <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="DEFAULT_CONTAINS"
-        PropertyType=":String?">
-        <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="MUST_NOT_CONTAIN"
-        PropertyType=":String?">
-        <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="LENGTH_MIN"
-        PropertyType=":Int32?">
-        <EntityProperty.Attributes>
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="LENGTH_MAX"
-        PropertyType=":Int32?">
-        <EntityProperty.Attributes>
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="VALIDATION_FAIL_MSG"
-        PropertyType=":String?">
-        <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="VALIDATION_SUCCESS_MSG"
-        PropertyType=":String?">
-        <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="FOCUS_AFTER_VALIDATION"
+        Name="RULE_IS_TEMPLATE"
         PropertyType=":Boolean?">
         <EntityProperty.Attributes>
           <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="REGEX_MATCH"
+        Name="FAIL_MSG"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="SUCCESS_MSG"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="REGEX"
         PropertyType=":String?">
         <EntityProperty.Attributes>
           <MaxLength
@@ -127,6 +90,11 @@
             Value="255" />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <NavigationProperty
+        Name="FORM_FIELD_RULEs"
+        Association="FORM_FIELD_RULE_RULE"
+        FromEnd="RULE"
+        ToEnd="FORM_FIELD_RULE" />
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -185,14 +153,14 @@
       <Partial />
     </EntityContainer.Attributes>
     <EntitySet
-      Name="VALIDATIONs"
+      Name="RULEs"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="VALIDATION" />
+      EntityType="RULE" />
     <QueryOperation
-      Name="VALIDATIONs_Single"
-      ReturnType="VALIDATION">
+      Name="RULEs_Single"
+      ReturnType="RULE">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -218,7 +186,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="VALIDATIONs" />
+            Member="RULEs" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -231,8 +199,8 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="VALIDATIONs_SingleOrDefault"
-      ReturnType="VALIDATION">
+      Name="RULEs_SingleOrDefault"
+      ReturnType="RULE">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -258,7 +226,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="VALIDATIONs" />
+            Member="RULEs" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -270,6 +238,16 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
+    <AssociationSet
+      Name="FORM_FIELD_RULE_RULEs"
+      Association="FORM_FIELD_RULE_RULE">
+      <AssociationSetEnd
+        Name="FORM_FIELD_RULE"
+        EntitySet="FORM_FIELD_RULEs" />
+      <AssociationSetEnd
+        Name="RULE"
+        EntitySet="RULEs" />
+    </AssociationSet>
   </EntityContainer>
   <DataService
     Name="ApplicationDataMapping">
@@ -277,13 +255,54 @@
       <Partial />
     </DataService.Attributes>
     <EntitySetMapping
-      EntitySet="VALIDATIONs">
+      EntitySet="RULEs">
       <EntitySetMapping.Attributes>
         <SsdlForeignKeyProperty
           Name="VALIDATION_FIELD"
           Nullable="True"
           Type="int" />
+        <SsdlForeignKeyProperty
+          Name="FORM_FIELD_VALIDATION"
+          Nullable="False"
+          Type="int" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FORM_FIELD_RULE_RULEs">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FORM_FIELD_RULE_RULEs" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[FORM_FIELD_RULE_RULEs]/Members[FORM_FIELD_RULE]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="FORM_FIELD_RULE_RULE" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[FORM_FIELD_RULE_RULEs]/Members[RULE]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
   </DataService>
+  <Association
+    Name="FORM_FIELD_RULE_RULE">
+    <AssociationEnd
+      Name="FORM_FIELD_RULE"
+      Multiplicity="Many"
+      EntityType="FORM_FIELD_RULE" />
+    <AssociationEnd
+      Name="RULE"
+      Multiplicity="One"
+      EntityType="RULE">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
 </ServiceApplication>
