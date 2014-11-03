@@ -5,10 +5,12 @@
     <Partial />
   </Application.Attributes>
   <Screen
-    Name="AddEditFIELD">
+    Name="AddEditVALUE">
     <Screen.Attributes>
       <SaveChangesTo
         EntityContainer="ApplicationData" />
+      <DisplayName
+        Value="Add/Edit VALUE" />
     </Screen.Attributes>
     <Screen.RootContentItem>
       <ContentItem
@@ -28,89 +30,112 @@
                 Value="Details" />
             </ContentItem.Attributes>
             <ContentItem
-              Name="columns"
-              Kind="Details"
-              DataType="FIELD"
+              Name="References"
+              Kind="Group"
               View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
               <ContentItem.Attributes>
                 <DisplayName
-                  Value="columns" />
+                  Value="References" />
+              </ContentItem.Attributes>
+              <ContentItem
+                Name="Group1"
+                Kind="Group">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="refLeft" />
+                </ContentItem.Attributes>
+                <ContentItem
+                  Name="FORM"
+                  Kind="Details"
+                  DataType="FORM"
+                  View="Microsoft.LightSwitch.MobileWeb:Summary">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="AddEditVALUE/Properties[VALUE]" />
+                        <MemberExpression
+                          Member="FORM_FIELD" />
+                        <MemberExpression
+                          Member="FORM" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
+                Name="Group2"
+                Kind="Group">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="refRight" />
+                </ContentItem.Attributes>
+                <ContentItem
+                  Name="FIELD"
+                  Kind="Details"
+                  DataType="FIELD"
+                  View="Microsoft.LightSwitch.MobileWeb:Summary">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="AddEditVALUE/Properties[VALUE]" />
+                        <MemberExpression
+                          Member="FORM_FIELD" />
+                        <MemberExpression
+                          Member="FIELD" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+            </ContentItem>
+            <ContentItem
+              Name="Edits"
+              Kind="Details"
+              DataType="VALUE"
+              View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="Edits" />
               </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="AddEditFIELD/Properties[FIELD]" />
+                      Member="AddEditVALUE/Properties[VALUE]" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
               <ContentItem
                 Name="left"
-                Kind="Group">
+                Kind="Group"
+                View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
                 <ContentItem
-                  Name="FIELD_NAME"
+                  Name="VALUE_STR"
                   Kind="Value"
-                  DataType=":String">
+                  DataType=":String?">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FIELD/Properties[FIELD_NAME]" />
+                          Member="VALUE/Properties[VALUE_STR]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="FIELD_LABEL"
+                  Name="VALUE_INT"
                   Kind="Value"
-                  DataType=":String">
+                  DataType=":Int32?">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FIELD/Properties[FIELD_LABEL]" />
+                          Member="VALUE/Properties[VALUE_INT]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="Group"
-                  Kind="Group"
-                  View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
-                  <ContentItem
-                    Name="FIELD_ENABLED"
-                    Kind="Value"
-                    DataType=":Boolean">
-                    <ContentItem.Attributes>
-                      <DisplayName
-                        Value="ENABLED" />
-                    </ContentItem.Attributes>
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <MemberExpression
-                            Member="FIELD/Properties[FIELD_ENABLED]" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                  <ContentItem
-                    Name="FIELD_IS_TEMPLATE"
-                    Kind="Value"
-                    DataType=":Boolean?">
-                    <ContentItem.Attributes>
-                      <DisplayName
-                        Value="TEMPLATE" />
-                    </ContentItem.Attributes>
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <MemberExpression
-                            Member="FIELD/Properties[FIELD_IS_TEMPLATE]" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
                 </ContentItem>
                 <ContentItem.PropertySources>
                   <ControlPropertySource
@@ -146,7 +171,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FIELD/Properties[CreatedBy]" />
+                          Member="VALUE/Properties[CreatedBy]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -159,7 +184,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FIELD/Properties[Created]" />
+                          Member="VALUE/Properties[Created]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -172,7 +197,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FIELD/Properties[ModifiedBy]" />
+                          Member="VALUE/Properties[ModifiedBy]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -185,50 +210,12 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FIELD/Properties[Modified]" />
+                          Member="VALUE/Properties[Modified]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                 </ContentItem>
-                <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[MinWidth]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="200"
-                          ResultType=":Double" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[MaxWidth]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="400"
-                          ResultType=":Double" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                </ContentItem.PropertySources>
               </ContentItem>
-            </ContentItem>
-            <ContentItem
-              Name="FIELD_HTML"
-              Kind="Value"
-              DataType=":String?"
-              View="Microsoft.LightSwitch.MobileWeb:TextArea">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression
-                      Member="AddEditFIELD/Properties[FIELD]" />
-                    <MemberExpression
-                      Member="FIELD_HTML" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
             </ContentItem>
           </ContentItem>
         </ContentItem>
@@ -286,8 +273,8 @@
     </Screen.Methods>
     <Screen.Properties>
       <ScreenProperty
-        Name="FIELD"
-        PropertyType="FIELD">
+        Name="VALUE"
+        PropertyType="VALUE">
         <ScreenProperty.Attributes>
           <IsParameter />
         </ScreenProperty.Attributes>
@@ -296,14 +283,14 @@
   </Screen>
   <Application.Methods>
     <ApplicationMethod
-      Name="showAddEditFIELD">
+      Name="showAddEditVALUE">
       <ApplicationMethod.Attributes>
         <ShowScreenMethod
-          TargetScreen="AddEditFIELD" />
+          TargetScreen="AddEditVALUE" />
       </ApplicationMethod.Attributes>
       <ApplicationMethodParameter
-        Name="FIELD"
-        ParameterType="FIELD" />
+        Name="VALUE"
+        ParameterType="VALUE" />
     </ApplicationMethod>
   </Application.Methods>
 </Application>

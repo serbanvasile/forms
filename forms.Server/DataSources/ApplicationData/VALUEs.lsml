@@ -41,6 +41,11 @@
             Value="255" />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <NavigationProperty
+        Name="FORM_FIELD"
+        Association="VALUE_FORM_FIELD"
+        FromEnd="VALUE"
+        ToEnd="FORM_FIELD" />
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -196,6 +201,10 @@
         <SsdlForeignKeyProperty
           Name="FIELD_VALUE"
           Nullable="True"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="VALUE_FORM_FIELD"
+          Nullable="False"
           Type="int" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>

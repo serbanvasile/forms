@@ -28,6 +28,22 @@
                 Value="Details" />
             </ContentItem.Attributes>
             <ContentItem
+              Name="FORM_FORM_PARENT_FORM"
+              Kind="Details"
+              DataType="FORM"
+              View="Microsoft.LightSwitch.MobileWeb:Summary">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="AddEditFORM_FORM/Properties[FORM_FORM]" />
+                    <MemberExpression
+                      Member="PARENT_FORM" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+            </ContentItem>
+            <ContentItem
               Name="columns"
               Kind="Details"
               DataType="FORM_FORM"

@@ -60,6 +60,11 @@
         Association="FORM_FIELD_RULE_FORM_FIELD"
         FromEnd="FORM_FIELD"
         ToEnd="FORM_FIELD_RULE" />
+      <NavigationProperty
+        Name="VALUEs"
+        Association="VALUE_FORM_FIELD"
+        FromEnd="FORM_FIELD"
+        ToEnd="VALUE" />
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -213,6 +218,16 @@
         Name="FORM_FIELD"
         EntitySet="FORM_FIELDs" />
     </AssociationSet>
+    <AssociationSet
+      Name="VALUE_FORM_FIELDs"
+      Association="VALUE_FORM_FIELD">
+      <AssociationSetEnd
+        Name="VALUE"
+        EntitySet="VALUEs" />
+      <AssociationSetEnd
+        Name="FORM_FIELD"
+        EntitySet="FORM_FIELDs" />
+    </AssociationSet>
   </EntityContainer>
   <DataService
     Name="ApplicationDataMapping">
@@ -253,6 +268,27 @@
         </SsdlAssociationSetEnd>
       </AssociationSetMapping.Attributes>
     </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="VALUE_FORM_FIELDs">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="VALUE_FORM_FIELDs" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[VALUE_FORM_FIELDs]/Members[VALUE]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="VALUE_FORM_FIELD" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[VALUE_FORM_FIELDs]/Members[FORM_FIELD]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
   </DataService>
   <Association
     Name="FORM_FIELD_RULE_FORM_FIELD">
@@ -260,6 +296,22 @@
       Name="FORM_FIELD_RULE"
       Multiplicity="Many"
       EntityType="FORM_FIELD_RULE" />
+    <AssociationEnd
+      Name="FORM_FIELD"
+      Multiplicity="One"
+      EntityType="FORM_FIELD">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="VALUE_FORM_FIELD">
+    <AssociationEnd
+      Name="VALUE"
+      Multiplicity="Many"
+      EntityType="VALUE" />
     <AssociationEnd
       Name="FORM_FIELD"
       Multiplicity="One"

@@ -82,4 +82,10 @@
         Target="ServiceInterface:FORM_FIELD_RULE_FORM_FIELD" />
     </Association.Attributes>
   </Association>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:VALUE_FORM_FIELD" />
+    </Association.Attributes>
+  </Association>
 </Application>

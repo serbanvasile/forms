@@ -161,7 +161,7 @@
                 Kind="Command">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Add FORM" />
+                    Value="Add FORM Template" />
                 </ContentItem.Attributes>
                 <ContentItem.PropertySources>
                   <ControlPropertySource
@@ -197,7 +197,7 @@
                 Kind="Command">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Add FIELD" />
+                    Value="Add FIELD Template" />
                 </ContentItem.Attributes>
                 <ContentItem.PropertySources>
                   <ControlPropertySource
@@ -232,7 +232,7 @@
                 Kind="Command">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Add RULE" />
+                    Value="Add RULE Template" />
                 </ContentItem.Attributes>
                 <ContentItem.PropertySources>
                   <ControlPropertySource

@@ -28,6 +28,101 @@
                 Value="Details" />
             </ContentItem.Attributes>
             <ContentItem
+              Name="References"
+              Kind="Group"
+              View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
+              <ContentItem
+                Name="refLeft"
+                Kind="Details"
+                DataType="FORM_FIELD"
+                View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="FORM" />
+                </ContentItem.Attributes>
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="AddEditFORM_FIELD_RULE/Properties[FORM_FIELD_RULE]" />
+                      <MemberExpression
+                        Member="FORM_FIELD" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem
+                  Name="FORM"
+                  Kind="Details"
+                  DataType="FORM">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="FORM_FIELD/Properties[FORM]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    Name="FORM1"
+                    Kind="Details"
+                    DataType="FORM">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
+                Name="refRight"
+                Kind="Group">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="FIELD" />
+                </ContentItem.Attributes>
+                <ContentItem
+                  Name="FIELD"
+                  Kind="Details"
+                  DataType="FIELD">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="AddEditFORM_FIELD_RULE/Properties[FORM_FIELD_RULE]" />
+                        <MemberExpression
+                          Member="FORM_FIELD" />
+                        <MemberExpression
+                          Member="FIELD" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    Name="FIELD1"
+                    Kind="Details"
+                    DataType="FIELD">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[BrowseOnly]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression
+                        Value="True"
+                        ResultType=":Boolean" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+            </ContentItem>
+            <ContentItem
               Name="columns"
               Kind="Details"
               DataType="FORM_FIELD_RULE"

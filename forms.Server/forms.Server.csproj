@@ -31,8 +31,8 @@
     <WCFRIASERVICESSDKPath Condition=" '$(WCFRIASERVICESSDKPath)' == '' ">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\WCFRIAServices\v1.0@InstallPath)</WCFRIASERVICESSDKPath>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -200,6 +200,8 @@
     </LightSwitchModel>
   </ItemGroup>
   <ItemGroup>
+    <_ServerFile Include="LogIn.aspx" />
+    <_ServerFile Include="LogOut.aspx" />
     <Content Include="Web.config" />
     <LightSwitchModel Include="Properties\DataSources\ApplicationData.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\FIELDs.lsml" />

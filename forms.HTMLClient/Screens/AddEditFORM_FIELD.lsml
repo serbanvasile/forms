@@ -28,6 +28,39 @@
                 Value="Details" />
             </ContentItem.Attributes>
             <ContentItem
+              Name="FORM_FIELD_FORM"
+              Kind="Details"
+              DataType="FORM"
+              View="Microsoft.LightSwitch.MobileWeb:Summary">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="PARENT FORM" />
+              </ContentItem.Attributes>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="AddEditFORM_FIELD/Properties[FORM_FIELD]" />
+                    <MemberExpression
+                      Member="FORM" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem
+                Name="FORM_LABEL"
+                Kind="Value"
+                DataType=":String">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="FORM/Properties[FORM_LABEL]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+            <ContentItem
               Name="columns"
               Kind="Details"
               DataType="FORM_FIELD"
@@ -53,7 +86,7 @@
                   DataType="FIELD">
                   <ContentItem.Attributes>
                     <DisplayName
-                      Value="TEMPLATE FIELD" />
+                      Value="FIELD TEMPLATE" />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -203,102 +236,239 @@
               </ContentItem>
             </ContentItem>
             <ContentItem
-              Name="FORM_FIELD_RULEs"
-              Kind="Collection"
-              DataType="CollectionView$FORM_FIELD_RULE"
-              View="Microsoft.LightSwitch.MobileWeb:TileList">
-              <ContentItem.Attributes>
-                <DisplayName
-                  Value="RULEs" />
-              </ContentItem.Attributes>
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression
-                      Member="AddEditFORM_FIELD/Properties[FORM_FIELD_RULEs]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
+              Name="collections"
+              Kind="Group"
+              View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
               <ContentItem
-                Name="FORM_FIELD_RULEsTemplate"
-                Kind="Details"
-                DataType="FORM_FIELD_RULE">
+                Name="VALUEs"
+                Kind="Collection"
+                DataType="CollectionView$VALUE"
+                View="Microsoft.LightSwitch.MobileWeb:TileList">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
-                    <ChainExpression />
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="AddEditFORM_FIELD/Properties[VALUEs]" />
+                    </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  Name="RULE"
+                  Name="VALUEsTemplate"
                   Kind="Details"
-                  DataType="RULE">
+                  DataType="VALUE">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="FORM_FIELD_RULE/Properties[RULE]" />
-                      </ChainExpression>
+                      <ChainExpression />
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    Name="RULE1"
+                    Name="Group"
+                    Kind="Group"
+                    View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
+                    <ContentItem
+                      Name="VALUE_STR"
+                      Kind="Value"
+                      DataType=":String?">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="VALUE/Properties[VALUE_STR]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
+                    <ContentItem
+                      Name="VALUE_INT"
+                      Kind="Value"
+                      DataType=":Int32?">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="VALUE/Properties[VALUE_INT]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
+                  </ContentItem>
+                </ContentItem>
+                <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ShowHeader]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="True"
+                          ResultType=":Boolean" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ItemTap]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <CallExpression
+                          Target="!module/Methods[showAddEditVALUE]">
+                          <CallExpression.Attributes>
+                            <AssociatedCollection
+                              Collection="AddEditFORM_FIELD/Properties[VALUEs]" />
+                          </CallExpression.Attributes>
+                          <ArgumentExpression
+                            Parameter="VALUE">
+                            <ChainExpression>
+                              <MemberExpression
+                                Member="AddEditFORM_FIELD/Properties[VALUEs]" />
+                              <MemberExpression
+                                Member="selectedItem" />
+                            </ChainExpression>
+                          </ArgumentExpression>
+                        </CallExpression>
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="msls-edit"
+                          ResultType=":String" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
+              </ContentItem>
+              <ContentItem
+                Name="FORM_FIELD_RULEs"
+                Kind="Collection"
+                DataType="CollectionView$FORM_FIELD_RULE"
+                View="Microsoft.LightSwitch.MobileWeb:TileList">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="RULEs" />
+                </ContentItem.Attributes>
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="AddEditFORM_FIELD/Properties[FORM_FIELD_RULEs]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem
+                  Name="FORM_FIELD_RULEsTemplate"
+                  Kind="Details"
+                  DataType="FORM_FIELD_RULE">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression />
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    Name="RULE"
                     Kind="Details"
                     DataType="RULE">
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
-                        <ChainExpression />
+                        <ChainExpression>
+                          <MemberExpression
+                            Member="FORM_FIELD_RULE/Properties[RULE]" />
+                        </ChainExpression>
                       </ScreenExpressionTree>
                     </ContentItem.DataSource>
+                    <ContentItem
+                      Name="RULE1"
+                      Kind="Details"
+                      DataType="RULE">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression />
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
                   </ContentItem>
                 </ContentItem>
+                <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ItemTap]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <CallExpression
+                          Target="!module/Methods[showAddEditFORM_FIELD_RULE]">
+                          <CallExpression.Attributes>
+                            <AssociatedCollection
+                              Collection="AddEditFORM_FIELD/Properties[FORM_FIELD_RULEs]" />
+                          </CallExpression.Attributes>
+                          <ArgumentExpression
+                            Parameter="FORM_FIELD_RULE">
+                            <ChainExpression>
+                              <MemberExpression
+                                Member="AddEditFORM_FIELD/Properties[FORM_FIELD_RULEs]" />
+                              <MemberExpression
+                                Member="selectedItem" />
+                            </ChainExpression>
+                          </ArgumentExpression>
+                        </CallExpression>
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="msls-edit"
+                          ResultType=":String" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ShowHeader]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="True"
+                          ResultType=":Boolean" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
               </ContentItem>
-              <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ItemTap]">
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <CallExpression
-                        Target="!module/Methods[showAddEditFORM_FIELD_RULE]">
-                        <CallExpression.Attributes>
-                          <AssociatedCollection
-                            Collection="AddEditFORM_FIELD/Properties[FORM_FIELD_RULEs]" />
-                        </CallExpression.Attributes>
-                        <ArgumentExpression
-                          Parameter="FORM_FIELD_RULE">
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="AddEditFORM_FIELD/Properties[FORM_FIELD_RULEs]" />
-                            <MemberExpression
-                              Member="selectedItem" />
-                          </ChainExpression>
-                        </ArgumentExpression>
-                      </CallExpression>
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <ConstantExpression
-                        Value="msls-edit"
-                        ResultType=":String" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ShowHeader]">
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <ConstantExpression
-                        Value="True"
-                        ResultType=":Boolean" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-              </ContentItem.PropertySources>
             </ContentItem>
             <ContentItem.CommandItems>
+              <ContentItem
+                Name="AddVALUE"
+                Kind="Command">
+                <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <CallExpression
+                          Target="!module/Methods[showAddEditVALUE]">
+                          <CallExpression.Attributes>
+                            <AssociatedCollection
+                              Collection="AddEditFORM_FIELD/Properties[VALUEs]" />
+                            <CreateNewEntity
+                              TargetParameter="!module/Methods[showAddEditVALUE]/Parameters[VALUE]" />
+                          </CallExpression.Attributes>
+                        </CallExpression>
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="msls-add"
+                          ResultType=":String" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
+              </ContentItem>
               <ContentItem
                 Name="AddVALIDATION"
                 Kind="Command">
@@ -425,6 +595,36 @@
           <ChainExpression>
             <CallExpression
               Target="AddEditFORM_FIELD/Properties[FORM_FIELD_RULEs]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenCollectionProperty
+        Name="VALUEs"
+        PageSize="45"
+        PropertyType="CollectionView$VALUE">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="VALUEsQuery"
+            ReturnType="VALUE*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <ChainExpression>
+                  <MemberExpression
+                    Member="AddEditFORM_FIELD/Properties[FORM_FIELD]" />
+                  <MemberExpression
+                    Member="VALUEs" />
+                </ChainExpression>
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="AddEditFORM_FIELD/Properties[VALUEs]/Query" />
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>

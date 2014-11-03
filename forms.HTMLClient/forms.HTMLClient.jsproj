@@ -66,6 +66,9 @@
     <Content Include="Content\Images\user-splash-screen.png" />
     <Content Include="Content\Web.config" />
     <Content Include="packages.config" />
+    <Content Include="Screens\AddEditFIELD.lsml.js">
+      <DependentUpon>AddEditFIELD.lsml</DependentUpon>
+    </Content>
     <Content Include="Screens\AddEditFORM_FIELD.lsml.js">
       <DependentUpon>AddEditFORM_FIELD.lsml</DependentUpon>
     </Content>
@@ -77,6 +80,9 @@
     </Content>
     <Content Include="Screens\FORMs\AddEditFORM.lsml.js">
       <DependentUpon>AddEditFORM.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\FORMs\AddEditRULE.lsml.js">
+      <DependentUpon>AddEditRULE.lsml</DependentUpon>
     </Content>
     <Content Include="Scripts\datajs-1.1.1.js" />
     <Content Include="Scripts\datajs-1.1.1.min.js" />
@@ -108,6 +114,7 @@
     <LightSwitchModel Include="Screens\AddEditFORM_FIELD.lsml" />
     <LightSwitchModel Include="Screens\AddEditFORM_FIELD_RULE.lsml" />
     <LightSwitchModel Include="Screens\AddEditFORM_FORM.lsml" />
+    <LightSwitchModel Include="Screens\AddEditVALUE.lsml" />
     <LightSwitchModel Include="Screens\FORMs\AddEditFORM.lsml" />
     <LightSwitchModel Include="Screens\FORMs\AddEditRULE.lsml" />
     <LightSwitchModel Include="Screens\FORMs\BrowseFIELDs.lsml" />
