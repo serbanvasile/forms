@@ -206,11 +206,12 @@
     <LightSwitchModel Include="Properties\DataSources\ApplicationData.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\FIELDs.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\RULEs.lsml" />
-    <LightSwitchModel Include="DataSources\ApplicationData\VALUEs.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\CHOICEs.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\FORMs.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\FORM_FIELDs.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\FORM_FORMs.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\FORM_FIELD_RULEs.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\CHOICE_CHOICEs.lsml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

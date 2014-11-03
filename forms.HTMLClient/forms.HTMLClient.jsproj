@@ -78,6 +78,9 @@
     <Content Include="Screens\AddEditFORM_FORM.lsml.js">
       <DependentUpon>AddEditFORM_FORM.lsml</DependentUpon>
     </Content>
+    <Content Include="Screens\AddEditCHOICE.lsml.js">
+      <DependentUpon>AddEditCHOICE.lsml</DependentUpon>
+    </Content>
     <Content Include="Screens\FORMs\AddEditFORM.lsml.js">
       <DependentUpon>AddEditFORM.lsml</DependentUpon>
     </Content>
@@ -110,11 +113,12 @@
       <ProjectCritical>true</ProjectCritical>
     </LightSwitchModel>
     <LightSwitchModel Include="Properties\Proxies.lsml" />
+    <LightSwitchModel Include="Screens\AddEditCHOICE_CHOICE.lsml" />
     <LightSwitchModel Include="Screens\AddEditFIELD.lsml" />
     <LightSwitchModel Include="Screens\AddEditFORM_FIELD.lsml" />
     <LightSwitchModel Include="Screens\AddEditFORM_FIELD_RULE.lsml" />
     <LightSwitchModel Include="Screens\AddEditFORM_FORM.lsml" />
-    <LightSwitchModel Include="Screens\AddEditVALUE.lsml" />
+    <LightSwitchModel Include="Screens\AddEditCHOICE.lsml" />
     <LightSwitchModel Include="Screens\FORMs\AddEditFORM.lsml" />
     <LightSwitchModel Include="Screens\FORMs\AddEditRULE.lsml" />
     <LightSwitchModel Include="Screens\FORMs\BrowseFIELDs.lsml" />

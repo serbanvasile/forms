@@ -13,7 +13,7 @@
   <EntityType>
     <EntityType.Attributes>
       <Proxy
-        Target="ServiceInterface:VALUE" />
+        Target="ServiceInterface:CHOICE" />
     </EntityType.Attributes>
   </EntityType>
   <EntityContainer>
@@ -85,7 +85,25 @@
   <Association>
     <Association.Attributes>
       <Proxy
-        Target="ServiceInterface:VALUE_FORM_FIELD" />
+        Target="ServiceInterface:CHOICE_FORM_FIELD" />
+    </Association.Attributes>
+  </Association>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:CHOICE_CHOICE" />
+    </EntityType.Attributes>
+  </EntityType>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:CHOICE_CHOICE_CHOICE" />
+    </Association.Attributes>
+  </Association>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:CHOICE_CHOICE_CHOICE1" />
     </Association.Attributes>
   </Association>
 </Application>

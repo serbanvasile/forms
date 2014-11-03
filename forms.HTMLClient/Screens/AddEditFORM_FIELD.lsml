@@ -240,22 +240,26 @@
               Kind="Group"
               View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
               <ContentItem
-                Name="VALUEs"
+                Name="CHOICEs"
                 Kind="Collection"
-                DataType="CollectionView$VALUE"
+                DataType="CollectionView$CHOICE"
                 View="Microsoft.LightSwitch.MobileWeb:TileList">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="CHOICEs" />
+                </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="AddEditFORM_FIELD/Properties[VALUEs]" />
+                        Member="AddEditFORM_FIELD/Properties[CHOICEs]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
                   Name="VALUEsTemplate"
                   Kind="Details"
-                  DataType="VALUE">
+                  DataType="CHOICE">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression />
@@ -266,27 +270,27 @@
                     Kind="Group"
                     View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
                     <ContentItem
-                      Name="VALUE_STR"
+                      Name="CHOICE_STR"
                       Kind="Value"
                       DataType=":String?">
                       <ContentItem.DataSource>
                         <ScreenExpressionTree>
                           <ChainExpression>
                             <MemberExpression
-                              Member="VALUE/Properties[VALUE_STR]" />
+                              Member="CHOICE/Properties[CHOICE_STR]" />
                           </ChainExpression>
                         </ScreenExpressionTree>
                       </ContentItem.DataSource>
                     </ContentItem>
                     <ContentItem
-                      Name="VALUE_INT"
+                      Name="CHOICE_INT"
                       Kind="Value"
                       DataType=":Int32?">
                       <ContentItem.DataSource>
                         <ScreenExpressionTree>
                           <ChainExpression>
                             <MemberExpression
-                              Member="VALUE/Properties[VALUE_INT]" />
+                              Member="CHOICE/Properties[CHOICE_INT]" />
                           </ChainExpression>
                         </ScreenExpressionTree>
                       </ContentItem.DataSource>
@@ -309,16 +313,16 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <CallExpression
-                          Target="!module/Methods[showAddEditVALUE]">
+                          Target="!module/Methods[showAddEditCHOICE]">
                           <CallExpression.Attributes>
                             <AssociatedCollection
-                              Collection="AddEditFORM_FIELD/Properties[VALUEs]" />
+                              Collection="AddEditFORM_FIELD/Properties[CHOICEs]" />
                           </CallExpression.Attributes>
                           <ArgumentExpression
-                            Parameter="VALUE">
+                            Parameter="CHOICE">
                             <ChainExpression>
                               <MemberExpression
-                                Member="AddEditFORM_FIELD/Properties[VALUEs]" />
+                                Member="AddEditFORM_FIELD/Properties[CHOICEs]" />
                               <MemberExpression
                                 Member="selectedItem" />
                             </ChainExpression>
@@ -438,7 +442,7 @@
             </ContentItem>
             <ContentItem.CommandItems>
               <ContentItem
-                Name="AddVALUE"
+                Name="AddCHOICE"
                 Kind="Command">
                 <ContentItem.PropertySources>
                   <ControlPropertySource
@@ -446,12 +450,12 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <CallExpression
-                          Target="!module/Methods[showAddEditVALUE]">
+                          Target="!module/Methods[showAddEditCHOICE]">
                           <CallExpression.Attributes>
                             <AssociatedCollection
-                              Collection="AddEditFORM_FIELD/Properties[VALUEs]" />
+                              Collection="AddEditFORM_FIELD/Properties[CHOICEs]" />
                             <CreateNewEntity
-                              TargetParameter="!module/Methods[showAddEditVALUE]/Parameters[VALUE]" />
+                              TargetParameter="!module/Methods[showAddEditCHOICE]/Parameters[CHOICE]" />
                           </CallExpression.Attributes>
                         </CallExpression>
                       </ChainExpression>
@@ -599,13 +603,13 @@
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
       <ScreenCollectionProperty
-        Name="VALUEs"
+        Name="CHOICEs"
         PageSize="45"
-        PropertyType="CollectionView$VALUE">
+        PropertyType="CollectionView$CHOICE">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
-            Name="VALUEsQuery"
-            ReturnType="VALUE*">
+            Name="CHOICEsQuery"
+            ReturnType="CHOICE*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
@@ -615,7 +619,7 @@
                   <MemberExpression
                     Member="AddEditFORM_FIELD/Properties[FORM_FIELD]" />
                   <MemberExpression
-                    Member="VALUEs" />
+                    Member="CHOICE" />
                 </ChainExpression>
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
@@ -624,7 +628,7 @@
         <ScreenExpressionTree>
           <ChainExpression>
             <CallExpression
-              Target="AddEditFORM_FIELD/Properties[VALUEs]/Query" />
+              Target="AddEditFORM_FIELD/Properties[CHOICEs]/Query" />
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>

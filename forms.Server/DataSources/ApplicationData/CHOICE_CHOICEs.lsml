@@ -5,7 +5,7 @@
     <Partial />
   </ServiceApplication.Attributes>
   <EntityType
-    Name="VALUE">
+    Name="CHOICE_CHOICE">
     <EntityType.Attributes>
       <CreatedModifiedPropertiesEnabled />
     </EntityType.Attributes>
@@ -27,25 +27,34 @@
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
-        Name="VALUE_INT"
-        PropertyType=":Int32?">
+        Name="CHOICE_LEVEL"
+        PropertyType=":Decimal">
         <EntityProperty.Attributes>
+          <Required />
           <NotSearchable />
+          <DecimalConstraint
+            Precision="18"
+            Scale="2" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="VALUE_STR"
-        PropertyType=":String?">
+        Name="CHOICE_ENABLED"
+        PropertyType=":Boolean">
         <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
+          <Required />
+          <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Name="FORM_FIELD"
-        Association="VALUE_FORM_FIELD"
-        FromEnd="VALUE"
-        ToEnd="FORM_FIELD" />
+        Name="CHILD_CHOICE"
+        Association="CHOICE_CHOICE_CHOICE"
+        FromEnd="CHOICE_CHOICE"
+        ToEnd="CHOICE" />
+      <NavigationProperty
+        Name="PARENT_CHOICE"
+        Association="CHOICE_CHOICE_CHOICE1"
+        FromEnd="CHOICE_CHOICE"
+        ToEnd="CHOICE" />
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -104,14 +113,14 @@
       <Partial />
     </EntityContainer.Attributes>
     <EntitySet
-      Name="VALUEs"
+      Name="CHOICE_CHOICEs"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="VALUE" />
+      EntityType="CHOICE_CHOICE" />
     <QueryOperation
-      Name="VALUEs_Single"
-      ReturnType="VALUE">
+      Name="CHOICE_CHOICEs_Single"
+      ReturnType="CHOICE_CHOICE">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -137,7 +146,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="VALUEs" />
+            Member="CHOICE_CHOICEs" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -150,8 +159,8 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="VALUEs_SingleOrDefault"
-      ReturnType="VALUE">
+      Name="CHOICE_CHOICEs_SingleOrDefault"
+      ReturnType="CHOICE_CHOICE">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -177,7 +186,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="VALUEs" />
+            Member="CHOICE_CHOICEs" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -196,14 +205,14 @@
       <Partial />
     </DataService.Attributes>
     <EntitySetMapping
-      EntitySet="VALUEs">
+      EntitySet="CHOICE_CHOICEs">
       <EntitySetMapping.Attributes>
         <SsdlForeignKeyProperty
-          Name="FIELD_VALUE"
-          Nullable="True"
+          Name="VALUE_VALUE_VALUE"
+          Nullable="False"
           Type="int" />
         <SsdlForeignKeyProperty
-          Name="VALUE_FORM_FIELD"
+          Name="VALUE_VALUE_VALUE1"
           Nullable="False"
           Type="int" />
       </EntitySetMapping.Attributes>
