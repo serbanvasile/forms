@@ -56,6 +56,11 @@
         Association="CHOICE_CHOICE_CHOICE1"
         FromEnd="CHOICE"
         ToEnd="CHOICE_CHOICE" />
+      <NavigationProperty
+        Name="TRACK_FORM_FIELDs"
+        Association="TRACK_FORM_FIELD_CHOICE"
+        FromEnd="CHOICE"
+        ToEnd="TRACK_FORM_FIELD" />
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -219,6 +224,16 @@
         Name="CHOICE"
         EntitySet="CHOICEs" />
     </AssociationSet>
+    <AssociationSet
+      Name="TRACK_FORM_FIELD_CHOICEs"
+      Association="TRACK_FORM_FIELD_CHOICE">
+      <AssociationSetEnd
+        Name="TRACK_FORM_FIELD"
+        EntitySet="TRACK_FORM_FIELDs" />
+      <AssociationSetEnd
+        Name="CHOICE"
+        EntitySet="CHOICEs" />
+    </AssociationSet>
   </EntityContainer>
   <DataService
     Name="ApplicationDataMapping">
@@ -280,6 +295,27 @@
         </SsdlAssociationSetEnd>
       </AssociationSetMapping.Attributes>
     </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="TRACK_FORM_FIELD_CHOICEs">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="TRACK_FORM_FIELD_CHOICEs" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[TRACK_FORM_FIELD_CHOICEs]/Members[TRACK_FORM_FIELD]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="TRACK_FORM_FIELD_CHOICE" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[TRACK_FORM_FIELD_CHOICEs]/Members[CHOICE]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
   </DataService>
   <Association
     Name="CHOICE_CHOICE_CHOICE">
@@ -303,6 +339,22 @@
       Name="CHOICE_CHOICE"
       Multiplicity="Many"
       EntityType="CHOICE_CHOICE" />
+    <AssociationEnd
+      Name="CHOICE"
+      Multiplicity="One"
+      EntityType="CHOICE">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="TRACK_FORM_FIELD_CHOICE">
+    <AssociationEnd
+      Name="TRACK_FORM_FIELD"
+      Multiplicity="Many"
+      EntityType="TRACK_FORM_FIELD" />
     <AssociationEnd
       Name="CHOICE"
       Multiplicity="One"

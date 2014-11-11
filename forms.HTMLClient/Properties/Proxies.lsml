@@ -106,4 +106,34 @@
         Target="ServiceInterface:CHOICE_CHOICE_CHOICE1" />
     </Association.Attributes>
   </Association>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:TRACK_FORM" />
+    </Association.Attributes>
+  </Association>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:TRACK_FORM_FIELD" />
+    </EntityType.Attributes>
+  </EntityType>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:TRACK_FORM_FIELD_TRACK" />
+    </Association.Attributes>
+  </Association>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:TRACK_FORM_FIELD_FORM_FIELD" />
+    </Association.Attributes>
+  </Association>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:TRACK_FORM_FIELD_CHOICE" />
+    </Association.Attributes>
+  </Association>
 </Application>

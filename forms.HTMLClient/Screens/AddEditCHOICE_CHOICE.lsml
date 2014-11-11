@@ -63,145 +63,13 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="CHOICE_ENABLED"
-                  Kind="Value"
-                  DataType=":Boolean">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="CHOICE_CHOICE/Properties[CHOICE_ENABLED]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[MinWidth]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="200"
-                          ResultType=":Double" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[MaxWidth]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="400"
-                          ResultType=":Double" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                </ContentItem.PropertySources>
-              </ContentItem>
-              <ContentItem
-                Name="right"
-                Kind="Group">
-                <ContentItem
-                  Name="CHILD_CHOICE"
-                  Kind="Details"
-                  DataType="CHOICE">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="CHOICE_CHOICE/Properties[CHILD_CHOICE]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem
-                    Name="RowTemplate"
-                    Kind="Details"
-                    DataType="CHOICE"
-                    View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                    <ContentItem
-                      Name="FORM_FIELD"
-                      Kind="Details"
-                      DataType="FORM_FIELD"
-                      View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="CHOICE/Properties[FORM_FIELD]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                      <ContentItem
-                        Name="FORM"
-                        Kind="Details"
-                        DataType="FORM">
-                        <ContentItem.DataSource>
-                          <ScreenExpressionTree>
-                            <ChainExpression>
-                              <MemberExpression
-                                Member="FORM_FIELD/Properties[FORM]" />
-                            </ChainExpression>
-                          </ScreenExpressionTree>
-                        </ContentItem.DataSource>
-                        <ContentItem
-                          Name="FORM1"
-                          Kind="Details"
-                          DataType="FORM">
-                          <ContentItem.DataSource>
-                            <ScreenExpressionTree>
-                              <ChainExpression />
-                            </ScreenExpressionTree>
-                          </ContentItem.DataSource>
-                        </ContentItem>
-                      </ContentItem>
-                      <ContentItem
-                        Name="FIELD"
-                        Kind="Details"
-                        DataType="FIELD">
-                        <ContentItem.DataSource>
-                          <ScreenExpressionTree>
-                            <ChainExpression>
-                              <MemberExpression
-                                Member="FORM_FIELD/Properties[FIELD]" />
-                            </ChainExpression>
-                          </ScreenExpressionTree>
-                        </ContentItem.DataSource>
-                        <ContentItem
-                          Name="FIELD1"
-                          Kind="Details"
-                          DataType="FIELD">
-                          <ContentItem.DataSource>
-                            <ScreenExpressionTree>
-                              <ChainExpression />
-                            </ScreenExpressionTree>
-                          </ContentItem.DataSource>
-                        </ContentItem>
-                      </ContentItem>
-                    </ContentItem>
-                    <ContentItem
-                      Name="CHOICE_STR"
-                      Kind="Value"
-                      DataType=":String?">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="CHOICE/Properties[CHOICE_STR]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                  </ContentItem>
-                </ContentItem>
-                <ContentItem
                   Name="PARENT_CHOICE"
                   Kind="Details"
                   DataType="CHOICE">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="INBOUND CHOICE" />
+                  </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
@@ -282,6 +150,146 @@
                     </ContentItem>
                     <ContentItem
                       Name="CHOICE_STR1"
+                      Kind="Value"
+                      DataType=":String?">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="CHOICE/Properties[CHOICE_STR]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
+                  </ContentItem>
+                </ContentItem>
+                <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[MinWidth]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="200"
+                          ResultType=":Double" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[MaxWidth]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="400"
+                          ResultType=":Double" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
+              </ContentItem>
+              <ContentItem
+                Name="right"
+                Kind="Group">
+                <ContentItem
+                  Name="CHOICE_ENABLED"
+                  Kind="Value"
+                  DataType=":Boolean">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="CHOICE_CHOICE/Properties[CHOICE_ENABLED]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="CHILD_CHOICE"
+                  Kind="Details"
+                  DataType="CHOICE">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="OUTBOUND CHOICE" />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="CHOICE_CHOICE/Properties[CHILD_CHOICE]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    Name="RowTemplate"
+                    Kind="Details"
+                    DataType="CHOICE"
+                    View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                    <ContentItem
+                      Name="FORM_FIELD2"
+                      Kind="Details"
+                      DataType="FORM_FIELD"
+                      View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="CHOICE/Properties[FORM_FIELD]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                      <ContentItem
+                        Name="FORM4"
+                        Kind="Details"
+                        DataType="FORM">
+                        <ContentItem.DataSource>
+                          <ScreenExpressionTree>
+                            <ChainExpression>
+                              <MemberExpression
+                                Member="FORM_FIELD/Properties[FORM]" />
+                            </ChainExpression>
+                          </ScreenExpressionTree>
+                        </ContentItem.DataSource>
+                        <ContentItem
+                          Name="FORM5"
+                          Kind="Details"
+                          DataType="FORM">
+                          <ContentItem.DataSource>
+                            <ScreenExpressionTree>
+                              <ChainExpression />
+                            </ScreenExpressionTree>
+                          </ContentItem.DataSource>
+                        </ContentItem>
+                      </ContentItem>
+                      <ContentItem
+                        Name="FIELD4"
+                        Kind="Details"
+                        DataType="FIELD">
+                        <ContentItem.DataSource>
+                          <ScreenExpressionTree>
+                            <ChainExpression>
+                              <MemberExpression
+                                Member="FORM_FIELD/Properties[FIELD]" />
+                            </ChainExpression>
+                          </ScreenExpressionTree>
+                        </ContentItem.DataSource>
+                        <ContentItem
+                          Name="FIELD5"
+                          Kind="Details"
+                          DataType="FIELD">
+                          <ContentItem.DataSource>
+                            <ScreenExpressionTree>
+                              <ChainExpression />
+                            </ScreenExpressionTree>
+                          </ContentItem.DataSource>
+                        </ContentItem>
+                      </ContentItem>
+                    </ContentItem>
+                    <ContentItem
+                      Name="CHOICE_STR"
                       Kind="Value"
                       DataType=":String?">
                       <ContentItem.DataSource>

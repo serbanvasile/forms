@@ -82,6 +82,11 @@
         Association="FORM_FORM_FORM1"
         FromEnd="FORM"
         ToEnd="FORM_FORM" />
+      <NavigationProperty
+        Name="TRACKs"
+        Association="TRACK_FORM"
+        FromEnd="FORM"
+        ToEnd="TRACK" />
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -255,6 +260,16 @@
         Name="FORM"
         EntitySet="FORMs" />
     </AssociationSet>
+    <AssociationSet
+      Name="TRACK_FORMs"
+      Association="TRACK_FORM">
+      <AssociationSetEnd
+        Name="TRACK"
+        EntitySet="TRACKs" />
+      <AssociationSetEnd
+        Name="FORM"
+        EntitySet="FORMs" />
+    </AssociationSet>
   </EntityContainer>
   <DataService
     Name="ApplicationDataMapping">
@@ -333,6 +348,27 @@
         </SsdlAssociationSetEnd>
       </AssociationSetMapping.Attributes>
     </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="TRACK_FORMs">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="TRACK_FORMs" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[TRACK_FORMs]/Members[TRACK]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="TRACK_FORM" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[TRACK_FORMs]/Members[FORM]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
   </DataService>
   <Association
     Name="FORM_FIELD_FORM">
@@ -372,6 +408,22 @@
       Name="FORM_FORM"
       Multiplicity="Many"
       EntityType="FORM_FORM" />
+    <AssociationEnd
+      Name="FORM"
+      Multiplicity="One"
+      EntityType="FORM">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="TRACK_FORM">
+    <AssociationEnd
+      Name="TRACK"
+      Multiplicity="Many"
+      EntityType="TRACK" />
     <AssociationEnd
       Name="FORM"
       Multiplicity="One"

@@ -191,6 +191,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSources\ApplicationData\FORM_FIELD.lsml.cs">
+      <DependentUpon>FORM_FIELDs.lsml</DependentUpon>
+    </Compile>
     <Compile Include="DataSources\ApplicationData\_ApplicationDataService.lsml.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -212,6 +215,8 @@
     <LightSwitchModel Include="DataSources\ApplicationData\FORM_FORMs.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\FORM_FIELD_RULEs.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\CHOICE_CHOICEs.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\TRACKs.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\TRACK_FORM_FIELDs.lsml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -18,16 +18,45 @@
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>false</SignManifests>
     <BaseIntermediateOutputPath>bin</BaseIntermediateOutputPath>
-    <ApplicationClientType>Desktop</ApplicationClientType>
-    <ApplicationServerType>LocalHost</ApplicationServerType>
+    <ApplicationClientType>Browser</ApplicationClientType>
+    <ApplicationServerType>IIS</ApplicationServerType>
     <AuthenticationType>Windows</AuthenticationType>
     <ApplicationName>forms</ApplicationName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
     <ServiceDefinitionFile>ServiceDefinition.csdef</ServiceDefinitionFile>
     <ServiceConfigurationFile>ServiceConfiguration.cscfg</ServiceConfigurationFile>
     <SqlExpressInstanceName>(LocalDB)\v11.0</SqlExpressInstanceName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <AllowAllWindowsUsers>true</AllowAllWindowsUsers>
+    <AdministratorFullName />
+    <AdministratorUserName>DELLZILLA-PC\serban</AdministratorUserName>
+    <AllowUntrustedCertificate>False</AllowUntrustedCertificate>
+    <DeployDatabase>True</DeployDatabase>
+    <AddAdministrator>False</AddAdministrator>
+    <BootstrapperComponentsUrl />
+    <DefaultInstallLocation>forms</DefaultInstallLocation>
+    <DeploySchema>True</DeploySchema>
+    <PublishNewDatabase>True</PublishNewDatabase>
+    <PublishUrl>http://dellzilla-pc/MSDEPLOYAGENTSERVICE</PublishUrl>
+    <PublishSite>serban/forms</PublishSite>
+    <RemotePublish>True</RemotePublish>
+    <SkipExtraFilesOnServer>True</SkipExtraFilesOnServer>
+    <UseLightSwitchWebDeploymentProvider>False</UseLightSwitchWebDeploymentProvider>
+    <AzureAllowUpgrade>True</AzureAllowUpgrade>
+    <AzureAppendTimestampToDeploymentLabel>True</AzureAppendTimestampToDeploymentLabel>
+    <AzureDeploymentLabel>forms</AzureDeploymentLabel>
+    <AzureWebSite />
+    <AzureWebSpace />
+    <AzureServiceType>WebSite</AzureServiceType>
+    <AzureHostedService />
+    <AzureHostedServiceLabel>Production</AzureHostedServiceLabel>
+    <AzureStorageService />
+    <SslCertificateThumbprint />
+    <PublishServiceOnly>False</PublishServiceOnly>
+    <AzureCredentials />
+    <SharePointServerToServerCertificatePath />
+    <SharePointServerToServerCertificateIssuerId />
+    <RequireSecureConnection>True</RequireSecureConnection>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputPath>bin\Debug</OutputPath>
@@ -137,6 +166,16 @@
       <PublishType>
       </PublishType>
     </_BuildFile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Install>True</Install>
+      <Name>.NETFramework,Version=v4.0</Name>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Install>True</Install>
+      <Name>Microsoft.Windows.Installer.4.5</Name>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\LightSwitch\$(LightSwitchVersion)\Microsoft.LightSwitch.targets" />
 </Project>

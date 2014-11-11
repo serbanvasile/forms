@@ -87,6 +87,12 @@
     <Content Include="Screens\FORMs\AddEditRULE.lsml.js">
       <DependentUpon>AddEditRULE.lsml</DependentUpon>
     </Content>
+    <Content Include="Screens\FORMs\AddEditTRACK.lsml.js">
+      <DependentUpon>AddEditTRACK.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\FORMs\ViewTRACK.lsml.js">
+      <DependentUpon>ViewTRACK.lsml</DependentUpon>
+    </Content>
     <Content Include="Scripts\datajs-1.1.1.js" />
     <Content Include="Scripts\datajs-1.1.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
@@ -109,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <LightSwitchModel Include="Properties\ApplicationData\RULEs.lsml" />
+    <LightSwitchModel Include="Properties\ApplicationData\TRACKs.lsml" />
     <LightSwitchModel Include="Properties\Client.lsml">
       <ProjectCritical>true</ProjectCritical>
     </LightSwitchModel>
@@ -119,11 +126,15 @@
     <LightSwitchModel Include="Screens\AddEditFORM_FIELD_RULE.lsml" />
     <LightSwitchModel Include="Screens\AddEditFORM_FORM.lsml" />
     <LightSwitchModel Include="Screens\AddEditCHOICE.lsml" />
+    <LightSwitchModel Include="Screens\AddEditTRACK_FORM_FIELD.lsml" />
     <LightSwitchModel Include="Screens\FORMs\AddEditFORM.lsml" />
     <LightSwitchModel Include="Screens\FORMs\AddEditRULE.lsml" />
+    <LightSwitchModel Include="Screens\FORMs\AddEditTRACK.lsml" />
     <LightSwitchModel Include="Screens\FORMs\BrowseFIELDs.lsml" />
     <LightSwitchModel Include="Screens\FORMs\BrowseFORMs.lsml" />
     <LightSwitchModel Include="Screens\FORMs\BrowseRULEs.lsml" />
+    <LightSwitchModel Include="Screens\FORMs\BrowseTRACKs.lsml" />
+    <LightSwitchModel Include="Screens\FORMs\ViewTRACK.lsml" />
   </ItemGroup>
   <ItemGroup>
     <_ClientBuildFile Include="GeneratedArtifacts\model.json">
