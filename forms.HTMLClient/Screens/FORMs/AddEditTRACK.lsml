@@ -73,117 +73,199 @@
               </ContentItem.DataSource>
             </ContentItem>
             <ContentItem
-              Name="TRACK_FORM_FIELDs"
+              Name="FORM_FIELDs_BY_FORMID"
               Kind="Collection"
-              DataType="CollectionView$TRACK_FORM_FIELD"
+              DataType="CollectionView$FORM_FIELD"
               View="Microsoft.LightSwitch.MobileWeb:TileList">
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="AddEditTRACK/Properties[TRACK_FORM_FIELDs]" />
+                      Member="AddEditTRACK/Properties[FORM_FIELDs_BY_FORMID]" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
               <ContentItem
-                Name="TRACK_FORM_FIELDsTemplate"
+                Name="FORM_FIELDs_BY_FORMIDTemplate"
                 Kind="Details"
-                DataType="TRACK_FORM_FIELD">
+                DataType="FORM_FIELD"
+                View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression />
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  Name="FORM_FIELD"
-                  Kind="Details"
-                  DataType="FORM_FIELD"
-                  View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
+                  Name="FIELD_LEVEL"
+                  Kind="Value"
+                  DataType=":Decimal">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value=" " />
+                  </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="TRACK_FORM_FIELD/Properties[FORM_FIELD]" />
+                          Member="FORM_FIELD/Properties[FIELD_LEVEL]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[WidthSizingMode]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="FixedSize"
+                            ResultType=":String" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Width]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="20"
+                            ResultType=":Double" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem
+                  Name="FIELD"
+                  Kind="Details"
+                  DataType="FIELD">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="QUESTION" />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="FORM_FIELD/Properties[FIELD]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    Name="FORM"
-                    Kind="Details"
-                    DataType="FORM">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <MemberExpression
-                            Member="FORM_FIELD/Properties[FORM]" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                    <ContentItem
-                      Name="FORM1"
-                      Kind="Details"
-                      DataType="FORM">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression />
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                  </ContentItem>
-                  <ContentItem
-                    Name="FIELD"
+                    Name="FIELD1"
                     Kind="Details"
                     DataType="FIELD">
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                      <ScreenExpressionTree>
                         <ChainExpression>
-                          <MemberExpression
-                            Member="FORM_FIELD/Properties[FIELD]" />
+                          <CallExpression
+                            Target="AddEditTRACK/Methods[showDialog]">
+                            <ArgumentExpression
+                              Parameter="dialogName">
+                              <ConstantExpression
+                                Value="popChoiceByFormFieldId"
+                                ResultType=":String" />
+                            </ArgumentExpression>
+                          </CallExpression>
                         </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[WidthSizingMode]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="StretchToContainer"
+                            ResultType=":String" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem
+                  Name="ANSWER"
+                  Kind="Collection"
+                  DataType="CollectionView$TRACK_FORM_FIELD"
+                  View="Microsoft.LightSwitch.MobileWeb:TileList">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="ANSWER" />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="AddEditTRACK/Properties[TRACK_FORM_FIELDs1]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    Name="TRACK_FORM_FIELDs1Template"
+                    Kind="Details"
+                    DataType="TRACK_FORM_FIELD"
+                    View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
                       </ScreenExpressionTree>
                     </ContentItem.DataSource>
                     <ContentItem
-                      Name="FIELD1"
+                      Name="VALUE"
                       Kind="Details"
-                      DataType="FIELD">
+                      DataType="CHOICE">
                       <ContentItem.DataSource>
                         <ScreenExpressionTree>
-                          <ChainExpression />
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="TRACK_FORM_FIELD/Properties[VALUE]" />
+                          </ChainExpression>
                         </ScreenExpressionTree>
                       </ContentItem.DataSource>
+                      <ContentItem
+                        Name="CHOICE"
+                        Kind="Details"
+                        DataType="CHOICE">
+                        <ContentItem.DataSource>
+                          <ScreenExpressionTree>
+                            <ChainExpression />
+                          </ScreenExpressionTree>
+                        </ContentItem.DataSource>
+                      </ContentItem>
                     </ContentItem>
                   </ContentItem>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[HeightSizingMode]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="StretchToContainer"
+                            ResultType=":String" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
                 </ContentItem>
               </ContentItem>
               <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <ConstantExpression
-                        Value="msls-edit"
-                        ResultType=":String" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
                 <ControlPropertySource
                   Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ItemTap]">
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <CallExpression
-                        Target="!module/Methods[showAddEditTRACK_FORM_FIELD]">
-                        <CallExpression.Attributes>
-                          <AssociatedCollection
-                            Collection="AddEditTRACK/Properties[TRACK_FORM_FIELDs]" />
-                        </CallExpression.Attributes>
+                        Target="AddEditTRACK/Methods[showDialog]">
                         <ArgumentExpression
-                          Parameter="TRACK_FORM_FIELD">
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="AddEditTRACK/Properties[TRACK_FORM_FIELDs]" />
-                            <MemberExpression
-                              Member="selectedItem" />
-                          </ChainExpression>
+                          Parameter="dialogName">
+                          <ConstantExpression
+                            Value="popChoiceByFormFieldId"
+                            ResultType=":String" />
                         </ArgumentExpression>
                       </CallExpression>
                     </ChainExpression>
@@ -219,35 +301,60 @@
           Kind="Group"
           View="Microsoft.LightSwitch.MobileWeb:DialogPages">
           <ContentItem
-            Name="FormFieldPopUp"
-            Kind="Group">
+            Name="popChoiceByFormFieldId"
+            Kind="Group"
+            View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
+            <ContentItem.Attributes>
+              <DisplayName
+                Value="Choices" />
+            </ContentItem.Attributes>
             <ContentItem
-              Name="FormFieldUrl"
-              Kind="Value"
-              DataType="Microsoft.LightSwitch.Extensions:WebAddress"
-              View="Microsoft.LightSwitch.MobileWeb:WebAddressViewer">
+              Name="CHOICEs_BY_FORMFIELDID"
+              Kind="Collection"
+              DataType="CollectionView$CHOICE"
+              View="Microsoft.LightSwitch.MobileWeb:TileList">
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="AddEditTRACK/Properties[FormFieldUrl]" />
+                      Member="AddEditTRACK/Properties[CHOICEs_BY_FORMFIELDID]" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
-            </ContentItem>
-            <ContentItem
-              Name="FormFieldUrl1"
-              Kind="Value"
-              DataType="Microsoft.LightSwitch.Extensions:WebAddress"
-              View="Microsoft.LightSwitch.MobileWeb:TextBox">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression
-                      Member="AddEditTRACK/Properties[FormFieldUrl]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
+              <ContentItem
+                Name="CHOICEs_BY_FORMFIELDIDTemplate"
+                Kind="Details"
+                DataType="CHOICE">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression />
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem
+                  Name="CHOICE_STR"
+                  Kind="Value"
+                  DataType=":String?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="CHOICE/Properties[CHOICE_STR]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ItemTap]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <CallExpression
+                        Target="AddEditTRACK/Methods[CHOICEs_BY_FORMFIELDID_Tap]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
             </ContentItem>
           </ContentItem>
         </ContentItem>
@@ -301,7 +408,11 @@
       <ScreenMethod
         Name="Method" />
       <ScreenMethod
-        Name="GetFormFieldLink" />
+        Name="CHOICEs_BY_FORMFIELDID_ItemTap" />
+      <ScreenMethod
+        Name="FORM_FIELDs_BY_FORMID_ItemTap" />
+      <ScreenMethod
+        Name="CHOICEs_BY_FORMFIELDID_Tap" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenProperty
@@ -341,13 +452,150 @@
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
+      <ScreenCollectionProperty
+        Name="FORM_FIELDs_BY_FORMID"
+        PageSize="45"
+        PropertyType="CollectionView$FORM_FIELD">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="FORM_FIELDs_BY_FORMIDQuery"
+            ReturnType="FORM_FIELD*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression
+                  Member="ApplicationData/Members[FORM_FIELDs_BY_FORMID]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="AddEditTRACK/Properties[FORM_FIELDs_BY_FORMID]/Query">
+              <ArgumentExpression
+                Parameter="FormId">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="AddEditTRACK/Properties[TRACK]" />
+                  <MemberExpression
+                    Member="FORM" />
+                  <MemberExpression
+                    Member="Id" />
+                </ChainExpression>
+              </ArgumentExpression>
+            </CallExpression>
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
       <ScreenProperty
-        Name="FormFieldUrl"
-        PropertyType="Microsoft.LightSwitch.Extensions:WebAddress">
-        <ScreenProperty.Attributes>
-          <Required />
-        </ScreenProperty.Attributes>
-      </ScreenProperty>
+        Name="FormId"
+        PropertyType="FORM" />
+      <ScreenCollectionProperty
+        Name="TRACKs"
+        PageSize="45"
+        PropertyType="CollectionView$TRACK">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="TRACKsQuery"
+            ReturnType="TRACK*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <ChainExpression>
+                  <MemberExpression
+                    Member="AddEditTRACK/Properties[FormId]" />
+                  <MemberExpression
+                    Member="TRACKs" />
+                </ChainExpression>
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="AddEditTRACK/Properties[TRACKs]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenCollectionProperty
+        Name="TRACK_FORM_FIELDs1"
+        PageSize="45"
+        PropertyType="CollectionView$TRACK_FORM_FIELD">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="TRACK_FORM_FIELDs1Query"
+            ReturnType="TRACK_FORM_FIELD*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <ChainExpression>
+                  <MemberExpression
+                    Member="AddEditTRACK/Properties[TRACKs]" />
+                  <MemberExpression
+                    Member="selectedItem" />
+                  <MemberExpression
+                    Member="TRACK_FORM_FIELDs" />
+                </ChainExpression>
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="AddEditTRACK/Properties[TRACK_FORM_FIELDs1]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenCollectionProperty
+        Name="CHOICEs_BY_FORMFIELDID"
+        PageSize="45"
+        PropertyType="CollectionView$CHOICE">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="CHOICEs_BY_FORMFIELDIDQuery"
+            ReturnType="CHOICE*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression
+                  Member="ApplicationData/Members[CHOICEs_BY_FORMFIELDID]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="AddEditTRACK/Properties[CHOICEs_BY_FORMFIELDID]/Query">
+              <ArgumentExpression
+                Parameter="FORM_FIELD_ID">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="AddEditTRACK/Properties[FORM_FIELDs_BY_FORMID]" />
+                  <MemberExpression
+                    Member="selectedItem" />
+                  <MemberExpression
+                    Member="Id" />
+                </ChainExpression>
+              </ArgumentExpression>
+            </CallExpression>
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenProperty
+        Name="FORM_FIELD_ID"
+        PropertyType="CHOICE" />
     </Screen.Properties>
   </Screen>
   <Application.Methods>

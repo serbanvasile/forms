@@ -217,6 +217,12 @@
     <LightSwitchModel Include="DataSources\ApplicationData\CHOICE_CHOICEs.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\TRACKs.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\TRACK_FORM_FIELDs.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\FORM_FIELDs_BY_FORMID.lsml">
+      <DependentUpon>FORM_FIELDs.lsml</DependentUpon>
+    </LightSwitchModel>
+    <LightSwitchModel Include="DataSources\ApplicationData\CHOICEs_BY_FORMFIELDID.lsml">
+      <DependentUpon>CHOICEs.lsml</DependentUpon>
+    </LightSwitchModel>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

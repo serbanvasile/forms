@@ -1,7 +1,6 @@
 ﻿/// <reference path="~/GeneratedArtifacts/viewModel.js" />
 
 myapp.AddEditTRACK.Method_execute = function (screen) {
-    // Write code here.
     return myapp.applyChanges().then(function () {
         var newTrackFormField = myapp.activeDataWorkspace.ApplicationData.TRACK_FORM_FIELDs.addNew();
         newTrackFormField.setTRACK(screen.TRACK);
@@ -26,3 +25,17 @@ myapp.AddEditTRACK.Method_execute = function (screen) {
 
 //};
 
+
+myapp.AddEditTRACK.CHOICEs_BY_FORMFIELDID_Tap_execute = function (screen) {
+    var refTrackFormField = screen.FORM_FIELDs_BY_FORMID.selectedItem;
+    var existingTrackFormField = screen.TRACK_FORM_FIELDs1.selectedItem
+    var newTrackFormField = myapp.activeDataWorkspace.ApplicationData.TRACK_FORM_FIELDs.addNew();
+
+    newTrackFormField.setTRACK(screen.TRACK);
+    newTrackFormField.setFORM_FIELD(screen.FORM_FIELDs_BY_FORMID.selectedItem);
+    newTrackFormField.setVALUE(screen.CHOICEs_BY_FORMFIELDID.selectedItem);
+
+    return myapp.applyChanges().then(function () {
+        screen.closePopup("popChoiceByFormFieldId");
+    });
+};
