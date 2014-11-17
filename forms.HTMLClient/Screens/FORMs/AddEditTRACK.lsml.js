@@ -28,14 +28,39 @@ myapp.AddEditTRACK.Method_execute = function (screen) {
 
 myapp.AddEditTRACK.CHOICEs_BY_FORMFIELDID_Tap_execute = function (screen) {
     var refTrackFormField = screen.FORM_FIELDs_BY_FORMID.selectedItem;
-    var existingTrackFormField = screen.TRACK_FORM_FIELDs1.selectedItem
-    var newTrackFormField = myapp.activeDataWorkspace.ApplicationData.TRACK_FORM_FIELDs.addNew();
-
+    var existingTrackFormField = screen.TRACK_FORM_FIELDs.selectedItem;
+    var newTrackFormField;
+    if (existingTrackFormField) {
+        newTrackFormField = existingTrackFormField;
+    } else {
+        newTrackFormField = myapp.activeDataWorkspace.ApplicationData.TRACK_FORM_FIELDs.addNew();
+    }     
     newTrackFormField.setTRACK(screen.TRACK);
     newTrackFormField.setFORM_FIELD(screen.FORM_FIELDs_BY_FORMID.selectedItem);
     newTrackFormField.setVALUE(screen.CHOICEs_BY_FORMFIELDID.selectedItem);
 
-    return myapp.applyChanges().then(function () {
-        screen.closePopup("popChoiceByFormFieldId");
+    return myapp.applyChanges()
+        .then(function () {
+            screen.closePopup("popChoiceByFormFieldId");
+        })
+        .then(function () {
+            screen.FORM_FIELDs_BY_FORMID.load(true);
+        });
+ };
+myapp.AddEditTRACK.CancelDeleteValue_Tap_execute = function (screen) {
+    // Write code here.
+    screen.closePopup("popDeleteValue");
+};
+myapp.AddEditTRACK.DeleteCurrentValue_Tap_execute = function (screen) {
+    // Write code here.
+    screen.getTRACK_FORM_FIELDs().then(function (TRACK_FORM_FIELDs) {
+        TRACK_FORM_FIELDs.deleteSelected();
+        return myapp.applyChanges()
+            .then(function () {
+                screen.closePopup("popDeleteValue");
+            })
+            .then(function () {
+                screen.FORM_FIELDs_BY_FORMID.load(true);
+            });
     });
 };

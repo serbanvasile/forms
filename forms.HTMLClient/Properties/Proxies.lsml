@@ -112,12 +112,6 @@
         Target="ServiceInterface:TRACK_FORM" />
     </Association.Attributes>
   </Association>
-  <EntityType>
-    <EntityType.Attributes>
-      <Proxy
-        Target="ServiceInterface:TRACK_FORM_FIELD" />
-    </EntityType.Attributes>
-  </EntityType>
   <Association>
     <Association.Attributes>
       <Proxy

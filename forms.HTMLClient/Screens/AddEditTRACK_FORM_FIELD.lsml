@@ -194,6 +194,18 @@
                     <ChainExpression />
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
+                <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="msls-edit"
+                          ResultType=":String" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
               </ContentItem>
             </ContentItem>
             <ContentItem
@@ -232,6 +244,18 @@
                   </ContentItem.DataSource>
                 </ContentItem>
               </ContentItem>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression
+                        Value="msls-edit"
+                        ResultType=":String" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
             </ContentItem>
           </ContentItem>
         </ContentItem>
@@ -286,6 +310,8 @@
           Name="dialogName"
           ParameterType=":String" />
       </ScreenMethod>
+      <ScreenMethod
+        Name="Method" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenProperty

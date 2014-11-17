@@ -190,27 +190,23 @@
                   </ContentItem.PropertySources>
                 </ContentItem>
                 <ContentItem
-                  Name="ANSWER"
+                  Name="TRACK_FORM_FIELDs"
                   Kind="Collection"
                   DataType="CollectionView$TRACK_FORM_FIELD"
                   View="Microsoft.LightSwitch.MobileWeb:TileList">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="ANSWER" />
-                  </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="AddEditTRACK/Properties[TRACK_FORM_FIELDs1]" />
+                          Member="AddEditTRACK/Properties[TRACK_FORM_FIELDs]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    Name="TRACK_FORM_FIELDs1Template"
+                    Name="TRACK_FORM_FIELDsTemplate"
                     Kind="Details"
                     DataType="TRACK_FORM_FIELD"
-                    View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
+                    View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
                         <ChainExpression />
@@ -242,12 +238,18 @@
                   </ContentItem>
                   <ContentItem.PropertySources>
                     <ControlPropertySource
-                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[HeightSizingMode]">
+                      Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ItemTap]">
                       <ScreenExpressionTree>
                         <ChainExpression>
-                          <ConstantExpression
-                            Value="StretchToContainer"
-                            ResultType=":String" />
+                          <CallExpression
+                            Target="AddEditTRACK/Methods[showDialog]">
+                            <ArgumentExpression
+                              Parameter="dialogName">
+                              <ConstantExpression
+                                Value="popDeleteValue"
+                                ResultType=":String" />
+                            </ArgumentExpression>
+                          </CallExpression>
                         </ChainExpression>
                       </ScreenExpressionTree>
                     </ControlPropertySource>
@@ -273,27 +275,6 @@
                 </ControlPropertySource>
               </ContentItem.PropertySources>
             </ContentItem>
-            <ContentItem.CommandItems>
-              <ContentItem
-                Name="btnSaveAndAddNewFields"
-                Kind="Command">
-                <ContentItem.Attributes>
-                  <DisplayName
-                    Value="ADD/EDIT TRACK" />
-                </ContentItem.Attributes>
-                <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <CallExpression
-                          Target="AddEditTRACK/Methods[Method]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                </ContentItem.PropertySources>
-              </ContentItem>
-            </ContentItem.CommandItems>
           </ContentItem>
         </ContentItem>
         <ContentItem
@@ -357,6 +338,53 @@
               </ContentItem.PropertySources>
             </ContentItem>
           </ContentItem>
+          <ContentItem
+            Name="popDeleteValue"
+            Kind="Group"
+            View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
+            <ContentItem.Attributes>
+              <DisplayName
+                Value="DeleteValue" />
+            </ContentItem.Attributes>
+            <ContentItem
+              Name="DeleteCurrentValue"
+              Kind="Command">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="Delete Value" />
+              </ContentItem.Attributes>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <CallExpression
+                        Target="AddEditTRACK/Methods[DeleteCurrentValue_Tap]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+            </ContentItem>
+            <ContentItem
+              Name="CancelDeleteValue"
+              Kind="Command">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="Cancel" />
+              </ContentItem.Attributes>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <CallExpression
+                        Target="AddEditTRACK/Methods[CancelDeleteValue_Tap]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+            </ContentItem>
+          </ContentItem>
         </ContentItem>
         <ContentItem.PropertySources>
           <ControlPropertySource
@@ -413,6 +441,14 @@
         Name="FORM_FIELDs_BY_FORMID_ItemTap" />
       <ScreenMethod
         Name="CHOICEs_BY_FORMFIELDID_Tap" />
+      <ScreenMethod
+        Name="DeleteCurrentValue" />
+      <ScreenMethod
+        Name="CancelDeleteValue" />
+      <ScreenMethod
+        Name="CancelDeleteValue_Tap" />
+      <ScreenMethod
+        Name="DeleteCurrentValue_Tap" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenProperty
@@ -490,71 +526,6 @@
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
-      <ScreenProperty
-        Name="FormId"
-        PropertyType="FORM" />
-      <ScreenCollectionProperty
-        Name="TRACKs"
-        PageSize="45"
-        PropertyType="CollectionView$TRACK">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="TRACKsQuery"
-            ReturnType="TRACK*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <ChainExpression>
-                  <MemberExpression
-                    Member="AddEditTRACK/Properties[FormId]" />
-                  <MemberExpression
-                    Member="TRACKs" />
-                </ChainExpression>
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="AddEditTRACK/Properties[TRACKs]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
-      <ScreenCollectionProperty
-        Name="TRACK_FORM_FIELDs1"
-        PageSize="45"
-        PropertyType="CollectionView$TRACK_FORM_FIELD">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="TRACK_FORM_FIELDs1Query"
-            ReturnType="TRACK_FORM_FIELD*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <ChainExpression>
-                  <MemberExpression
-                    Member="AddEditTRACK/Properties[TRACKs]" />
-                  <MemberExpression
-                    Member="selectedItem" />
-                  <MemberExpression
-                    Member="TRACK_FORM_FIELDs" />
-                </ChainExpression>
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="AddEditTRACK/Properties[TRACK_FORM_FIELDs1]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
       <ScreenCollectionProperty
         Name="CHOICEs_BY_FORMFIELDID"
         PageSize="45"
@@ -593,9 +564,6 @@
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
-      <ScreenProperty
-        Name="FORM_FIELD_ID"
-        PropertyType="CHOICE" />
     </Screen.Properties>
   </Screen>
   <Application.Methods>
