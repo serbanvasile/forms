@@ -64,3 +64,11 @@ myapp.AddEditTRACK.DeleteCurrentValue_Tap_execute = function (screen) {
             });
     });
 };
+
+
+myapp.AddEditTRACK.VALUE_postRender = function (element, contentItem) {
+    // Write code here.
+    if (contentItem.data.FORM_FIELD.FIELD.FIELD_NAME != contentItem.parent.parent.data.FIELD.FIELD_NAME) {
+        $(element).parentsUntil(".msls-listview").remove();
+    }
+};
