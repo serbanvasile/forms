@@ -91,13 +91,13 @@
               </ContentItem>
             </ContentItem>
             <ContentItem
-              Name="Edits"
+              Name="EditsTop"
               Kind="Details"
               DataType="CHOICE"
               View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
               <ContentItem.Attributes>
                 <DisplayName
-                  Value="Edits" />
+                  Value="Edits Top" />
               </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
@@ -108,7 +108,7 @@
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
               <ContentItem
-                Name="left"
+                Name="leftTop"
                 Kind="Group"
                 View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
                 <ContentItem
@@ -137,6 +137,19 @@
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                 </ContentItem>
+                <ContentItem
+                  Name="CHOICE_BOOL"
+                  Kind="Value"
+                  DataType=":Boolean?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="CHOICE/Properties[CHOICE_BOOL]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
                 <ContentItem.PropertySources>
                   <ControlPropertySource
                     Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[MinWidth]">
@@ -161,7 +174,7 @@
                 </ContentItem.PropertySources>
               </ContentItem>
               <ContentItem
-                Name="right"
+                Name="rightTop"
                 Kind="Group">
                 <ContentItem
                   Name="CreatedBy"
@@ -214,6 +227,189 @@
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+            </ContentItem>
+            <ContentItem
+              Name="EditsBottom"
+              Kind="Group"
+              View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
+              <ContentItem
+                Name="leftBottom"
+                Kind="Group">
+                <ContentItem
+                  Name="CHOICE_DBL"
+                  Kind="Value"
+                  DataType=":Double?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="AddEditCHOICE/Properties[CHOICE]" />
+                        <MemberExpression
+                          Member="CHOICE_DBL" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="CHOICE_EMAIL"
+                  Kind="Value"
+                  DataType="Microsoft.LightSwitch.Extensions:EmailAddress?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="AddEditCHOICE/Properties[CHOICE]" />
+                        <MemberExpression
+                          Member="CHOICE_EMAIL" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="CHOICE_PERSON"
+                  Kind="Value"
+                  DataType=":Person?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="AddEditCHOICE/Properties[CHOICE]" />
+                        <MemberExpression
+                          Member="CHOICE_PERSON" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="CHOICE_PHONE"
+                  Kind="Value"
+                  DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="AddEditCHOICE/Properties[CHOICE]" />
+                        <MemberExpression
+                          Member="CHOICE_PHONE" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="CHOICE_DATE"
+                  Kind="Value"
+                  DataType=":Date?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="AddEditCHOICE/Properties[CHOICE]" />
+                        <MemberExpression
+                          Member="CHOICE_DATE" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="CHOICE_DATE_TIME"
+                  Kind="Value"
+                  DataType=":DateTime?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="AddEditCHOICE/Properties[CHOICE]" />
+                        <MemberExpression
+                          Member="CHOICE_DATE_TIME" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
+                Name="rightBottom"
+                Kind="Group">
+                <ContentItem
+                  Name="CHOICE_URL"
+                  Kind="Value"
+                  DataType="Microsoft.LightSwitch.Extensions:WebAddress?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="AddEditCHOICE/Properties[CHOICE]" />
+                        <MemberExpression
+                          Member="CHOICE_URL" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="CHOICE_MONEY"
+                  Kind="Value"
+                  DataType="Microsoft.LightSwitch.Extensions:Money">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="AddEditCHOICE/Properties[CHOICE]" />
+                        <MemberExpression
+                          Member="CHOICE_MONEY" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="CHOICE_PERCENT"
+                  Kind="Value"
+                  DataType="Microsoft.LightSwitch.Extensions:Percent">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="AddEditCHOICE/Properties[CHOICE]" />
+                        <MemberExpression
+                          Member="CHOICE_PERCENT" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="binGroup"
+                  Kind="Group"
+                  View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
+                  <ContentItem
+                    Name="CHOICE_IMG"
+                    Kind="Value"
+                    DataType="Microsoft.LightSwitch.Extensions:Image?">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <MemberExpression
+                            Member="AddEditCHOICE/Properties[CHOICE]" />
+                          <MemberExpression
+                            Member="CHOICE_IMG" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                  <ContentItem
+                    Name="CHOICE_BIN"
+                    Kind="Value"
+                    DataType=":Binary?">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <MemberExpression
+                            Member="AddEditCHOICE/Properties[CHOICE]" />
+                          <MemberExpression
+                            Member="CHOICE_BIN" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
                 </ContentItem>
               </ContentItem>
             </ContentItem>
