@@ -144,6 +144,7 @@
     <LightSwitchModel Include="Screens\AddEditFORM_FORM.lsml" />
     <LightSwitchModel Include="Screens\AddEditCHOICE.lsml" />
     <LightSwitchModel Include="Screens\AddEditTRACK_FORM_FIELD.lsml" />
+    <LightSwitchModel Include="Screens\BrowseCHOICEs_BY_FORMFIELDID.lsml" />
     <LightSwitchModel Include="Screens\FORMs\AddEditFORM.lsml" />
     <LightSwitchModel Include="Screens\FORMs\AddEditRULE.lsml" />
     <LightSwitchModel Include="Screens\FORMs\AddEditTRACK.lsml" />

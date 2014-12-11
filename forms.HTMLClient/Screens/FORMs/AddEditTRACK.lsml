@@ -234,24 +234,6 @@
                   </ContentItem>
                 </ContentItem>
               </ContentItem>
-              <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ItemTap]">
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <CallExpression
-                        Target="AddEditTRACK/Methods[showDialog]">
-                        <ArgumentExpression
-                          Parameter="dialogName">
-                          <ConstantExpression
-                            Value="popChoiceByFormFieldId"
-                            ResultType=":String" />
-                        </ArgumentExpression>
-                      </CallExpression>
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-              </ContentItem.PropertySources>
             </ContentItem>
           </ContentItem>
         </ContentItem>
