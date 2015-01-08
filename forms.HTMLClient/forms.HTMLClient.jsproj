@@ -103,6 +103,9 @@
     <Content Include="Screens\FORMs\AddEditTRACK.lsml.js">
       <DependentUpon>AddEditTRACK.lsml</DependentUpon>
     </Content>
+    <Content Include="Screens\FORMs\TRACKsLsCollapsibleScreen.lsml.js">
+      <DependentUpon>TRACKsLsCollapsibleScreen.lsml</DependentUpon>
+    </Content>
     <Content Include="Screens\FORMs\ViewTRACK.lsml.js">
       <DependentUpon>ViewTRACK.lsml</DependentUpon>
     </Content>
@@ -123,6 +126,10 @@
     <Content Include="Scripts\msls-2.5.1.min.js" />
     <Content Include="Scripts\winjs-1.0.js" />
     <Content Include="Scripts\winjs-1.0.min.js" />
+    <Content Include="UserCode\TRACK.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ServiceMetadataReference Include="..\forms.Server\forms.Server.csproj">
@@ -152,6 +159,7 @@
     <LightSwitchModel Include="Screens\FORMs\BrowseFORMs.lsml" />
     <LightSwitchModel Include="Screens\FORMs\BrowseRULEs.lsml" />
     <LightSwitchModel Include="Screens\FORMs\BrowseTRACKs.lsml" />
+    <LightSwitchModel Include="Screens\FORMs\TRACKsLsCollapsibleScreen.lsml" />
     <LightSwitchModel Include="Screens\FORMs\ViewTRACK.lsml" />
     <LightSwitchModel Include="Screens\ViewTRACK_FORM_FIELD.lsml" />
   </ItemGroup>
@@ -171,9 +179,6 @@
     <_ClientBuildFile Include="GeneratedArtifacts\resources.js">
       <SubFolder>Scripts\Generated</SubFolder>
     </_ClientBuildFile>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UserCode\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\MobileClient\Microsoft.LightSwitch.MobileClient.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\Microsoft.LightSwitch.Build.Tasks.targets" />

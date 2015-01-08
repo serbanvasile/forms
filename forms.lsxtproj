@@ -143,6 +143,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <LightSwitchExtension Include="Extensions\LsCollapsibleList.lspkg">
+      <ExtensionId>LsCollapsibleList</ExtensionId>
+      <Server>LSCOLLAPSIBLELIST.COMMON;LSCOLLAPSIBLELIST.SERVER</Server>
+    </LightSwitchExtension>
     <LightSwitchExtension Include="Extensions\Microsoft.LightSwitch.Cosmopolitan.lspkg">
       <ExtensionId>Microsoft.LightSwitch.Cosmopolitan</ExtensionId>
       <Client>MICROSOFT.LIGHTSWITCH.COSMOPOLITAN.CLIENT</Client>

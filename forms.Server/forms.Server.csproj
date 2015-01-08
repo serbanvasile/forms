@@ -57,6 +57,12 @@
     <NoWarn>1522</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LsCollapsibleList.Common">
+      <HintPath>..\_Pvt_Extensions\LsCollapsibleList\Server\Reference\LsCollapsibleList.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="LsCollapsibleList.Server">
+      <HintPath>..\_Pvt_Extensions\LsCollapsibleList\Server\Reference\LsCollapsibleList.Server.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.LightSwitch.Extensions.Server">
       <HintPath>..\_Pvt_Extensions\Microsoft.LightSwitch.Extensions\Server\Reference\Microsoft.LightSwitch.Extensions.Server.dll</HintPath>
     </Reference>
@@ -193,6 +199,9 @@
   <ItemGroup>
     <Compile Include="DataSources\ApplicationData\FORM_FIELD.lsml.cs">
       <DependentUpon>FORM_FIELDs.lsml</DependentUpon>
+    </Compile>
+    <Compile Include="DataSources\ApplicationData\TRACK.lsml.cs">
+      <DependentUpon>TRACKs.lsml</DependentUpon>
     </Compile>
     <Compile Include="DataSources\ApplicationData\_ApplicationDataService.lsml.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

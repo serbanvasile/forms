@@ -37,6 +37,13 @@
         FromEnd="TRACK"
         ToEnd="TRACK_FORM_FIELD" />
       <EntityProperty
+        Name="TRACK_NAME"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Computed />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
         PropertyType=":Person?">

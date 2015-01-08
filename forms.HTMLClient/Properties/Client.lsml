@@ -52,5 +52,8 @@
     <ApplicationNavigationMethodLink
       Name="link4"
       Method="!module/Methods[showBrowseCHOICEs_BY_FORMFIELDID]" />
+    <ApplicationNavigationMethodLink
+      Name="link5"
+      Method="!module/Methods[showTRACKsLsCollapsibleScreen]" />
   </Application.NavigationItems>
 </Application>

@@ -17,7 +17,7 @@
 
 //};
 
-
+var choicesDisplayed = false;
 myapp.AddEditTRACK.CHOICEs_BY_FORMFIELDID_Tap_execute = function (screen) {
 
     //add new track form field
@@ -31,29 +31,38 @@ myapp.AddEditTRACK.CHOICEs_BY_FORMFIELDID_Tap_execute = function (screen) {
         screen.TRACK_FORM_FIELDs.deleteSelected();
     }
 
-    return myapp.applyChanges()
-        .then(function () {
+    myapp.applyChanges()
+        .then(
+            function () {
                 screen.closePopup("popChoiceByFormFieldId");
-            })
+            }
+        )
+        .then(
+            function () {
+                screen.FORM_FIELDs_BY_FORMID.load(true);
+            }
+        )
         .then(function () {
-            screen.FORM_FIELDs_BY_FORMID.load(true);
+            setTimeout(function () {
+                choicesDisplayed = false;
+            }, 500)
         })
 };
 
 myapp.AddEditTRACK.CancelDeleteValue_Tap_execute = function (screen) {
     // Write code here.
-    screen.closePopup("popDeleteValue");
+    return screen.closePopup("popDeleteValue");
 };
 myapp.AddEditTRACK.DeleteCurrentValue_Tap_execute = function (screen) {
     // Write code here.
-    screen.getTRACK_FORM_FIELDs().then(function (TRACK_FORM_FIELDs) {
+    return screen.getTRACK_FORM_FIELDs().then(function (TRACK_FORM_FIELDs) {
         TRACK_FORM_FIELDs.deleteSelected();
         return myapp.applyChanges()
             .then(function () {
-                screen.closePopup("popDeleteValue");
+                return screen.closePopup("popDeleteValue");
             })
             .then(function () {
-                screen.FORM_FIELDs_BY_FORMID.load(true);
+                return screen.FORM_FIELDs_BY_FORMID.load(true);
             });
     });
 };
@@ -61,7 +70,7 @@ myapp.AddEditTRACK.DeleteCurrentValue_Tap_execute = function (screen) {
 myapp.AddEditTRACK.VALUE_render = function (element, contentItem) {
     // Write code here.
     var valueId = contentItem.data.VALUE.Id;
-    var fieldValue = $("<p>" + contentItem.data.VALUE.CHOICE_STR + "</p>"); 
+    var fieldValue = $("<p>" + contentItem.data.VALUE.CHOICE_STR + "</p>");
     if (contentItem.data.FORM_FIELD.FIELD.FIELD_NAME != contentItem.parent.parent.data.FIELD.FIELD_NAME) {
         $(element).parentsUntil(".msls-listview").remove();
     } else {
@@ -79,8 +88,8 @@ myapp.AddEditTRACK.created = function (screen) {
             $.each(TRACK_FORM_FIELDs.data, function (tff_key, tff_item) {
                 if (formFieldsVisualCollection.selectedItem &&
                     formFieldsVisualCollection.selectedItem.Id == tff_item.FORM_FIELD.Id) {
-                        TRACK_FORM_FIELDs.selectedItem = tff_item;
-                        return false;
+                    TRACK_FORM_FIELDs.selectedItem = tff_item;
+                    return false;
                 }
             });
         });
@@ -89,7 +98,7 @@ myapp.AddEditTRACK.created = function (screen) {
     function displayFieldChoices() {
         return myapp.showBrowseCHOICEs_BY_FORMFIELDID({
             beforeShown: function (browseChoiceScreen) {
-                alert("showing choices for field " + screen.FORM_FIELDs_BY_FORMID.selectedItem.FIELD.FIELD_LABEL);
+                alert("showing the choices for field " + screen.FORM_FIELDs_BY_FORMID.selectedItem.FIELD.FIELD_LABEL);
                 screen.CHOICEs_BY_FORMFIELDID.refresh().then(
                     function () {
                         return new WinJS.Promise(function (complete) {
@@ -107,7 +116,7 @@ myapp.AddEditTRACK.created = function (screen) {
                                 complete(false);
                             }
                         });
-                    }                    
+                    }
                 );
             },
             afterClosed: function (browseChoiceScreen, navigationAction) {
@@ -126,11 +135,19 @@ myapp.AddEditTRACK.created = function (screen) {
     }
 
     function onVisualCollectionSelectedItem() {
-        return new WinJS.Promise(function (complete) {
-            //if (formFieldsVisualCollection.state === msls.VisualCollection.State.idle) {
-            return selectFirstField().then(displayFieldChoices()).then(complete(true));
-            //}
-        });
+        selectFirstField()
+            .then(function () {
+                if (choicesDisplayed == false) {
+                    screen.CHOICEs_BY_FORMFIELDID.refresh();
+                }
+            })
+            .then(function () {
+                if (choicesDisplayed == false) {
+                    screen.showPopup('popChoiceByFormFieldId');
+                    choicesDisplayed = true;
+                }
+            })
+        return true;
     }
 
     formFieldsVisualCollection.addChangeListener("selectedItem", onVisualCollectionSelectedItem);
