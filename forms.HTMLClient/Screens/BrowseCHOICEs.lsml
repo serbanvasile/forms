@@ -5,7 +5,7 @@
     <Partial />
   </Application.Attributes>
   <Screen
-    Name="BrowseCHOICEs_BY_FORMFIELDID">
+    Name="BrowseCHOICEs">
     <Screen.Attributes>
       <SaveChangesTo
         EntityContainer="ApplicationData" />
@@ -23,42 +23,19 @@
             Name="CHOICEList"
             Kind="Group">
             <ContentItem
-              Name="CHOICEFORM_FIELD_ID"
-              Kind="Details"
-              DataType="FORM_FIELD">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression
-                      Member="BrowseCHOICEs_BY_FORMFIELDID/Properties[CHOICEFORM_FIELD_ID]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-              <ContentItem
-                Name="RowTemplate"
-                Kind="Details"
-                DataType="FORM_FIELD">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression />
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-            </ContentItem>
-            <ContentItem
-              Name="CHOICEs_BY_FORMFIELDID"
+              Name="CHOICEs"
               Kind="Collection"
               DataType="CollectionView$CHOICE"
               View="Microsoft.LightSwitch.MobileWeb:TileList">
               <ContentItem.Attributes>
                 <DisplayName
-                  Value="CHOICEs_BY_FORMFIELDID" />
+                  Value="CHOICEs" />
               </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="BrowseCHOICEs_BY_FORMFIELDID/Properties[CHOICEs_BY_FORMFIELDID]" />
+                      Member="BrowseCHOICEs/Properties[CHOICEs]" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
@@ -76,6 +53,19 @@
                     <ChainExpression />
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
+                <ContentItem
+                  Name="CHOICE_IMG"
+                  Kind="Value"
+                  DataType="Microsoft.LightSwitch.Extensions:Image?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="CHOICE/Properties[CHOICE_IMG]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
                 <ContentItem
                   Name="rows"
                   Kind="Group"
@@ -179,7 +169,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="BrowseCHOICEs_BY_FORMFIELDID/Properties[CHOICEs_BY_FORMFIELDID]" />
+                        Member="BrowseCHOICEs/Properties[CHOICEs]" />
                       <CallExpression
                         Target="viewSelected" />
                     </ChainExpression>
@@ -189,7 +179,7 @@
             </ContentItem>
             <ContentItem.CommandItems>
               <ContentItem
-                Name="SearchCHOICEs_BY_FORMFIELDID"
+                Name="SearchCHOICEs"
                 Kind="Command">
                 <ContentItem.Attributes>
                   <DisplayName
@@ -201,7 +191,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="BrowseCHOICEs_BY_FORMFIELDID/Properties[CHOICEs_BY_FORMFIELDID]" />
+                          Member="BrowseCHOICEs/Properties[CHOICEs]" />
                         <CallExpression
                           Target="showSearch" />
                       </ChainExpression>
@@ -266,12 +256,12 @@
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
-        Name="CHOICEs_BY_FORMFIELDID"
+        Name="CHOICEs"
         PageSize="45"
         PropertyType="CollectionView$CHOICE">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
-            Name="CHOICEs_BY_FORMFIELDIDQuery"
+            Name="CHOICEsQuery"
             ReturnType="CHOICE*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
@@ -279,7 +269,7 @@
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="ApplicationData/Members[CHOICEs_BY_FORMFIELDID]" />
+                  Member="ApplicationData/Members[CHOICEs]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -287,31 +277,18 @@
         <ScreenExpressionTree>
           <ChainExpression>
             <CallExpression
-              Target="BrowseCHOICEs_BY_FORMFIELDID/Properties[CHOICEs_BY_FORMFIELDID]/Query">
-              <ArgumentExpression
-                Parameter="FORM_FIELD_ID">
-                <ChainExpression>
-                  <MemberExpression
-                    Member="BrowseCHOICEs_BY_FORMFIELDID/Properties[CHOICEFORM_FIELD_ID]" />
-                  <MemberExpression
-                    Member="Id" />
-                </ChainExpression>
-              </ArgumentExpression>
-            </CallExpression>
+              Target="BrowseCHOICEs/Properties[CHOICEs]/Query" />
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
-      <ScreenProperty
-        Name="CHOICEFORM_FIELD_ID"
-        PropertyType="FORM_FIELD" />
     </Screen.Properties>
   </Screen>
   <Application.Methods>
     <ApplicationMethod
-      Name="showBrowseCHOICEs_BY_FORMFIELDID">
+      Name="showBrowseCHOICEs">
       <ApplicationMethod.Attributes>
         <ShowScreenMethod
-          TargetScreen="BrowseCHOICEs_BY_FORMFIELDID" />
+          TargetScreen="BrowseCHOICEs" />
       </ApplicationMethod.Attributes>
     </ApplicationMethod>
   </Application.Methods>

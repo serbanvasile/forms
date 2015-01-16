@@ -70,7 +70,9 @@ myapp.AddEditTRACK.DeleteCurrentValue_Tap_execute = function (screen) {
 myapp.AddEditTRACK.VALUE_render = function (element, contentItem) {
     // Write code here.
     var valueId = contentItem.data.VALUE.Id;
-    var fieldValue = $("<p>" + contentItem.data.VALUE.CHOICE_STR + "</p>");
+    var fieldValue = $("<p>" + contentItem.data.VALUE.CHOICE_STR + " (" 
+        + contentItem.data.VALUE.Modified
+        +")" + "</p>");
     if (contentItem.data.FORM_FIELD.FIELD.FIELD_NAME != contentItem.parent.parent.data.FIELD.FIELD_NAME) {
         $(element).parentsUntil(".msls-listview").remove();
     } else {
@@ -134,13 +136,60 @@ myapp.AddEditTRACK.created = function (screen) {
         });
     }
 
+    function filterChoicesByFormId() {
+        myapp.showBrowseCHOICEs()
+
+        // get the values entered
+        var PatientName = screen.PatientName;
+        var PatientAge = screen.PatientAge;
+
+        // Always show step 2 at this point
+        screen.showTab("Step2");
+        screen.details.displayName = "Step 2";
+
+        // Clear ValidationMessage
+        screen.ValidationMessage = "";
+
+        if (PatientName == null || PatientAge == null) {
+            screen.ValidationMessage = "Both values are required -- Click Back and try again";
+            // Hide the Save button
+            var SaveButton = screen.findContentItem("Save");
+            SaveButton.isVisible = false;
+            // Stop processing
+            return;
+        }
+
+        // Check to see if this is a duplicate -- construct a query
+        var filter = "(PatientName eq " + msls._toODataString(PatientName, ":String") +
+            ") and (PatientAge eq " + msls._toODataString(PatientAge, ":Int32") + ")";
+        // Query the database
+        myapp.activeDataWorkspace.ApplicationData
+            .Patients
+            .filter(filter)
+            .execute()
+            .then(function (result) {
+                // Get the results of the query
+                var currentPatient = result.results[0];
+                // If there are any results show duplicate record error
+                if (currentPatient != null && currentPatient != 'undefined') {
+                    screen.ValidationMessage = "Duplicate Found -- Click Back and try again";
+                    // Hide the Save button
+                    var SaveButton = screen.findContentItem("Save");
+                    SaveButton.isVisible = false;
+                } else {
+                    // There is no duplication
+                    screen.ValidationMessage = "Validation passed -- Save to continue";
+                    // Show the Save button
+                    var SaveButton = screen.findContentItem("Save");
+                    SaveButton.isVisible = true;
+                }
+            }, function (error) {
+                alert(error);
+            });
+    }
+
     function onVisualCollectionSelectedItem() {
         selectFirstField()
-            .then(function () {
-                if (choicesDisplayed == false) {
-                    screen.CHOICEs_BY_FORMFIELDID.refresh();
-                }
-            })
             .then(function () {
                 if (choicesDisplayed == false) {
                     screen.showPopup('popChoiceByFormFieldId');

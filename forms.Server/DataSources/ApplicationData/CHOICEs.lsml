@@ -118,9 +118,8 @@
       </EntityProperty>
       <EntityProperty
         Name="CHOICE_MONEY"
-        PropertyType="Microsoft.LightSwitch.Extensions:Money">
+        PropertyType="Microsoft.LightSwitch.Extensions:Money?">
         <EntityProperty.Attributes>
-          <Required />
           <NotSearchable />
           <DecimalConstraint
             Precision="18"
@@ -129,9 +128,8 @@
       </EntityProperty>
       <EntityProperty
         Name="CHOICE_PERCENT"
-        PropertyType="Microsoft.LightSwitch.Extensions:Percent">
+        PropertyType="Microsoft.LightSwitch.Extensions:Percent?">
         <EntityProperty.Attributes>
-          <Required />
           <NotSearchable />
           <DecimalConstraint
             Precision="18"
@@ -158,6 +156,26 @@
         Association="TRACK_FORM_FIELD_CHOICE"
         FromEnd="CHOICE"
         ToEnd="TRACK_FORM_FIELD" />
+      <EntityProperty
+        Name="CHOICE_NAME"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <Required />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="CHOICE_ORDER"
+        PropertyType=":Decimal">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+          <DecimalConstraint
+            Precision="18"
+            Scale="2" />
+          <Required />
+        </EntityProperty.Attributes>
+      </EntityProperty>
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"

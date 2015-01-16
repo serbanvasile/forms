@@ -112,6 +112,19 @@
                 Kind="Group"
                 View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
                 <ContentItem
+                  Name="CHOICE_NAME"
+                  Kind="Value"
+                  DataType=":String">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="CHOICE/Properties[CHOICE_NAME]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
                   Name="CHOICE_STR"
                   Kind="Value"
                   DataType=":String?">
@@ -176,6 +189,19 @@
               <ContentItem
                 Name="rightTop"
                 Kind="Group">
+                <ContentItem
+                  Name="CHOICE_ORDER"
+                  Kind="Value"
+                  DataType=":Decimal">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="CHOICE/Properties[CHOICE_ORDER]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
                 <ContentItem
                   Name="CreatedBy"
                   Kind="Value"
@@ -349,7 +375,7 @@
                 <ContentItem
                   Name="CHOICE_MONEY"
                   Kind="Value"
-                  DataType="Microsoft.LightSwitch.Extensions:Money">
+                  DataType="Microsoft.LightSwitch.Extensions:Money?">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
@@ -364,7 +390,7 @@
                 <ContentItem
                   Name="CHOICE_PERCENT"
                   Kind="Value"
-                  DataType="Microsoft.LightSwitch.Extensions:Percent">
+                  DataType="Microsoft.LightSwitch.Extensions:Percent?">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>

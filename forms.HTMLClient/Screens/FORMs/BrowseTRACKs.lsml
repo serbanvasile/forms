@@ -10,7 +10,7 @@
       <SaveChangesTo
         EntityContainer="ApplicationData" />
       <DisplayName
-        Value="TRACKs" />
+        Value="TRACKS" />
     </Screen.Attributes>
     <Screen.RootContentItem>
       <ContentItem
