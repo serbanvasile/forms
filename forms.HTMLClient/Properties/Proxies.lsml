@@ -10,12 +10,6 @@
         Target="ServiceInterface:FIELD" />
     </EntityType.Attributes>
   </EntityType>
-  <EntityType>
-    <EntityType.Attributes>
-      <Proxy
-        Target="ServiceInterface:CHOICE" />
-    </EntityType.Attributes>
-  </EntityType>
   <EntityContainer>
     <EntityContainer.Attributes>
       <Proxy
@@ -130,4 +124,10 @@
         Target="ServiceInterface:TRACK_FORM_FIELD_CHOICE" />
     </Association.Attributes>
   </Association>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:CHOICE" />
+    </EntityType.Attributes>
+  </EntityType>
 </Application>

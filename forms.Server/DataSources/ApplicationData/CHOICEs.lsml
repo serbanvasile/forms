@@ -366,6 +366,10 @@
           Name="VALUE_FORM_FIELD"
           Nullable="False"
           Type="int" />
+        <SsdlForeignKeyProperty
+          Name="CHOICE_CHOICE1"
+          Nullable="True"
+          Type="int" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
     <AssociationSetMapping

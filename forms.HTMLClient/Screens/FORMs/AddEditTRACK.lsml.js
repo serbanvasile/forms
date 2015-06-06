@@ -70,9 +70,24 @@ myapp.AddEditTRACK.DeleteCurrentValue_Tap_execute = function (screen) {
 myapp.AddEditTRACK.VALUE_render = function (element, contentItem) {
     // Write code here.
     var valueId = contentItem.data.VALUE.Id;
-    var fieldValue = $("<p>" + contentItem.data.VALUE.CHOICE_STR + " (" 
-        + contentItem.data.VALUE.Modified
-        +")" + "</p>");
+    var separator = '|';
+    var allParentChoiceIds = '';
+    var allChildChoiceIds = '';
+    contentItem.data.VALUE.PARENT_CHOICEs.array.forEach(function (parentChoice, idx) {
+        allParentChoiceIds += (separator + parentChoice.Id);
+    })
+    contentItem.data.VALUE.CHILD_CHOICEs.array.forEach(function (childChoice, idx) {
+        allChildChoiceIds += (separator + childChoice.Id);
+    })
+    var fieldValue = $("<p>" 
+        + valueId
+        + '-' + allParentChoiceIds
+        + '-' + allChildChoiceIds
+        + '-' + contentItem.data.VALUE.CHOICE_STR
+        //+ " ("
+        //+ contentItem.data.VALUE.Modified
+        //+ ")"
+        + "</p>");
     if (contentItem.data.FORM_FIELD.FIELD.FIELD_NAME != contentItem.parent.parent.data.FIELD.FIELD_NAME) {
         $(element).parentsUntil(".msls-listview").remove();
     } else {
@@ -98,28 +113,42 @@ myapp.AddEditTRACK.created = function (screen) {
     }
 
     function displayFieldChoices() {
-        return myapp.showBrowseCHOICEs_BY_FORMFIELDID({
+            myapp.showBrowseCHOICEs({
             beforeShown: function (browseChoiceScreen) {
                 alert("showing the choices for field " + screen.FORM_FIELDs_BY_FORMID.selectedItem.FIELD.FIELD_LABEL);
-                screen.CHOICEs_BY_FORMFIELDID.refresh().then(
-                    function () {
-                        return new WinJS.Promise(function (complete) {
-                            if (screen.CHOICEs_BY_FORMFIELDID.data.length > 0) {
-                                alert("refreshed successfully choices by formfield id");
-                                screen.CHOICEs_BY_FORMFIELDID.selectedItem = screen.CHOICEs_BY_FORMFIELDID.data[0];
-                                //add new track form field
-                                var newTrackFormField = myapp.activeDataWorkspace.ApplicationData.TRACK_FORM_FIELDs.addNew();
-                                newTrackFormField.setTRACK(screen.TRACK);
-                                newTrackFormField.setFORM_FIELD(screen.FORM_FIELDs_BY_FORMID.selectedItem);
-                                newTrackFormField.setVALUE(screen.CHOICEs_BY_FORMFIELDID.selectedItem);
-                                complete(true);
-                            } else {
-                                alert("could not refresh choices by formfield id");
-                                complete(false);
-                            }
-                        });
-                    }
-                );
+                // Check to see if this is a duplicate -- construct a query
+                //localhost:50275/ApplicationData.svc/CHOICEs?$top=50&$filter=(PARENT_CHOICEs/any(x: x/Id eq 1) or PARENT_CHOICEs/any(x: x/Id eq 4) or PARENT_CHOICEs/any(x: x/Id eq 1002))
+                var filter =
+                    "FORM_FIELD/Id eq " + msls._toODataString(screen.FORM_FIELDs_BY_FORMID.selectedItem.Id, ":Int32");
+                //screen.CHOICEs_BY_FORMFIELDID
+                //    .refresh()
+                myapp.activeDataWorkspace.ApplicationData
+                    .CHOICEs
+                    .filter(filter)
+                    .execute().then(
+                        function(result) {
+                            browseChoiceScreen.data = result.results;
+                        });                                                       
+                    //.then(
+                //    function () {
+                //        return new WinJS.Promise(function (complete) {
+                //            if (screen.CHOICEs_BY_FORMFIELDID.data.length > 0) {
+                //                alert("refreshed successfully choices by formfield id");
+                //                screen.CHOICEs_BY_FORMFIELDID.selectedItem = screen.CHOICEs_BY_FORMFIELDID.data[0];
+                //                //add new track form field
+                //                var newTrackFormField = myapp.activeDataWorkspace.ApplicationData.TRACK_FORM_FIELDs.addNew();
+                //                newTrackFormField.setTRACK(screen.TRACK);
+                //                newTrackFormField.setFORM_FIELD(screen.FORM_FIELDs_BY_FORMID.selectedItem);
+                //                newTrackFormField.setVALUE(screen.CHOICEs_BY_FORMFIELDID.selectedItem);
+                //                complete(true);
+                //            } else {
+                //                alert("could not refresh choices by formfield id");
+                //                complete(false);
+                //            }
+                //        });
+                //    }
+                //);
+                return true;
             },
             afterClosed: function (browseChoiceScreen, navigationAction) {
                 if (navigationAction == msls.NavigateBackAction.commit) {
@@ -192,6 +221,7 @@ myapp.AddEditTRACK.created = function (screen) {
         selectFirstField()
             .then(function () {
                 if (choicesDisplayed == false) {
+                    //displayFieldChoices();
                     screen.showPopup('popChoiceByFormFieldId');
                     choicesDisplayed = true;
                 }
