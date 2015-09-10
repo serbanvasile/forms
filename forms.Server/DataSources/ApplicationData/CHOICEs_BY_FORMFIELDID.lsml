@@ -44,12 +44,6 @@
         <SortCriterion>
           <ChainExpression>
             <MemberExpression
-              Member="CHOICE_ORDER" />
-          </ChainExpression>
-        </SortCriterion>
-        <SortCriterion>
-          <ChainExpression>
-            <MemberExpression
               Member="CHOICE_NAME" />
           </ChainExpression>
         </SortCriterion>

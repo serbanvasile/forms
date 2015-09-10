@@ -215,6 +215,10 @@
           Name="VALUE_VALUE_VALUE1"
           Nullable="False"
           Type="int" />
+        <SsdlForeignKeyProperty
+          Name="Id"
+          Nullable="False"
+          Type="int" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
   </DataService>

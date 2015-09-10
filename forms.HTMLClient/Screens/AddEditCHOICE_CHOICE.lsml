@@ -156,7 +156,7 @@
                         <ScreenExpressionTree>
                           <ChainExpression>
                             <MemberExpression
-                              Member="CHOICE/Properties[CHOICE_STR]" />
+                              Member="CHOICE/Properties[CHOICE_LABEL]" />
                           </ChainExpression>
                         </ScreenExpressionTree>
                       </ContentItem.DataSource>
@@ -296,7 +296,7 @@
                         <ScreenExpressionTree>
                           <ChainExpression>
                             <MemberExpression
-                              Member="CHOICE/Properties[CHOICE_STR]" />
+                              Member="CHOICE/Properties[CHOICE_LABEL]" />
                           </ChainExpression>
                         </ScreenExpressionTree>
                       </ContentItem.DataSource>

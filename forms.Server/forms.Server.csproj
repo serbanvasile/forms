@@ -235,9 +235,6 @@
     <LightSwitchModel Include="DataSources\ApplicationData\RULEs_BY_FORMFIELDID.lsml">
       <DependentUpon>FORM_FIELD_RULEs.lsml</DependentUpon>
     </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\ApplicationData\CHOICE_CHOICE_BY_CHOICE_ID.lsml">
-      <DependentUpon>CHOICE_CHOICEs.lsml</DependentUpon>
-    </LightSwitchModel>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

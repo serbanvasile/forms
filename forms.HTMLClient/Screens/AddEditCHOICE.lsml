@@ -125,40 +125,14 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="CHOICE_STR"
+                  Name="CHOICE_LABEL"
                   Kind="Value"
                   DataType=":String?">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="CHOICE/Properties[CHOICE_STR]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="CHOICE_INT"
-                  Kind="Value"
-                  DataType=":Int32?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="CHOICE/Properties[CHOICE_INT]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="CHOICE_BOOL"
-                  Kind="Value"
-                  DataType=":Boolean?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="CHOICE/Properties[CHOICE_BOOL]" />
+                          Member="CHOICE/Properties[CHOICE_LABEL]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -189,19 +163,6 @@
               <ContentItem
                 Name="rightTop"
                 Kind="Group">
-                <ContentItem
-                  Name="CHOICE_ORDER"
-                  Kind="Value"
-                  DataType=":Decimal">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="CHOICE/Properties[CHOICE_ORDER]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
                 <ContentItem
                   Name="CreatedBy"
                   Kind="Value"
@@ -262,181 +223,14 @@
               View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
               <ContentItem
                 Name="leftBottom"
-                Kind="Group">
-                <ContentItem
-                  Name="CHOICE_DBL"
-                  Kind="Value"
-                  DataType=":Double?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="AddEditCHOICE/Properties[CHOICE]" />
-                        <MemberExpression
-                          Member="CHOICE_DBL" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="CHOICE_EMAIL"
-                  Kind="Value"
-                  DataType="Microsoft.LightSwitch.Extensions:EmailAddress?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="AddEditCHOICE/Properties[CHOICE]" />
-                        <MemberExpression
-                          Member="CHOICE_EMAIL" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="CHOICE_PERSON"
-                  Kind="Value"
-                  DataType=":Person?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="AddEditCHOICE/Properties[CHOICE]" />
-                        <MemberExpression
-                          Member="CHOICE_PERSON" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="CHOICE_PHONE"
-                  Kind="Value"
-                  DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="AddEditCHOICE/Properties[CHOICE]" />
-                        <MemberExpression
-                          Member="CHOICE_PHONE" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="CHOICE_DATE"
-                  Kind="Value"
-                  DataType=":Date?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="AddEditCHOICE/Properties[CHOICE]" />
-                        <MemberExpression
-                          Member="CHOICE_DATE" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="CHOICE_DATE_TIME"
-                  Kind="Value"
-                  DataType=":DateTime?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="AddEditCHOICE/Properties[CHOICE]" />
-                        <MemberExpression
-                          Member="CHOICE_DATE_TIME" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-              </ContentItem>
+                Kind="Group" />
               <ContentItem
                 Name="rightBottom"
                 Kind="Group">
                 <ContentItem
-                  Name="CHOICE_URL"
-                  Kind="Value"
-                  DataType="Microsoft.LightSwitch.Extensions:WebAddress?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="AddEditCHOICE/Properties[CHOICE]" />
-                        <MemberExpression
-                          Member="CHOICE_URL" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="CHOICE_MONEY"
-                  Kind="Value"
-                  DataType="Microsoft.LightSwitch.Extensions:Money?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="AddEditCHOICE/Properties[CHOICE]" />
-                        <MemberExpression
-                          Member="CHOICE_MONEY" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="CHOICE_PERCENT"
-                  Kind="Value"
-                  DataType="Microsoft.LightSwitch.Extensions:Percent?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="AddEditCHOICE/Properties[CHOICE]" />
-                        <MemberExpression
-                          Member="CHOICE_PERCENT" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
                   Name="binGroup"
                   Kind="Group"
-                  View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
-                  <ContentItem
-                    Name="CHOICE_IMG"
-                    Kind="Value"
-                    DataType="Microsoft.LightSwitch.Extensions:Image?">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <MemberExpression
-                            Member="AddEditCHOICE/Properties[CHOICE]" />
-                          <MemberExpression
-                            Member="CHOICE_IMG" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                  <ContentItem
-                    Name="CHOICE_BIN"
-                    Kind="Value"
-                    DataType=":Binary?">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <MemberExpression
-                            Member="AddEditCHOICE/Properties[CHOICE]" />
-                          <MemberExpression
-                            Member="CHOICE_BIN" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                </ContentItem>
+                  View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout" />
               </ContentItem>
             </ContentItem>
             <ContentItem

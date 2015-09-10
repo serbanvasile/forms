@@ -277,20 +277,7 @@
                         <ScreenExpressionTree>
                           <ChainExpression>
                             <MemberExpression
-                              Member="CHOICE/Properties[CHOICE_STR]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                    <ContentItem
-                      Name="CHOICE_INT"
-                      Kind="Value"
-                      DataType=":Int32?">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="CHOICE/Properties[CHOICE_INT]" />
+                              Member="CHOICE/Properties[CHOICE_LABEL]" />
                           </ChainExpression>
                         </ScreenExpressionTree>
                       </ContentItem.DataSource>

@@ -265,14 +265,14 @@
                         </ScreenExpressionTree>
                       </ContentItem.DataSource>
                       <ContentItem
-                        Name="CHOICE_STR1"
+                        Name="CHOICE_LABEL"
                         Kind="Value"
                         DataType=":String?">
                         <ContentItem.DataSource>
                           <ScreenExpressionTree>
                             <ChainExpression>
                               <MemberExpression
-                                Member="CHOICE/Properties[CHOICE_STR]" />
+                                Member="CHOICE/Properties[CHOICE_LABEL]" />
                             </ChainExpression>
                           </ScreenExpressionTree>
                         </ContentItem.DataSource>
@@ -312,21 +312,27 @@
               <ContentItem
                 Name="CHOICEs_BY_FORMFIELDIDTemplate"
                 Kind="Details"
-                DataType="CHOICE">
+                DataType="CHOICE"
+                View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression />
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  Name="CHOICE_STR"
+                  Name="CHOICEs_BY_FORMFIELDID_selectedItem_CHOICE_LABEL"
                   Kind="Value"
-                  DataType=":String?">
+                  DataType=":String?"
+                  View="Microsoft.LightSwitch.MobileWeb:ValueCustomControl">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="CHOICE/Properties[CHOICE_STR]" />
+                          Member="AddEditTRACK/Properties[CHOICEs_BY_FORMFIELDID]" />
+                        <MemberExpression
+                          Member="selectedItem" />
+                        <MemberExpression
+                          Member="CHOICE_LABEL" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -486,6 +492,17 @@
                 </ChainExpression>
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
+            <ScreenQueryDefinition.Includes>
+              <IncludeCriterion
+                Mode="Included">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="VALUE" />
+                  <MemberExpression
+                    Member="FORM_FIELD" />
+                </ChainExpression>
+              </IncludeCriterion>
+            </ScreenQueryDefinition.Includes>
           </ScreenQueryDefinition>
         </ScreenCollectionProperty.Query>
         <ScreenExpressionTree>
@@ -512,6 +529,15 @@
                   Member="ApplicationData/Members[FORM_FIELDs_BY_FORMID]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
+            <ScreenQueryDefinition.Includes>
+              <IncludeCriterion
+                Mode="Included">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="FORM" />
+                </ChainExpression>
+              </IncludeCriterion>
+            </ScreenQueryDefinition.Includes>
           </ScreenQueryDefinition>
         </ScreenCollectionProperty.Query>
         <ScreenExpressionTree>
@@ -550,19 +576,34 @@
                   Member="ApplicationData/Members[CHOICEs_BY_FORMFIELDID]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
-            <ScreenQueryDefinition.Parameters>
-              <QueryParameter
-                Name="PARENT_CHOICE_ID"
-                IsOptional="True"
-                ParameterType=":Int32?" />
-            </ScreenQueryDefinition.Parameters>
-            <ScreenQueryDefinition.SortCriteria>
-              <SortCriterion>
+            <ScreenQueryDefinition.Includes>
+              <IncludeCriterion
+                Mode="Included">
                 <ChainExpression>
                   <MemberExpression
-                    Member="CHOICE_ORDER" />
+                    Member="FORM_FIELD" />
                 </ChainExpression>
-              </SortCriterion>
+              </IncludeCriterion>
+              <IncludeCriterion
+                Mode="Included">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="FORM_FIELD" />
+                  <MemberExpression
+                    Member="FIELD" />
+                </ChainExpression>
+              </IncludeCriterion>
+              <IncludeCriterion
+                Mode="Included">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="FORM_FIELD" />
+                  <MemberExpression
+                    Member="FORM" />
+                </ChainExpression>
+              </IncludeCriterion>
+            </ScreenQueryDefinition.Includes>
+            <ScreenQueryDefinition.SortCriteria>
               <SortCriterion>
                 <ChainExpression>
                   <MemberExpression

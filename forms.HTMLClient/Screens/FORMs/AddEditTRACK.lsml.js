@@ -83,7 +83,7 @@ myapp.AddEditTRACK.VALUE_render = function (element, contentItem) {
         + valueId
         + '-' + allParentChoiceIds
         + '-' + allChildChoiceIds
-        + '-' + contentItem.data.VALUE.CHOICE_STR
+        + '-' + contentItem.data.VALUE.CHOICE_LABEL
         //+ " ("
         //+ contentItem.data.VALUE.Modified
         //+ ")"
@@ -115,11 +115,11 @@ myapp.AddEditTRACK.created = function (screen) {
     function displayFieldChoices() {
             myapp.showBrowseCHOICEs({
             beforeShown: function (browseChoiceScreen) {
-                alert("showing the choices for field " + screen.FORM_FIELDs_BY_FORMID.selectedItem.FIELD.FIELD_LABEL);
+                alert("showing the choices for field " + formFieldsVisualCollection.selectedItem.FIELD.FIELD_LABEL);
                 // Check to see if this is a duplicate -- construct a query
                 //localhost:50275/ApplicationData.svc/CHOICEs?$top=50&$filter=(PARENT_CHOICEs/any(x: x/Id eq 1) or PARENT_CHOICEs/any(x: x/Id eq 4) or PARENT_CHOICEs/any(x: x/Id eq 1002))
                 var filter =
-                    "FORM_FIELD/Id eq " + msls._toODataString(screen.FORM_FIELDs_BY_FORMID.selectedItem.Id, ":Int32");
+                    "FORM_FIELD/Id eq " + msls._toODataString(formFieldsVisualCollection.selectedItem.Id, ":Int32");
                 //screen.CHOICEs_BY_FORMFIELDID
                 //    .refresh()
                 myapp.activeDataWorkspace.ApplicationData
@@ -230,5 +230,94 @@ myapp.AddEditTRACK.created = function (screen) {
     }
 
     formFieldsVisualCollection.addChangeListener("selectedItem", onVisualCollectionSelectedItem);
+
+};
+
+
+myapp.AddEditTRACK.CHOICEs_BY_FORMFIELDID_selectedItem_CHOICE_LABEL_render = function (element, contentItem) {
+    var choiceVal = contentItem.data.CHOICE_LABEL;
+    var choiceFld;
+
+    //we need to examine if the choice we want to display has parent choices
+    //if we have parent choices, one of them needs to have been addressed in one of the prior fields
+    var choiceHasParents = false;
+    var choiceParents = [];
+    contentItem.data.getPARENT_CHOICEs().then(function (CHOICE_PARENT_CHOICEs) {
+        choiceParents = CHOICE_PARENT_CHOICEs;
+    }).done(function() {
+        choiceHasParents = (choiceParents.array.length > 0 ? true : false);
+        choiceFld = $("<p>"
+            + choiceVal + (choiceHasParents ? ' P ' : ' NP ')
+            + "</p>");
+        if (!choiceHasParents) {
+            choiceFld.appendTo($(element));
+            return;
+        }
+
+        var validChoice = false;
+        //after finding out that the current choice has parents, we need to look at the 
+        //already selected choices (values of type choice) from the prior fields to identify if they are or not one of the valid parents
+        contentItem.screen.getTRACK_FORM_FIELDs()
+            .then(function (TRACK_FORM_FIELDs) {
+                //for each field (of type formfield)
+                TRACK_FORM_FIELDs.data.forEach(function (trackFormField, idx) {
+                    choiceParents.array.forEach(function (choiceParent, idx) {
+                        //find the parent that corresponds to the choice that is analyzed
+                        if (choiceParent.Id == trackFormField.VALUE.Id) {
+                            //once the parent is found, go through all the valid child choices and see if we match
+                            trackFormField.VALUE.CHILD_CHOICEs.array.forEach(function (childChoice, idx) {
+                                if (contentItem.data.Id == childChoice.Id) {
+                                    validChoice = true;
+                                    choiceFld.appendTo($(element));
+                                }
+                            });
+                        }
+                        if (validChoice == true) {
+                        }
+                    });
+                    if (validChoice == true) {
+                    }
+                })
+                if (validChoice == true) {
+                }
+            }).done(function () {
+                if (validChoice == false) {
+                    //choiceFld = $("<p>"
+                    //    + "Should not see this!"
+                    //    + "</p>");
+                    //choiceFld.appendTo($(element));
+                    $(element).parentsUntil(".msls-listview").remove();
+                } else {
+                    choiceFld.appendTo($(element));
+                }
+                return;
+            });
+    });
+
+    //// Write code here.
+    //var valueId = contentItem.data.VALUE.Id;
+    //var separator = '|';
+    //var allParentChoiceIds = '';
+    //var allChildChoiceIds = '';
+    //contentItem.data.VALUE.PARENT_CHOICEs.array.forEach(function (parentChoice, idx) {
+    //    allParentChoiceIds += (separator + parentChoice.Id);
+    //})
+    //contentItem.data.VALUE.CHILD_CHOICEs.array.forEach(function (childChoice, idx) {
+    //    allChildChoiceIds += (separator + childChoice.Id);
+    //})
+    //var fieldValue = $("<p>"
+    //    + valueId
+    //    + '-' + allParentChoiceIds
+    //    + '-' + allChildChoiceIds
+    //    + '-' + contentItem.data.VALUE.CHOICE_LABEL
+    //    //+ " ("
+    //    //+ contentItem.data.VALUE.Modified
+    //    //+ ")"
+    //    + "</p>");
+    //if (contentItem.data.FORM_FIELD.FIELD.FIELD_NAME != contentItem.parent.parent.data.FIELD.FIELD_NAME) {
+    //    $(element).parentsUntil(".msls-listview").remove();
+    //} else {
+    //    choiceFld.appendTo($(element));
+    //}
 
 };
