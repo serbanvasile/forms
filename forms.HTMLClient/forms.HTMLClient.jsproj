@@ -10,16 +10,19 @@
       <Platform>AnyCPU</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' != 'Release' ">
     <UseDesignTimeFeatures>true</UseDesignTimeFeatures>
   </PropertyGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{673ab255-e470-41c6-b5f0-0ace281dde97}</ProjectGuid>
-    <LightSwitchVersion>v4.5</LightSwitchVersion>
+    <LightSwitchVersion>v5.0</LightSwitchVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\MobileClient\Microsoft.LightSwitch.MobileClient.Default.props" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\MobileClient\Microsoft.LightSwitch.MobileClient.props" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\LightSwitch\v5.0\MobileClient\Microsoft.LightSwitch.MobileClient.Default.props" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\LightSwitch\v5.0\MobileClient\Microsoft.LightSwitch.MobileClient.props" />
   <PropertyGroup>
     <!--TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
     <TargetPlatformVersion>8.0</TargetPlatformVersion-->
@@ -34,7 +37,7 @@
     <LightSwitchDisplayName>HTMLClient</LightSwitchDisplayName>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Content\dark-theme-2.5.1.css" />
+    <Content Include="Content\dark-theme-2.5.3.css" />
     <Content Include="Content\fonts\Flat-UI-Icons-24.ttf" />
     <Content Include="Content\fonts\Flat-UI-Icons-24.woff" />
     <Content Include="Content\fonts\lato-black.ttf" />
@@ -63,11 +66,11 @@
     <Content Include="Content\jquery.mobile.structure-1.3.0.min.css" />
     <Content Include="Content\jquery.mobile.theme-1.3.0.css" />
     <Content Include="Content\jquery.mobile.theme-1.3.0.min.css" />
-    <Content Include="Content\light-theme-2.5.1.css" />
-    <Content Include="Content\msls-2.5.1.css" />
-    <Content Include="Content\msls-2.5.1.min.css" />
-    <Content Include="Content\msls-dark-2.5.1.css" />
-    <Content Include="Content\msls-light-2.5.1.css" />
+    <Content Include="Content\light-theme-2.5.3.css" />
+    <Content Include="Content\msls-2.5.3.css" />
+    <Content Include="Content\msls-2.5.3.min.css" />
+    <Content Include="Content\msls-dark-2.5.3.css" />
+    <Content Include="Content\msls-light-2.5.3.css" />
     <Content Include="default.htm" />
     <Content Include="Content\user-customization.css" />
     <Content Include="Content\Images\user-logo.png" />
@@ -117,10 +120,10 @@
     <Content Include="Scripts\jquery.mobile-1.3.0-vsdoc.js" />
     <Content Include="Scripts\jquery.mobile-1.3.0.js" />
     <Content Include="Scripts\jquery.mobile-1.3.0.min.js" />
+    <Content Include="Scripts\msls-2.5.3-vsdoc.js" />
+    <Content Include="Scripts\msls-2.5.3.js" />
+    <Content Include="Scripts\msls-2.5.3.min.js" />
     <Content Include="Scripts\msls.js" />
-    <Content Include="Scripts\msls-2.5.1-vsdoc.js" />
-    <Content Include="Scripts\msls-2.5.1.js" />
-    <Content Include="Scripts\msls-2.5.1.min.js" />
     <Content Include="Scripts\winjs-1.0.js" />
     <Content Include="Scripts\winjs-1.0.min.js" />
     <Content Include="UserCode\TRACK.lsml.js">
@@ -176,8 +179,8 @@
       <SubFolder>Scripts\Generated</SubFolder>
     </_ClientBuildFile>
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\MobileClient\Microsoft.LightSwitch.MobileClient.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\Microsoft.LightSwitch.Build.Tasks.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\LightSwitch\v5.0\MobileClient\Microsoft.LightSwitch.MobileClient.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\LightSwitch\v5.0\Microsoft.LightSwitch.Build.Tasks.targets" />
   <!-- Redefine the targets to be empty -->
   <Target Name="GetXapOutputFile" />
   <PropertyGroup>
