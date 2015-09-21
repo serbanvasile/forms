@@ -80,10 +80,10 @@ myapp.AddEditTRACK.VALUE_render = function (element, contentItem) {
         allChildChoiceIds += (separator + childChoice.Id);
     })
     var fieldValue = $("<p>" 
-        + valueId
-        + '-' + allParentChoiceIds
-        + '-' + allChildChoiceIds
-        + '-' + contentItem.data.VALUE.CHOICE_LABEL
+        //+ valueId
+        //+ '-' + allParentChoiceIds
+        //+ '-' + allChildChoiceIds + '-'
+        + contentItem.data.VALUE.CHOICE_LABEL
         //+ " ("
         //+ contentItem.data.VALUE.Modified
         //+ ")"
@@ -248,7 +248,8 @@ myapp.AddEditTRACK.CHOICEs_BY_FORMFIELDID_selectedItem_CHOICE_LABEL_postRender =
     }).then(function(){
         choiceHasParents = (choiceParents.array.length > 0 ? true : false);
         choiceFld = $("<p>"
-            + choiceVal + (choiceHasParents ? ' P ' : ' NP ')
+            + choiceVal
+            //+ (choiceHasParents ? ' P ' : ' NP ')
             + "</p>");
         if (!choiceHasParents) {
             choiceFld.appendTo($(element));
@@ -265,7 +266,8 @@ myapp.AddEditTRACK.CHOICEs_BY_FORMFIELDID_selectedItem_CHOICE_LABEL_postRender =
                     if (choiceParentItem.PARENT_CHOICE.Id == trackFormField.VALUE.Id) {
                         //once the parent is found, go through all the valid child choices and see if we match
                         trackFormField.VALUE.CHILD_CHOICEs.array.forEach(function (childChoiceItem, idx) {
-                            if (childChoiceItem.CHILD_CHOICE && childChoiceItem.CHILD_CHOICE.Id == contentItem.data.Id) {
+                            if (childChoiceItem.CHILD_CHOICE && childChoiceItem.CHILD_CHOICE.Id == contentItem.data.Id
+                                ) {
                                 validChoice = true;                                
                             }
                         });

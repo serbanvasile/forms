@@ -49,8 +49,5 @@
     <ApplicationNavigationMethodLink
       Name="link2"
       Method="!module/Methods[showBrowseRULEs]" />
-    <ApplicationNavigationMethodLink
-      Name="link4"
-      Method="!module/Methods[showBrowseCHOICEs]" />
   </Application.NavigationItems>
 </Application>

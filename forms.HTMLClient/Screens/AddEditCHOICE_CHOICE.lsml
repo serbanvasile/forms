@@ -50,19 +50,6 @@
                 Name="left"
                 Kind="Group">
                 <ContentItem
-                  Name="CHOICE_LEVEL"
-                  Kind="Value"
-                  DataType=":Decimal">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="CHOICE_CHOICE/Properties[CHOICE_LEVEL]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
                   Name="PARENT_CHOICE"
                   Kind="Details"
                   DataType="CHOICE">
@@ -163,6 +150,19 @@
                     </ContentItem>
                   </ContentItem>
                 </ContentItem>
+                <ContentItem
+                  Name="CHOICE_ENABLED"
+                  Kind="Value"
+                  DataType=":Boolean">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="CHOICE_CHOICE/Properties[CHOICE_BINDING_ENABLED]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
                 <ContentItem.PropertySources>
                   <ControlPropertySource
                     Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[MinWidth]">
@@ -189,19 +189,6 @@
               <ContentItem
                 Name="right"
                 Kind="Group">
-                <ContentItem
-                  Name="CHOICE_ENABLED"
-                  Kind="Value"
-                  DataType=":Boolean">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="CHOICE_CHOICE/Properties[CHOICE_ENABLED]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
                 <ContentItem
                   Name="CHILD_CHOICE"
                   Kind="Details"
