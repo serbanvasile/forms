@@ -69,6 +69,11 @@ myapp.AddEditTRACK.DeleteCurrentValue_Tap_execute = function (screen) {
 
 myapp.AddEditTRACK.VALUE_render = function (element, contentItem) {
     // Write code here.
+
+    if (typeof (contentItem.data.VALUE) == "undefined" || contentItem.data.VALUE == null) {
+        return;
+    }
+
     var valueId = contentItem.data.VALUE.Id;
     var separator = '|';
     var allParentChoiceIds = '';

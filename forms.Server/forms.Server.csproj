@@ -46,6 +46,11 @@
     <WarningLevel>4</WarningLevel>
     <UseDesignTimeFeatures>true</UseDesignTimeFeatures>
     <NoWarn>1522</NoWarn>
+    <PublishDatabaseSettings>
+      <Objects>
+      </Objects>
+    </PublishDatabaseSettings>
+    <IncludeIisSettings>false</IncludeIisSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -56,6 +61,17 @@
     <WarningLevel>4</WarningLevel>
     <UseDesignTimeFeatures>false</UseDesignTimeFeatures>
     <NoWarn>1522</NoWarn>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="_IntrinsicData-Deployment" Order="1">
+          <Destination Path="Data Source=trax01.scm.azurewebsites.net%3bInitial Catalog=trax01%3bIntegrated Security=True" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=|SqlExpressInstanceName|%3bAttachDbFilename=|ApplicationDatabasePath|%3bIntegrated Security=True%3bConnect Timeout=30%3bMultipleActiveResultSets=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Release\AutoScripts\_IntrinsicData-Deployment_SchemaAndData.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LsCollapsibleList.Common">
@@ -237,6 +253,12 @@
       <DependentUpon>FORM_FIELD_RULEs.lsml</DependentUpon>
     </LightSwitchModel>
     <None Include="Properties\PublishProfiles\svtest01.pubxml" />
+    <None Include="Properties\PublishProfiles\svtest02.pubxml" />
+    <None Include="Properties\PublishProfiles\svtest03.pubxml" />
+    <None Include="Properties\PublishProfiles\svtest04.pubxml" />
+    <None Include="Properties\PublishProfiles\svtest05.pubxml" />
+    <None Include="Properties\PublishProfiles\svtest06.pubxml" />
+    <None Include="Properties\PublishProfiles\trax01.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
