@@ -51,6 +51,7 @@
       </Objects>
     </PublishDatabaseSettings>
     <IncludeIisSettings>false</IncludeIisSettings>
+    <PublishDatabases>false</PublishDatabases>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -259,6 +260,7 @@
     <None Include="Properties\PublishProfiles\svtest05.pubxml" />
     <None Include="Properties\PublishProfiles\svtest06.pubxml" />
     <None Include="Properties\PublishProfiles\trax01.pubxml" />
+    <None Include="Properties\PublishProfiles\trax08.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

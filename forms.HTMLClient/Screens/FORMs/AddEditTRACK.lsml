@@ -46,12 +46,26 @@
               <ContentItem
                 Name="FORM2"
                 Kind="Details"
-                DataType="FORM">
+                DataType="FORM"
+                View="Microsoft.LightSwitch.MobileWeb:Summary">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression />
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
+                <ContentItem
+                  Name="FORM_LABEL"
+                  Kind="Value"
+                  DataType=":String">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="FORM/Properties[FORM_LABEL]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
               </ContentItem>
             </ContentItem>
             <ContentItem
@@ -281,6 +295,77 @@
                   </ContentItem>
                 </ContentItem>
               </ContentItem>
+            </ContentItem>
+            <ContentItem
+              Name="FORM_FORMs"
+              Kind="Collection"
+              DataType="CollectionView$FORM_FORM"
+              View="Microsoft.LightSwitch.MobileWeb:TileList">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="RELATED FORMs" />
+              </ContentItem.Attributes>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="AddEditTRACK/Properties[FORM_FORMs]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem
+                Name="FORM_FORMsTemplate"
+                Kind="Details"
+                DataType="FORM_FORM">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="CHILD FORMS" />
+                </ContentItem.Attributes>
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression />
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem
+                  Name="CHILD_FORM"
+                  Kind="Details"
+                  DataType="FORM"
+                  View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="FORM_FORM/Properties[CHILD_FORM]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    Name="FORM_LABEL2"
+                    Kind="Value"
+                    DataType=":String">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <MemberExpression
+                            Member="FORM/Properties[FORM_LABEL]" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ShowHeader]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression
+                        Value="True"
+                        ResultType=":Boolean" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
             </ContentItem>
           </ContentItem>
         </ContentItem>
@@ -639,6 +724,65 @@
                     Member="AddEditTRACK/Properties[FORM_FIELDs_BY_FORMID]" />
                   <MemberExpression
                     Member="selectedItem" />
+                  <MemberExpression
+                    Member="Id" />
+                </ChainExpression>
+              </ArgumentExpression>
+            </CallExpression>
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenCollectionProperty
+        Name="FORM_FORMs"
+        PageSize="45"
+        PropertyType="CollectionView$FORM_FORM">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="FORM_FORMsQuery"
+            ReturnType="FORM_FORM*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree>
+                <BinaryExpression
+                  NodeType="Equal">
+                  <BinaryExpression.Left>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="FORM_FORM/Properties[PARENT_FORM]" />
+                      <MemberExpression
+                        Member="Id" />
+                    </ChainExpression>
+                  </BinaryExpression.Left>
+                  <BinaryExpression.Right>
+                    <ParameterExpression
+                      Parameter="P_PARENT_FORM_ID" />
+                  </BinaryExpression.Right>
+                </BinaryExpression>
+              </QueryFilterExpressionTree>
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression
+                  Member="ApplicationData/Members[FORM_FORMs]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+            <ScreenQueryDefinition.Parameters>
+              <QueryParameter
+                Name="P_PARENT_FORM_ID"
+                ParameterType=":Int32?" />
+            </ScreenQueryDefinition.Parameters>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="AddEditTRACK/Properties[FORM_FORMs]/Query">
+              <ArgumentExpression
+                Parameter="P_PARENT_FORM_ID">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="AddEditTRACK/Properties[TRACK]" />
+                  <MemberExpression
+                    Member="FORM" />
                   <MemberExpression
                     Member="Id" />
                 </ChainExpression>

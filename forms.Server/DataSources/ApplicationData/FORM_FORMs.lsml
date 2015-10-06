@@ -27,7 +27,7 @@
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
-        Name="FORM_LEVEL"
+        Name="RELATED_FORM_LEVEL"
         PropertyType=":Decimal">
         <EntityProperty.Attributes>
           <Required />
@@ -38,7 +38,7 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="FORM_ENABLED"
+        Name="RELATED_FORM_ENABLED"
         PropertyType=":Boolean">
         <EntityProperty.Attributes>
           <Required />

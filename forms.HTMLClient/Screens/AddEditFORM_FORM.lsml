@@ -98,7 +98,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FORM_FORM/Properties[FORM_LEVEL]" />
+                          Member="FORM_FORM/Properties[RELATED_FORM_LEVEL]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -115,7 +115,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FORM_FORM/Properties[FORM_ENABLED]" />
+                          Member="FORM_FORM/Properties[RELATED_FORM_ENABLED]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
