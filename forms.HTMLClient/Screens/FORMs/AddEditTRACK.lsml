@@ -69,10 +69,82 @@
               </ContentItem>
             </ContentItem>
             <ContentItem
+              Name="FORM_FORMs1"
+              Kind="Collection"
+              DataType="CollectionView$FORM_FORM"
+              View="Microsoft.LightSwitch.MobileWeb:TileList">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="OTHER SECTIONs" />
+              </ContentItem.Attributes>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="AddEditTRACK/Properties[FORM_FORMs]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem
+                Name="FORM_FORMs1Template"
+                Kind="Details"
+                DataType="FORM_FORM"
+                View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="CHILD FORM" />
+                </ContentItem.Attributes>
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression />
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem
+                  Name="CHILD_FORM1"
+                  Kind="Details"
+                  DataType="FORM">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="FORM_FORM/Properties[CHILD_FORM]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    Name="FORM"
+                    Kind="Details"
+                    DataType="FORM">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ShowHeader]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression
+                        Value="True"
+                        ResultType=":Boolean" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+            </ContentItem>
+            <ContentItem
               Name="FORM_FIELDs_BY_FORMID"
               Kind="Collection"
               DataType="CollectionView$FORM_FIELD"
               View="Microsoft.LightSwitch.MobileWeb:TileList">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="MAIN FIELDs" />
+              </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
@@ -295,60 +367,82 @@
                   </ContentItem>
                 </ContentItem>
               </ContentItem>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ShowHeader]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression
+                        Value="True"
+                        ResultType=":Boolean" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
             </ContentItem>
             <ContentItem
-              Name="FORM_FORMs"
+              Name="FORM_FIELDs_BY_FORMID11"
               Kind="Collection"
-              DataType="CollectionView$FORM_FORM"
-              View="Microsoft.LightSwitch.MobileWeb:TileList">
+              DataType="CollectionView$FORM_FIELD">
               <ContentItem.Attributes>
                 <DisplayName
-                  Value="RELATED FORMs" />
+                  Value="SECTION FIELDs" />
               </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="AddEditTRACK/Properties[FORM_FORMs]" />
+                      Member="AddEditTRACK/Properties[FORM_FIELDs_BY_FORMID1]" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
               <ContentItem
-                Name="FORM_FORMsTemplate"
+                Name="FORM_FIELDs_BY_FORMID11Template"
                 Kind="Details"
-                DataType="FORM_FORM">
-                <ContentItem.Attributes>
-                  <DisplayName
-                    Value="CHILD FORMS" />
-                </ContentItem.Attributes>
+                DataType="FORM_FIELD"
+                View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression />
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  Name="CHILD_FORM"
-                  Kind="Details"
-                  DataType="FORM"
-                  View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
+                  Name="FIELD_LEVEL2"
+                  IsHidden="True"
+                  Kind="Value"
+                  DataType=":Decimal">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value=" " />
+                  </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="FORM_FORM/Properties[CHILD_FORM]" />
+                          Member="FORM_FIELD/Properties[FIELD_LEVEL]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="FIELD5"
+                  Kind="Details"
+                  DataType="FIELD">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="FORM_FIELD/Properties[FIELD]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    Name="FORM_LABEL2"
-                    Kind="Value"
-                    DataType=":String">
+                    Name="FIELD6"
+                    Kind="Details"
+                    DataType="FIELD">
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
-                        <ChainExpression>
-                          <MemberExpression
-                            Member="FORM/Properties[FORM_LABEL]" />
-                        </ChainExpression>
+                        <ChainExpression />
                       </ScreenExpressionTree>
                     </ContentItem.DataSource>
                   </ContentItem>
@@ -435,6 +529,18 @@
                 </ControlPropertySource>
               </ContentItem.PropertySources>
             </ContentItem>
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[BrowseOnly]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression
+                      Value="True"
+                      ResultType=":Boolean" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
           </ContentItem>
           <ContentItem
             Name="popDeleteValue"
@@ -783,6 +889,55 @@
                     Member="AddEditTRACK/Properties[TRACK]" />
                   <MemberExpression
                     Member="FORM" />
+                  <MemberExpression
+                    Member="Id" />
+                </ChainExpression>
+              </ArgumentExpression>
+            </CallExpression>
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenCollectionProperty
+        Name="FORM_FIELDs_BY_FORMID1"
+        PageSize="45"
+        PropertyType="CollectionView$FORM_FIELD">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="FORM_FIELDs_BY_FORMID1Query"
+            ReturnType="FORM_FIELD*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression
+                  Member="ApplicationData/Members[FORM_FIELDs_BY_FORMID]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+            <ScreenQueryDefinition.Includes>
+              <IncludeCriterion
+                Mode="Included">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="FORM" />
+                </ChainExpression>
+              </IncludeCriterion>
+            </ScreenQueryDefinition.Includes>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="AddEditTRACK/Properties[FORM_FIELDs_BY_FORMID1]/Query">
+              <ArgumentExpression
+                Parameter="FormId">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="AddEditTRACK/Properties[FORM_FORMs]" />
+                  <MemberExpression
+                    Member="selectedItem" />
+                  <MemberExpression
+                    Member="CHILD_FORM" />
                   <MemberExpression
                     Member="Id" />
                 </ChainExpression>

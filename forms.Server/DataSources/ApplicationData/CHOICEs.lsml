@@ -83,6 +83,14 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
+        Name="CHOICE_FREETEXT"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
         PropertyType=":Person?">
