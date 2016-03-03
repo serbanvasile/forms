@@ -213,6 +213,10 @@
           Name="TRACK_FORM"
           Nullable="False"
           Type="int" />
+        <SsdlForeignKeyProperty
+          Name="TRACK_FORM_FORM"
+          Nullable="False"
+          Type="int" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
     <AssociationSetMapping

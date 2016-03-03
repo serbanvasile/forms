@@ -93,7 +93,9 @@ myapp.AddEditTRACK.VALUE_render = function (element, contentItem) {
         //+ contentItem.data.VALUE.Modified
         //+ ")"
         + "</p>");
-    if (contentItem.data.FORM_FIELD.FIELD.FIELD_NAME != contentItem.parent.parent.data.FIELD.FIELD_NAME) {
+    if (!contentItem.data.FORM_FIELD.FIELD
+        || !contentItem.parent.parent.data.FIELD
+        || contentItem.data.FORM_FIELD.FIELD.FIELD_NAME != contentItem.parent.parent.data.FIELD.FIELD_NAME) {
         $(element).parentsUntil(".msls-listview").remove();
     } else {
         fieldValue.appendTo($(element));
